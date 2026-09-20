@@ -1,0 +1,1 @@
+enum AuthTypeEnum { login, register }
