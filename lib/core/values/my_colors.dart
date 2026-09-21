@@ -1,66 +1,79 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
+  // ─── Palette Colors ───────────────────────────────────────────
+  static const Color slateBlue = Color(0xFF355872); // #355872
+  static const Color softBlue = Color(0xFF7AAACE);  // #7AAACE
+  static const Color skyBlue = Color(0xFF9CD5FF);   // #9CD5FF
+  static const Color offWhite = Color(0xFFF7F8F0);  // #F7F8F0
+
   // ─── Light Theme ───────────────────────────────────────────────
-  static const Color primary = Color(0xffFBDD66);
-  static const Color primaryLight = Color(0xffFFF4C9);
-  static const Color primaryDark = Color(0xffF0C64F);
-  static const Color gold = Color(0xfff99711);
-  static const Color secondary = Color(0xffEE3A4C);
-  static const Color grey = Color(0xffE8E8E8);
-  static const Color blue = Color(0xff4F81BD);
-  static const Color white =Colors.white;
-  static const Color black = Color.fromARGB(156, 8, 5, 5);
-  static const Color myBlack = Color.fromARGB(255, 85, 84, 84);
-  static const Color myGrey = Color.fromARGB(255, 145, 144, 144);
-  static const Color neutralBlack = Color.fromARGB(255, 1, 1, 1);
-  static const Color primaryMoreDark = Color.fromARGB(255, 252, 190, 21);
+  static const Color primary = slateBlue;
+  static const Color primaryLight = skyBlue;
+  static const Color primaryDark = Color(0xFF264156);
+  static const Color primaryMoreDark = Color(0xFF1B2F3E);
+  static const Color gold = softBlue;
+  static const Color secondary = softBlue;
+  static const Color grey = Color(0xFFC3CBD2);
+  static const Color myGrey = Color(0xFF6B7F90);
+  static const Color blue = slateBlue;
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF1D2D3A);
+  static const Color myBlack = Color(0xFF253746);
+  static const Color neutralBlack = Color(0xFF0F1A22);
 
   // Additional light theme colors
-  static const Color primaryAccent = Color(0xff456882);
-  static const Color backGroundColor = Color(0xffFFFEFB);
-  static const Color myBrown = Color(0xff7B4019);
-  static const Color beige = Color(0xffFFFCF8);
-  static const Color beige2 = Color(0xffFFF8E8);
-  static const Color descriptionColor = Color(0xFFEDEDED);
-  static const Color inputBorder = Color.fromRGBO(224, 224, 224, 1);
+  static const Color primaryAccent = softBlue;
+  static const Color backGroundColor = offWhite;
+  static const Color myBrown = Color(0xFF533B2B);
+  static const Color beige = offWhite;
+  static const Color beige2 = skyBlue;
+  static const Color descriptionColor = Color(0xFFE5E8DD);
+  static const Color inputBorder = Color(0xFFC3CBD2);
+
+  // Utility Colors
+  static const Color transparent = Color(0x00000000);
+  static const Color red = Color(0xFFE53935);
+  static const Color green = Color(0xFF4CAF50);
+  static const Color lightGrey = Color(0xFFE0E0E0);
+  static const Color hintColor = Color(0xFFBBBBCC);
 
   // ─── Dark Theme ────────────────────────────────────────────────
-  /// Main canvas — dark background matching the warmth of the app
-  static const Color darkBackground = Color(0xFF0F1923); // Warm dark brown-black
+  /// Main canvas — dark blue background derived from #355872
+  static const Color darkBackground = Color(0xFF15222E);
 
-  /// Cards, sheets, dialogs — slightly lighter than background
-  static const Color darkSurface = Color(0xFF26201A); // Warm dark surface
+  /// Cards, sheets, dialogs — slightly lighter dark surface
+  static const Color darkSurface = Color(0xFF1E3040);
 
   /// Elevated cards / bottom sheets
-  static const Color darkCard = Color(0xFF1A2A4A); // Warmer elevated surface
+  static const Color darkCard = Color(0xFF273E52);
 
-  /// Primary — keeping the yellow/gold theme for dark mode (adjusted for visibility)
-  static const Color darkPrimary = Color(0xFFFDDB5C); // Slightly brighter yellow for dark bg
+  /// Primary — sky blue for high contrast on dark bg
+  static const Color darkPrimary = skyBlue;
 
-  /// Secondary — keeping the red/pink theme for dark mode
-  static const Color darkSecondary = Color(0xFFFF5C6B); // Brighter red for dark bg
+  /// Secondary — soft blue
+  static const Color darkSecondary = softBlue;
 
-  /// Gold accent matching your app's gold color
-  static const Color darkGold = Color(0xFFF9B84A); // Brighter gold for dark bg
+  /// Accent / Gold equivalent
+  static const Color darkGold = softBlue;
 
-  /// Blue accent matching your app's blue color
-  static const Color darkBlue = Color(0xFF6B9FDB); // Lighter blue for dark bg
+  /// Blue accent
+  static const Color darkBlue = skyBlue;
 
-  /// Body text on dark backgrounds — off-white for better readability
-  static const Color darkText = Color(0xFFF0EDE8); // Warm off-white
+  /// Body text on dark backgrounds — off-white
+  static const Color darkText = offWhite;
 
   /// Secondary / muted text
-  static const Color darkSubText = Color(0xFFA89F94); // Muted warm gray
+  static const Color darkSubText = Color(0xFFA0B5C6);
 
   /// Divider lines
-  static const Color darkDivider = Color(0xFF3A3128); // Warm divider
+  static const Color darkDivider = Color(0xFF2C4357);
 
   /// Input field border
-  static const Color darkInputBorder = Color(0xFF4A3F34); // Warm border
+  static const Color darkInputBorder = Color(0xFF3B566E);
 
   /// Description / placeholder
-  static const Color darkDescriptionColor = Color(0xFF7A6E60); // Muted warm gray
+  static const Color darkDescriptionColor = Color(0xFF7A93A8);
 
   // ─── Adaptive helpers ──────────────────────────────────────────
   static Color adaptivePrimary(BuildContext context) =>
@@ -95,7 +108,6 @@ class MyColors {
 
   static Color adaptiveSubText(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark ? darkSubText : myBlack;
-
 
   static Color adaptiveDisabled(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark ? darkSubText : myGrey;

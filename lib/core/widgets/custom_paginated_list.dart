@@ -41,7 +41,7 @@ class CustomPaginatedList<T> extends StatelessWidget {
               children: [
                 Icon(
                   Icons.error,
-                  color: Colors.red,
+                  color: MyColors.red,
                 ),
                 Text(S.of(context).errorTryAgain),
               ],

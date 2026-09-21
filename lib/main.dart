@@ -10,7 +10,7 @@ Future<void> main() async {
   sharedPrefs = await SharedPreferences.getInstance();
 
   await DeviceId().getDeviceId();
-  String lang = sharedPrefs.getString('lang') ?? 'ar';
+  String lang = /*sharedPrefs.getString('lang') ??*/ 'ar';
   Locale locale = Locale(lang);
   runApp(MyApp(locale: locale));
 }

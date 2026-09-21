@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       },
       child: Sizer(builder: (context, orientation, deviceType) {
         return MaterialApp(
-          title: 'Hallal',
+          title: 'زدني',
           debugShowCheckedModeBanner: false,
 
           // ── Dark Theme ───────────────────────────────────────
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
               primary: MyColors.darkPrimary,
               secondary: MyColors.darkGold,
               surface: MyColors.darkSurface,
-              onPrimary: Colors.white,
+              onPrimary: MyColors.white,
               onSurface: MyColors.darkText,
             ),
 
@@ -126,7 +126,7 @@ class MyApp extends StatelessWidget {
               indent: 1,
               thickness: 1,
               endIndent: 1,
-              color: Colors.grey.shade200,
+              color: MyColors.descriptionColor,
             ),
           ),
           locale: locale,
@@ -160,7 +160,7 @@ class MyApp extends StatelessWidget {
           },
           supportedLocales: S.delegate.supportedLocales,
           onGenerateRoute: AppRouter.onGenerateRoutes,
-          initialRoute: sharedPrefs.getString("token")==null?AppRoutes.login:AppRoutes.home,
+          initialRoute: AppRoutes.splash,
         );
       }),
     );

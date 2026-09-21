@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Halal`
+  /// `zedny`
   String get app_name {
-    return Intl.message('Halal', name: 'app_name', desc: '', args: []);
+    return Intl.message('zedny', name: 'app_name', desc: '', args: []);
   }
 
   /// `Welcome`
@@ -312,6 +312,301 @@ class S {
   /// `Retry`
   String get retry {
     return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `Welcome Back`
+  String get welcomeBack {
+    return Intl.message(
+      'Welcome Back',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login successful!`
+  String get loginSuccessful {
+    return Intl.message(
+      'Login successful!',
+      name: 'loginSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login to your account to continue`
+  String get loginToContinue {
+    return Intl.message(
+      'Login to your account to continue',
+      name: 'loginToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `01234567890`
+  String get phoneHint {
+    return Intl.message('01234567890', name: 'phoneHint', desc: '', args: []);
+  }
+
+  /// `Phone is required`
+  String get phoneIsRequired {
+    return Intl.message(
+      'Phone is required',
+      name: 'phoneIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid phone number`
+  String get invalidPhoneNumber {
+    return Intl.message(
+      'Invalid phone number',
+      name: 'invalidPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember me`
+  String get rememberMe {
+    return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
+  }
+
+  /// `Please enter your phone number`
+  String get pleaseEnterPhoneNumber {
+    return Intl.message(
+      'Please enter your phone number',
+      name: 'pleaseEnterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number must be at least 11 digits`
+  String get phoneAtLeast11Digits {
+    return Intl.message(
+      'Phone number must be at least 11 digits',
+      name: 'phoneAtLeast11Digits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account? `
+  String get dontHaveAccount {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'dontHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Please enter your name`
+  String get pleaseEnterName {
+    return Intl.message(
+      'Please enter your name',
+      name: 'pleaseEnterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter parent phone number`
+  String get pleaseEnterParentPhone {
+    return Intl.message(
+      'Please enter parent phone number',
+      name: 'pleaseEnterParentPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register as a student to get started`
+  String get registerAsStudentSubtitle {
+    return Intl.message(
+      'Register as a student to get started',
+      name: 'registerAsStudentSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message('Full Name', name: 'fullName', desc: '', args: []);
+  }
+
+  /// `Enter your full name`
+  String get enterYourFullName {
+    return Intl.message(
+      'Enter your full name',
+      name: 'enterYourFullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name is required`
+  String get nameIsRequired {
+    return Intl.message(
+      'Name is required',
+      name: 'nameIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parent Phone Number`
+  String get parentPhoneNumber {
+    return Intl.message(
+      'Parent Phone Number',
+      name: 'parentPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parent phone is required`
+  String get parentPhoneIsRequired {
+    return Intl.message(
+      'Parent phone is required',
+      name: 'parentPhoneIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grade`
+  String get grade {
+    return Intl.message('Grade', name: 'grade', desc: '', args: []);
+  }
+
+  /// `Continue`
+  String get continueText {
+    return Intl.message('Continue', name: 'continueText', desc: '', args: []);
+  }
+
+  /// `Already have an account? `
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone verified successfully!`
+  String get phoneVerifiedSuccessfully {
+    return Intl.message(
+      'Phone verified successfully!',
+      name: 'phoneVerifiedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify OTP`
+  String get verifyOtp {
+    return Intl.message('Verify OTP', name: 'verifyOtp', desc: '', args: []);
+  }
+
+  /// `We sent a code to`
+  String get weSentCodeTo {
+    return Intl.message(
+      'We sent a code to',
+      name: 'weSentCodeTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter it below.`
+  String get enterItBelow {
+    return Intl.message(
+      'Enter it below.',
+      name: 'enterItBelow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code expires in`
+  String get codeExpiresIn {
+    return Intl.message(
+      'Code expires in',
+      name: 'codeExpiresIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message('Verify', name: 'verify', desc: '', args: []);
+  }
+
+  /// `Please enter the OTP`
+  String get pleaseEnterOtp {
+    return Intl.message(
+      'Please enter the OTP',
+      name: 'pleaseEnterOtp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP must be 4 digits`
+  String get otpMustBe4Digits {
+    return Intl.message(
+      'OTP must be 4 digits',
+      name: 'otpMustBe4Digits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP resent to your phone`
+  String get otpResent {
+    return Intl.message(
+      'OTP resent to your phone',
+      name: 'otpResent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend Code`
+  String get resendCode {
+    return Intl.message('Resend Code', name: 'resendCode', desc: '', args: []);
   }
 }
 

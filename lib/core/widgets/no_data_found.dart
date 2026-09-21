@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import '../values/my_colors.dart';
 
 class NoDataFoundWidget extends StatelessWidget {
   const NoDataFoundWidget(
-      {super.key, required this.title, this.height, this.iconSize,this.inRow});
+      {super.key, required this.title, this.height, this.iconSize, this.inRow});
 
   final String title;
   final double? height;
@@ -15,19 +15,17 @@ class NoDataFoundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        // color: Colors.amber,
-        //  height: height ?? 40.h,
         child: (inRow ?? false)
             ? Row(
                 spacing: 5,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FadeInDown(
-                      duration: Duration(seconds: 2),
+                      duration: const Duration(seconds: 2),
                       child: Icon(
                         Icons.not_interested_rounded,
                         size: iconSize ?? 60,
-                        color: Colors.red,
+                        color: MyColors.red,
                       )),
                   Text(title),
                 ],
@@ -37,11 +35,11 @@ class NoDataFoundWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FadeInDown(
-                      duration: Duration(seconds: 2),
+                      duration: const Duration(seconds: 2),
                       child: Icon(
                         Icons.do_not_disturb_alt,
                         size: iconSize ?? 60,
-                        color: Colors.red,
+                        color: MyColors.red,
                       )),
                   Text(title),
                 ],

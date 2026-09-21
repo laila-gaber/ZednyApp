@@ -142,20 +142,20 @@ void showLoginRequiredPopup(BuildContext context,
   featureName ??= S.of(context).thisFeature;
   showDialog(
     context: context,
-    barrierColor: Colors.black.withOpacity(0.5),
+    barrierColor: MyColors.black.withOpacity(0.5),
     barrierDismissible: true,
     builder: (context) {
       return Dialog(
-        backgroundColor: Colors.transparent,
+        backgroundColor: MyColors.transparent,
         elevation: 0,
         insetPadding: const EdgeInsets.all(20),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: MyColors.white,
             borderRadius: BorderRadius.circular(25),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: MyColors.black.withOpacity(0.2),
                 blurRadius: 30,
                 spreadRadius: 2,
                 offset: const Offset(0, 10),
@@ -200,7 +200,7 @@ void showLoginRequiredPopup(BuildContext context,
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                        color: MyColors.black,
                       ),
                     ),
                     12.0.sbh,
@@ -208,7 +208,7 @@ void showLoginRequiredPopup(BuildContext context,
                       "$featureName ${S.of(context).requiresLogin}",
                       style: TextStyle(
                         fontSize: 14.sp,
-                        color: Colors.grey.shade600,
+                        color: MyColors.myGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -238,7 +238,7 @@ void showLoginRequiredPopup(BuildContext context,
                           S.of(context).login,
                           style: TextStyle(
                             fontSize: 16.sp,
-                            color: Colors.black,
+                            color: MyColors.white,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -251,7 +251,7 @@ void showLoginRequiredPopup(BuildContext context,
                         S.of(context).later,
                         style: TextStyle(
                           fontSize: 14.sp,
-                          color: Colors.grey.shade600,
+                          color: MyColors.myGrey,
                         ),
                       ),
                     ),

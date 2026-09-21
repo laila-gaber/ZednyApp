@@ -70,7 +70,7 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: BorderSide(
               color: border == true
                   ? MyColors.primary
-                  : Colors.black12,
+                  : MyColors.inputBorder,
               width: 1.5,
             ),
           ),
@@ -79,7 +79,7 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: BorderSide(
               color: border == true
                   ? MyColors.primary
-                  : Colors.black12,
+                  : MyColors.inputBorder,
               width: 1.5,
             ),
           ),
@@ -106,12 +106,12 @@ class CustomTextFormField extends StatelessWidget {
           alignLabelWithHint: true,
           labelStyle: TextStyle(
             fontSize: 12,
-            color: labelColor ?? Colors.black38,
+            color: labelColor ?? MyColors.myGrey,
           ),
           errorStyle: const TextStyle(fontSize: 10),
           hintStyle: const TextStyle(
             height: 1.5,
-            color: Color(0xffBBBBCC),
+            color: MyColors.hintColor,
             fontSize: 12,
           ),
         ),

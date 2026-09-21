@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/components/toast_manager.dart';
 import '../../../../core/extension/extensions.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/values/my_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_button.dart';
@@ -52,34 +55,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  bool _validateInputs() {
+  bool _validateInputs(BuildContext context) {
     if (phoneController.text.isEmpty) {
-      _showError('Please enter your phone number');
+      ToastManager.showError(S.of(context).pleaseEnterPhoneNumber);
       return false;
     }
     if (phoneController.text.length < 11) {
-      _showError('Phone number must be at least 11 digits');
+      ToastManager.showError(S.of(context).phoneAtLeast11Digits);
       return false;
     }
     if (nameController.text.isEmpty) {
-      _showError('Please enter your name');
+      ToastManager.showError(S.of(context).pleaseEnterName);
       return false;
     }
     if (parentPhoneController.text.isEmpty) {
-      _showError('Please enter parent phone number');
+      ToastManager.showError(S.of(context).pleaseEnterParentPhone);
       return false;
     }
     return true;
-  }
-
-  void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 3),
-      ),
-    );
   }
 
   @override
@@ -101,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             );
           } else if (state is SendOtpFailure) {
-            _showError(state.message);
+            ToastManager.showError(state.message);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
@@ -112,14 +105,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: 'Create Account',
-                  subtitle: 'Register as a student to get started',
+                  title: S.of(context).createAccount,
+                  subtitle: S.of(context).registerAsStudentSubtitle,
                   showBackButton: true,
                 ),
                 60.sbh,
                 AuthTextField(
-                  label: 'Phone Number',
-                  hint: '01234567890',
+                  label: S.of(context).phoneNumber,
+                  hint: S.of(context).phoneHint,
                   controller: phoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
@@ -127,15 +120,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return 'Phone is required';
-                    if (value!.length < 11) return 'Invalid phone number';
+                    if (value?.isEmpty ?? true) return S.of(context).phoneIsRequired;
+                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
                     return null;
                   },
                 ),
                 20.sbh,
                 AuthTextField(
-                  label: 'Full Name',
-                  hint: 'Enter your full name',
+                  label: S.of(context).fullName,
+                  hint: S.of(context).enterYourFullName,
                   controller: nameController,
                   keyboardType: TextInputType.name,
                   prefixIcon: const Icon(
@@ -143,14 +136,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return 'Name is required';
+                    if (value?.isEmpty ?? true) return S.of(context).nameIsRequired;
                     return null;
                   },
                 ),
                 20.sbh,
                 AuthTextField(
-                  label: 'Parent Phone Number',
-                  hint: '01234567890',
+                  label: S.of(context).parentPhoneNumber,
+                  hint: S.of(context).phoneHint,
                   controller: parentPhoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
@@ -158,8 +151,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return 'Parent phone is required';
-                    if (value!.length < 11) return 'Invalid phone number';
+                    if (value?.isEmpty ?? true) return S.of(context).parentPhoneIsRequired;
+                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
                     return null;
                   },
                 ),
@@ -167,9 +160,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Grade',
-                      style: TextStyle(
+                    Text(
+                      S.of(context).grade,
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: MyColors.myBlack,
@@ -208,10 +201,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 60.sbh,
                 AuthButton(
-                  label: 'Continue',
+                  label: S.of(context).continueText,
                   isLoading: isLoading,
                   onPressed: () {
-                    if (_validateInputs()) {
+                    if (_validateInputs(context)) {
                       context.read<AuthCubit>().sendOtp(
                             phone: phoneController.text,
                             authType: 'register',
@@ -230,18 +223,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Already have an account? ',
-                      style: TextStyle(
+                    Text(
+                      S.of(context).alreadyHaveAccount,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: MyColors.myBlack,
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, AppRoutes.login);
+                      },
+                      child: Text(
+                        S.of(context).login,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: MyColors.blue,

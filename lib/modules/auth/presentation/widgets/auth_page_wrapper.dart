@@ -11,7 +11,7 @@ class AuthPageWrapper extends StatelessWidget {
   const AuthPageWrapper({
     super.key,
     required this.child,
-    this.backgroundColor = MyColors.white,
+    this.backgroundColor = MyColors.offWhite,
     this.showBackButton = false,
     this.onBackPressed,
   });

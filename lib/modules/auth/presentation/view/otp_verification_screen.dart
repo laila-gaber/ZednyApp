@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/components/toast_manager.dart';
 import '../../../../core/extension/extensions.dart';
 import '../../../../core/values/my_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_button.dart';
@@ -65,33 +67,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
   }
 
-  void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 3),
-      ),
-    );
-  }
-
-  void _showSuccess(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AuthPageWrapper(
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is VerifyOtpSuccess) {
-            _showSuccess('Phone verified successfully!');
+            ToastManager.showSuccess(S.of(context).phoneVerifiedSuccessfully);
             Future.delayed(const Duration(seconds: 1), () {
               if (context.mounted) {
                 Navigator.of(context).pushReplacement(
@@ -102,7 +84,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               }
             });
           } else if (state is VerifyOtpFailure) {
-            _showError(state.message);
+            ToastManager.showError(state.message);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
@@ -114,9 +96,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: 'Verify OTP',
+                  title: S.of(context).verifyOtp,
                   subtitle:
-                      'We sent a code to ${widget.phone}. Enter it below.',
+                      '${S.of(context).weSentCodeTo} ${widget.phone}. ${S.of(context).enterItBelow}',
                   showBackButton: true,
                 ),
                 60.sbh,
@@ -134,8 +116,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Code expires in',
-                        style: TextStyle(
+                        S.of(context).codeExpiresIn,
+                        style: const TextStyle(
                           fontSize: 14,
                           color: MyColors.myGrey,
                         ),
@@ -146,7 +128,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
-                          color: isExpired ? Colors.red : MyColors.blue,
+                          color: isExpired ? MyColors.red : MyColors.blue,
                         ),
                       ),
                     ],
@@ -154,7 +136,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ),
                 60.sbh,
                 AuthButton(
-                  label: 'Verify',
+                  label: S.of(context).verify,
                   isLoading: isLoading,
                   backgroundColor: isExpired ? MyColors.myGrey : MyColors.blue,
                   onPressed: isExpired
@@ -162,11 +144,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       : () {
                           final otp = otpKey.currentState?.getOTP();
                           if (otp == null || otp.isEmpty) {
-                            _showError('Please enter the OTP');
+                            ToastManager.showError(S.of(context).pleaseEnterOtp);
                             return;
                           }
                           if (otp.length < 4) {
-                            _showError('OTP must be 4 digits');
+                            ToastManager.showError(S.of(context).otpMustBe4Digits);
                             return;
                           }
                           context.read<AuthCubit>().verifyOtp(
@@ -183,14 +165,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       onTap: isExpired
                           ? null
                           : () {
-                              _showSuccess('OTP resent to your phone');
+                              ToastManager.showSuccess(S.of(context).otpResent);
                               setState(() {
                                 remainingSeconds = 120;
                               });
                               _startTimer();
                             },
                       child: Text(
-                        'Resend Code',
+                        S.of(context).resendCode,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,

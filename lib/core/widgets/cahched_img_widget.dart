@@ -37,7 +37,7 @@ class CachedImgWidget extends StatelessWidget {
         child: Icon(
           Icons.image,
           size: errorSize ?? (width ?? 30),
-          color: Colors.grey.shade400,
+          color: MyColors.myGrey,
         ),
       ),
       errorListener: (o)

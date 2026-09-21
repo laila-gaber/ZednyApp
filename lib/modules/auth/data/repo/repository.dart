@@ -18,7 +18,7 @@ class AuthRepo {
 
   Future<Either<MyError, ResponseDto>> verifyOtp(Map<String, dynamic> data) {
     return api.postDataToServer(
-      url: Endpoints.verification,
+      url: Endpoints.verifyOtp,
       data: data,
       object: null,
       withToken: false,
@@ -27,7 +27,7 @@ class AuthRepo {
 
   Future<Either<MyError, ResponseDto>> login(Map<String, dynamic> data) {
     return api.postDataToServer(
-      url: Endpoints.login,
+      url: Endpoints.loginWithPhone,
       data: data,
       object: null,
       withToken: false,

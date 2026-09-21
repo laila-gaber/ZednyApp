@@ -6,11 +6,14 @@ import '../../modules/auth/presentation/view/login_screen.dart';
 import '../../modules/auth/presentation/view/register_screen.dart';
 import '../../modules/auth/presentation/view/otp_verification_screen.dart';
 import '../../modules/auth/services/auth_service_iml.dart';
+import '../../modules/splash/presentation/view/splash_screen.dart';
 import 'app_routes.dart';
 
 class AppRouter {
   static Route? onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.splash:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppRoutes.home:
         return MaterialPageRoute(
             builder: (_) => const Center(child: Text('Home Screen')));

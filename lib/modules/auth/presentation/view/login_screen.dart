@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/components/toast_manager.dart';
 import '../../../../core/extension/extensions.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/values/my_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/auth_page_wrapper.dart';
 import '../widgets/auth_text_field.dart';
-import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,39 +36,18 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 3),
-      ),
-    );
-  }
-
-  void _showSuccess(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AuthPageWrapper(
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            _showSuccess('Login successful!');
+            ToastManager.showSuccess(S.of(context).loginSuccessful);
             Future.delayed(const Duration(seconds: 1), () {
               // Navigate to home screen
-              // Navigator.of(context).pushReplacementNamed('/home');
             });
           } else if (state is LoginFailure) {
-            _showError(state.message);
+            ToastManager.showError(state.message);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
@@ -77,14 +58,14 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: 'Welcome Back',
-                  subtitle: 'Login to your account to continue',
+                  title: S.of(context).welcomeBack,
+                  subtitle: S.of(context).loginToContinue,
                   showBackButton: false,
                 ),
                 80.sbh,
                 AuthTextField(
-                  label: 'Phone Number',
-                  hint: '01234567890',
+                  label: S.of(context).phoneNumber,
+                  hint: S.of(context).phoneHint,
                   controller: phoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
@@ -92,8 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return 'Phone is required';
-                    if (value!.length < 11) return 'Invalid phone number';
+                    if (value?.isEmpty ?? true) return S.of(context).phoneIsRequired;
+                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
                     return null;
                   },
                 ),
@@ -117,9 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     12.sbw,
-                    const Text(
-                      'Remember me',
-                      style: TextStyle(
+                    Text(
+                      S.of(context).rememberMe,
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: MyColors.myBlack,
@@ -129,15 +110,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 80.sbh,
                 AuthButton(
-                  label: 'Login',
+                  label: S.of(context).login,
                   isLoading: isLoading,
                   onPressed: () {
                     if (phoneController.text.isEmpty) {
-                      _showError('Please enter your phone number');
+                      ToastManager.showError(S.of(context).pleaseEnterPhoneNumber);
                       return;
                     }
                     if (phoneController.text.length < 11) {
-                      _showError('Phone number must be at least 11 digits');
+                      ToastManager.showError(S.of(context).phoneAtLeast11Digits);
                       return;
                     }
                     context.read<AuthCubit>().login(
@@ -152,24 +133,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Don\'t have an account? ',
-                      style: TextStyle(
+                    Text(
+                      S.of(context).dontHaveAccount,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: MyColors.myBlack,
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => const RegisterScreen(),
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(context, AppRoutes.register);
                       },
-                      child: const Text(
-                        'Register',
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).register,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: MyColors.blue,

@@ -20,7 +20,7 @@ class AuthButton extends StatelessWidget {
     this.width,
     this.height = 56,
     this.backgroundColor = MyColors.blue,
-    this.textColor = Colors.white,
+    this.textColor = MyColors.white,
     this.borderRadius = 12,
   });
 
@@ -46,7 +46,7 @@ class AuthButton extends StatelessWidget {
                 child: CircularProgressIndicator(
                   strokeWidth: 2.5,
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    textColor ?? Colors.white,
+                    textColor ?? MyColors.white,
                   ),
                 ),
               )

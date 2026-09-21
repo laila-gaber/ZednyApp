@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../generated/l10n.dart';
+import '../values/my_colors.dart';
 
 class NetworkErrorPage extends StatelessWidget {
   final VoidCallback? onRetry;
@@ -15,11 +16,11 @@ class NetworkErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: MyColors.white,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black87),
+        iconTheme: const IconThemeData(color: MyColors.black),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: MyColors.white,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -31,7 +32,7 @@ class NetworkErrorPage extends StatelessWidget {
                   width: 60.w,
                   height: 35.h,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
+                    color: MyColors.descriptionColor,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: ShakeX(
@@ -40,7 +41,7 @@ class NetworkErrorPage extends StatelessWidget {
                     child: Icon(
                       Icons.wifi_off,
                       size: 50.sp,
-                      color: Colors.red,
+                      color: MyColors.red,
                     ),
                   ),
                 ),
@@ -52,7 +53,7 @@ class NetworkErrorPage extends StatelessWidget {
                   message ?? S.of(context).noInternetConnection,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black87,
+                    color: MyColors.black,
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
                   ),
@@ -61,10 +62,10 @@ class NetworkErrorPage extends StatelessWidget {
 
                 // Description
                 Text(
-                  subMessage??S.of(context).checkInternet,
+                  subMessage ?? S.of(context).checkInternet,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black87,
+                    color: MyColors.black,
                     fontSize: 12.sp,
                     height: 1.6,
                   ),
@@ -77,17 +78,19 @@ class NetworkErrorPage extends StatelessWidget {
                     width: 40.w,
                     height: 4.h,
                     child: ElevatedButton.icon(
-                      icon: const Icon(Icons.refresh, color: Colors.white),
-                      label:  Text(
+                      icon: const Icon(Icons.refresh, color: MyColors.white),
+                      label: Text(
                         S.of(context).retry,
-                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16.sp),
+                        style: TextStyle(
+                            color: MyColors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp),
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey.shade400,
+                        backgroundColor: MyColors.myGrey,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        //  elevation: 2,
                       ),
                       onPressed: onRetry ?? () {},
                     ),

@@ -9,20 +9,20 @@ class MyTheme {
   }
 
   // ─── Shared text styles ────────────────────────────────────────
-  static TextStyle errorField = TextStyle(color: Colors.red, fontSize: 9.sp);
+  static TextStyle errorField = TextStyle(color: MyColors.red, fontSize: 9.sp);
 
   static TextStyle subTitle = TextStyle(
     color: MyColors.primary,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Cairo', // Add font family
+    fontFamily: 'Cairo',
   );
 
   static TextStyle darkSubTitle = TextStyle(
     color: MyColors.darkBlue,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Cairo', // Add font family
+    fontFamily: 'Cairo',
   );
 
   // ─── Light TextTheme ───────────────────────────────────────────
@@ -219,10 +219,10 @@ class MyTheme {
         iconTheme: const IconThemeData(color: MyColors.secondary),
         titleTextStyle: textTheme()
             .headlineMedium!
-            .copyWith(fontFamily: 'Cairo', color: Colors.white),
+            .copyWith(fontFamily: 'Cairo', color: MyColors.white),
         elevation: 0,
-        shadowColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
+        shadowColor: MyColors.transparent,
+        surfaceTintColor: MyColors.transparent,
         scrolledUnderElevation: 0,
       );
 
@@ -235,8 +235,8 @@ class MyTheme {
         actionsIconTheme: const IconThemeData(size: 20, color: MyColors.darkSecondary),
         backgroundColor: MyColors.darkSurface,
         elevation: 0,
-        shadowColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
+        shadowColor: MyColors.transparent,
+        surfaceTintColor: MyColors.transparent,
 
         iconTheme: const IconThemeData(color: MyColors.darkSecondary),
         titleTextStyle: darkTextTheme()
@@ -250,10 +250,10 @@ class MyTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: MyColors.primary,
           textStyle: textTheme().titleLarge!.copyWith(
-                color: Colors.white,
+                color: MyColors.white,
                 fontFamily: 'Cairo',
               ),
-          foregroundColor: Colors.white,
+          foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -266,10 +266,10 @@ class MyTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: MyColors.darkBlue,
           textStyle: darkTextTheme().titleLarge!.copyWith(
-                color: Colors.white,
+                color: MyColors.white,
                 fontFamily: 'Cairo',
               ),
-          foregroundColor: Colors.white,
+          foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -281,14 +281,14 @@ class MyTheme {
         thumbColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
               ? MyColors.primary
-              : Colors.grey.shade400,
+              : MyColors.grey,
         ),
         trackColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
               ? MyColors.primary.withOpacity(0.35)
-              : Colors.grey.shade300,
+              : MyColors.lightGrey,
         ),
-        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+        trackOutlineColor: WidgetStateProperty.all(MyColors.transparent),
       );
 
   // ─── Dark Switch theme ─────────────────────────────────────────
@@ -303,6 +303,6 @@ class MyTheme {
               ? MyColors.darkBlue.withOpacity(0.35)
               : MyColors.darkCard,
         ),
-        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+        trackOutlineColor: WidgetStateProperty.all(MyColors.transparent),
       );
 }

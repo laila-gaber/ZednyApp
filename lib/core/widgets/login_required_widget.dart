@@ -37,9 +37,9 @@ class LoginRequiredView extends StatelessWidget {
             Text(
               message ?? S.of(context).loginToContinueFeature,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
-                color: Colors.grey.shade600,
+                color: MyColors.myGrey,
               ),
             ),
 

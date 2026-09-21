@@ -7,16 +7,11 @@ class Endpoints {
   static const baseImageUrl = '$serverIP/zedny_api/uploads';
 
   static const apiUrl = testServerBaseUrl;
-  //    testServerBaseUrl;
 
+  static String sendOtp = '$apiUrl/Auth/sendOtp';
+  static String resendOtp = '$apiUrl/Auth/resendOtp';
+  static String verifyOtp = '$apiUrl/Auth/Verification';
+  static String loginWithPhone = '$apiUrl/Auth/login';
+  static String registerWithPhone = '$apiUrl/Auth/login';
 
-//
-  static String postDriverLocation = '$apiUrl/driver/changeLocation';
-  static String validateRequest = '$apiUrl/user/validateRequest';
-  static String registerWithPhone = '$apiUrl/users/registerAsStore';
-  static String loginWithPhone = '$apiUrl/user/loginWithPhone';
-  static String forgetPassword = '$apiUrl/users/forgetPassword';
-  static String changePhone = '$apiUrl/users/changePhone';
-
-  static String changeName = '$apiUrl/users/changeName';
  }

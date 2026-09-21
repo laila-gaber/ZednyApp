@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../network/error_handling.dart';
+import '../values/my_colors.dart';
 
 class ToastManager {
-  static  showError(String message,
+  static showError(String message,
       {Color? bgColor, Color? textColor, AppError? appError}) {
-    /*if (appError == AppError.BadRequest ) {
-      return;
-    } else */
-    {
-     return Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-         gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-    // return  Get.snackbar(title, text,
-    //       colorText: textColor ?? Colors.white,
-    //       backgroundColor: bgColor ?? Colors.red,
-    //       messageText: Text(text,
-    //           style: Theme.of(Get.context!)
-    //               .textTheme
-    //               .labelLarge!
-    //               .copyWith(color: Colors.white)),
-    //       snackPosition: SnackPosition.BOTTOM,);
-    }
+    return Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: MyColors.red,
+        textColor: MyColors.white,
+        fontSize: 16.0
+    );
   }
 
   static showSuccess(String title,
@@ -37,8 +24,8 @@ class ToastManager {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: MyColors.green,
+        textColor: MyColors.white,
         fontSize: 16.0
     );
   }

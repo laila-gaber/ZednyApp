@@ -22,7 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "app_name": MessageLookupByLibrary.simpleMessage("حلال"),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "لديك حساب بالفعل؟ ",
+    ),
+    "app_name": MessageLookupByLibrary.simpleMessage("زدني"),
     "badResponse": MessageLookupByLibrary.simpleMessage("استجابة خاطئة"),
     "cart": MessageLookupByLibrary.simpleMessage("السلة"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("ميزة السلة"),
@@ -30,15 +33,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحقق من الاتصال بالإنترنت",
     ),
     "chooseYourLanguage": MessageLookupByLibrary.simpleMessage("اختر لغتك"),
+    "codeExpiresIn": MessageLookupByLibrary.simpleMessage("ينتهي الرمز خلال"),
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("اتصل بالإدارة"),
+    "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ "),
     "endOfList": MessageLookupByLibrary.simpleMessage("نهاية القائمة"),
+    "enterItBelow": MessageLookupByLibrary.simpleMessage("أدخله أدناه."),
+    "enterYourFullName": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسمك الكامل",
+    ),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "errorConnectserver": MessageLookupByLibrary.simpleMessage(
       "خطأ في الاتصال بالسيرفر",
     ),
     "errorTryAgain": MessageLookupByLibrary.simpleMessage("خطأ، حاول مرة أخرى"),
+    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "grade": MessageLookupByLibrary.simpleMessage("الصف الدراسي"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "individual": MessageLookupByLibrary.simpleMessage("فرد"),
+    "invalidPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "رقم هاتف غير صحيح",
+    ),
     "jsonParsingError": MessageLookupByLibrary.simpleMessage(
       "خطأ في تحليل البيانات",
     ),
@@ -46,10 +62,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "later": MessageLookupByLibrary.simpleMessage("لاحقاً"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginRequired": MessageLookupByLibrary.simpleMessage("تسجيل الدخول مطلوب"),
+    "loginSuccessful": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الدخول بنجاح!",
+    ),
+    "loginToContinue": MessageLookupByLibrary.simpleMessage(
+      "قم بتسجيل الدخول إلى حسابك للمتابعة",
+    ),
     "loginToContinueFeature": MessageLookupByLibrary.simpleMessage(
       "سجل الدخول للمتابعة",
     ),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
+    "nameIsRequired": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
     "networkRequestError": MessageLookupByLibrary.simpleMessage(
       "خطأ في طلب الشبكة",
     ),
@@ -57,14 +80,51 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت",
     ),
+    "otpMustBe4Digits": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يتكون رمز التحقق من 4 أرقام",
+    ),
+    "otpResent": MessageLookupByLibrary.simpleMessage(
+      "تم إعادة إرسال رمز التحقق إلى هاتفك",
+    ),
     "pageCantBeReached": MessageLookupByLibrary.simpleMessage(
       "لا يمكن الوصول للصفحة",
+    ),
+    "parentPhoneIsRequired": MessageLookupByLibrary.simpleMessage(
+      "رقم هاتف ولي الأمر مطلوب",
+    ),
+    "parentPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "رقم هاتف ولي الأمر",
+    ),
+    "phoneAtLeast11Digits": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يتكون رقم الهاتف من 11 رقمًا على الأقل",
+    ),
+    "phoneHint": MessageLookupByLibrary.simpleMessage("01234567890"),
+    "phoneIsRequired": MessageLookupByLibrary.simpleMessage("رقم الهاتف مطلوب"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneVerifiedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم التحقق من رقم الهاتف بنجاح!",
+    ),
+    "pleaseEnterName": MessageLookupByLibrary.simpleMessage("يرجى إدخال اسمك"),
+    "pleaseEnterOtp": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رمز التحقق",
+    ),
+    "pleaseEnterParentPhone": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم هاتف ولي الأمر",
+    ),
+    "pleaseEnterPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم الهاتف",
     ),
     "pleaseLoginToAccessCart": MessageLookupByLibrary.simpleMessage(
       "يرجى تسجيل الدخول للوصول إلى السلة",
     ),
+    "register": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerAs": MessageLookupByLibrary.simpleMessage("التسجيل كـ"),
+    "registerAsStudentSubtitle": MessageLookupByLibrary.simpleMessage(
+      "سجل كطالب للبدء",
+    ),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "requiresLogin": MessageLookupByLibrary.simpleMessage("يتطلب تسجيل الدخول"),
+    "resendCode": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "serverError": MessageLookupByLibrary.simpleMessage("خطأ في السيرفر"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -72,6 +132,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "store": MessageLookupByLibrary.simpleMessage("متجر"),
     "stores": MessageLookupByLibrary.simpleMessage("المتاجر"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("هذه الميزة"),
+    "verify": MessageLookupByLibrary.simpleMessage("التحقق"),
+    "verifyOtp": MessageLookupByLibrary.simpleMessage("التحقق من رمز OTP"),
+    "weSentCodeTo": MessageLookupByLibrary.simpleMessage(
+      "لقد أرسلنا رمزًا إلى",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
   };
 }

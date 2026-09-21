@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
+import '../../values/my_colors.dart';
 
 class UrlNavErrorScreen extends StatelessWidget {
-
-  UrlNavErrorScreen({super.key,});
+  const UrlNavErrorScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,12 @@ class UrlNavErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.error_outline,
               size: 100,
-              color: Colors.red,
+              color: MyColors.red,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               S.of(context).pageCantBeReached,
               style: const TextStyle(
