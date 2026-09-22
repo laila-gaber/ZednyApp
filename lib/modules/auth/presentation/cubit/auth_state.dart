@@ -1,6 +1,21 @@
+
+import '../../data/enum/user_type_enum.dart';
+
 abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
+
+class AuthFormUpdated extends AuthState {
+  final UserTypeEnum selectedUserType;
+  final bool rememberMe;
+  final String selectedGrade;
+
+  AuthFormUpdated({
+    required this.selectedUserType,
+    required this.rememberMe,
+    required this.selectedGrade,
+  });
+}
 
 class SendOtpLoading extends AuthState {}
 
@@ -52,4 +67,10 @@ class LoginFailure extends AuthState {
   final String message;
 
   LoginFailure(this.message);
+}
+
+class OtpTimerTick extends AuthState {
+  final int remainingSeconds;
+
+  OtpTimerTick(this.remainingSeconds);
 }

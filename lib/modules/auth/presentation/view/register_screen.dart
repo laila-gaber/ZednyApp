@@ -10,73 +10,20 @@ import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_header.dart';
+import '../widgets/auth_navigation_row.dart';
 import '../widgets/auth_page_wrapper.dart';
 import '../widgets/auth_text_field.dart';
+import '../widgets/register_grade_dropdown.dart';
 import 'otp_verification_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
-}
-
-class _RegisterScreenState extends State<RegisterScreen> {
-  late TextEditingController phoneController;
-  late TextEditingController nameController;
-  late TextEditingController parentPhoneController;
-  late TextEditingController fcmTokenController;
-
-  String selectedGrade = 'FIRST';
-  final List<String> grades = [
-    'FIRST',
-    'SECOND',
-    'THIRD',
-    'FOURTH',
-    'FIFTH',
-    'SIXTH'
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    phoneController = TextEditingController();
-    nameController = TextEditingController();
-    parentPhoneController = TextEditingController();
-    fcmTokenController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    phoneController.dispose();
-    nameController.dispose();
-    parentPhoneController.dispose();
-    fcmTokenController.dispose();
-    super.dispose();
-  }
-
-  bool _validateInputs(BuildContext context) {
-    if (phoneController.text.isEmpty) {
-      ToastManager.showError(S.of(context).pleaseEnterPhoneNumber);
-      return false;
-    }
-    if (phoneController.text.length < 11) {
-      ToastManager.showError(S.of(context).phoneAtLeast11Digits);
-      return false;
-    }
-    if (nameController.text.isEmpty) {
-      ToastManager.showError(S.of(context).pleaseEnterName);
-      return false;
-    }
-    if (parentPhoneController.text.isEmpty) {
-      ToastManager.showError(S.of(context).pleaseEnterParentPhone);
-      return false;
-    }
-    return true;
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AuthCubit>();
+    final s = S.of(context);
+
     return AuthPageWrapper(
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
@@ -84,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (_) => BlocProvider.value(
-                  value: context.read<AuthCubit>(),
+                  value: cubit,
                   child: OtpVerificationScreen(
                     phone: state.phone,
                     refNo: state.refNo,
@@ -105,145 +52,72 @@ class _RegisterScreenState extends State<RegisterScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: S.of(context).createAccount,
-                  subtitle: S.of(context).registerAsStudentSubtitle,
-                  showBackButton: true,
+                  title: s.createAccount,
+                  subtitle: s.registerAsStudentSubtitle,
+                  showBackButton: false,
                 ),
                 60.sbh,
                 AuthTextField(
-                  label: S.of(context).phoneNumber,
-                  hint: S.of(context).phoneHint,
-                  controller: phoneController,
+                  label: s.phoneNumber,
+                  hint: s.phoneHint,
+                  controller: cubit.registerPhoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
                     Icons.phone,
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return S.of(context).phoneIsRequired;
-                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
+                    if (value?.isEmpty ?? true) return s.phoneIsRequired;
+                    if (value!.length < 11) return s.invalidPhoneNumber;
                     return null;
                   },
                 ),
                 20.sbh,
                 AuthTextField(
-                  label: S.of(context).fullName,
-                  hint: S.of(context).enterYourFullName,
-                  controller: nameController,
+                  label: s.fullName,
+                  hint: s.enterYourFullName,
+                  controller: cubit.nameController,
                   keyboardType: TextInputType.name,
                   prefixIcon: const Icon(
                     Icons.person,
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return S.of(context).nameIsRequired;
+                    if (value?.isEmpty ?? true) return s.nameIsRequired;
                     return null;
                   },
                 ),
                 20.sbh,
                 AuthTextField(
-                  label: S.of(context).parentPhoneNumber,
-                  hint: S.of(context).phoneHint,
-                  controller: parentPhoneController,
+                  label: s.parentPhoneNumber,
+                  hint: s.phoneHint,
+                  controller: cubit.parentPhoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
                     Icons.phone,
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return S.of(context).parentPhoneIsRequired;
-                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
+                    if (value?.isEmpty ?? true) return s.parentPhoneIsRequired;
+                    if (value!.length < 11) return s.invalidPhoneNumber;
                     return null;
                   },
                 ),
                 20.sbh,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).grade,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: MyColors.myBlack,
-                      ),
-                    ),
-                    8.sbh,
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: MyColors.inputBorder,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: DropdownButton<String>(
-                        value: selectedGrade,
-                        isExpanded: true,
-                        underline: const SizedBox(),
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        items: grades
-                            .map((grade) => DropdownMenuItem(
-                                  value: grade,
-                                  child: Text(grade),
-                                ))
-                            .toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            setState(() {
-                              selectedGrade = value;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                const RegisterGradeDropdown(),
                 60.sbh,
                 AuthButton(
-                  label: S.of(context).continueText,
+                  label: s.continueText,
                   isLoading: isLoading,
-                  onPressed: () {
-                    if (_validateInputs(context)) {
-                      context.read<AuthCubit>().sendOtp(
-                            phone: phoneController.text,
-                            authType: 'register',
-                            userType: 'STUDENT',
-                            name: nameController.text,
-                            parentPhone: parentPhoneController.text,
-                            garde: selectedGrade,
-                            fcmToken: fcmTokenController.text.isNotEmpty
-                                ? fcmTokenController.text
-                                : 'fcm_token_placeholder',
-                          );
-                    }
-                  },
+                  onPressed: () => cubit.submitRegister(s),
                 ),
                 16.sbh,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      S.of(context).alreadyHaveAccount,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: MyColors.myBlack,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, AppRoutes.login);
-                      },
-                      child: Text(
-                        S.of(context).login,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: MyColors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
+                AuthNavigationRow(
+                  text: s.alreadyHaveAccount,
+                  actionText: s.login,
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.login);
+                  },
                 ),
               ],
             );

@@ -11,7 +11,7 @@ class Endpoints {
   static String sendOtp = '$apiUrl/Auth/sendOtp';
   static String resendOtp = '$apiUrl/Auth/resendOtp';
   static String verifyOtp = '$apiUrl/Auth/Verification';
-  static String loginWithPhone = '$apiUrl/Auth/login';
-  static String registerWithPhone = '$apiUrl/Auth/login';
+  static String loginWithPhone = '$apiUrl/users/login';
+  static String registerWithPhone = '$apiUrl/users/login';
 
  }

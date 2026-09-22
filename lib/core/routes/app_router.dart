@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zedny_app/modules/home/presentation/cubit/home_cubit.dart';
 import '../../modules/auth/data/repo/repository.dart';
 import '../../modules/auth/presentation/cubit/auth_cubit.dart';
 import '../../modules/auth/presentation/view/login_screen.dart';
 import '../../modules/auth/presentation/view/register_screen.dart';
 import '../../modules/auth/presentation/view/otp_verification_screen.dart';
 import '../../modules/auth/services/auth_service_iml.dart';
+import '../../modules/home/presentation/view/home_screen.dart';
 import '../../modules/splash/presentation/view/splash_screen.dart';
 import 'app_routes.dart';
 
@@ -16,7 +18,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppRoutes.home:
         return MaterialPageRoute(
-            builder: (_) => const Center(child: Text('Home Screen')));
+            builder: (_) =>
+                BlocProvider(
+                  create: (context) => HomeCubit(),
+                  child: const HomeScreen(),
+                ),
+        );
       case AppRoutes.login:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(

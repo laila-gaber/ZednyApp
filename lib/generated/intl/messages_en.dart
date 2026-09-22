@@ -22,13 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addChapter": MessageLookupByLibrary.simpleMessage("+ Add Chapter"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
     "app_name": MessageLookupByLibrary.simpleMessage("zedny"),
     "badResponse": MessageLookupByLibrary.simpleMessage("Bad response"),
+    "blocked": MessageLookupByLibrary.simpleMessage("Blocked"),
+    "book": MessageLookupByLibrary.simpleMessage("Book"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("Cart Feature"),
+    "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Chapter added successfully!",
+    ),
+    "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
     "checkInternet": MessageLookupByLibrary.simpleMessage(
       "Check internet connection",
     ),
@@ -36,12 +43,20 @@ class MessageLookup extends MessageLookupByLibrary {
       "Choose your language",
     ),
     "codeExpiresIn": MessageLookupByLibrary.simpleMessage("Code expires in"),
+    "codeType": MessageLookupByLibrary.simpleMessage("Code Type"),
+    "codes": MessageLookupByLibrary.simpleMessage("Codes"),
+    "codesGeneratedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Codes generated successfully!",
+    ),
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("Contact admins"),
+    "content": MessageLookupByLibrary.simpleMessage("Content"),
     "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard 👋"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
+    "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "endOfList": MessageLookupByLibrary.simpleMessage("End of list"),
     "enterItBelow": MessageLookupByLibrary.simpleMessage("Enter it below."),
     "enterYourFullName": MessageLookupByLibrary.simpleMessage(
@@ -53,6 +68,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "errorTryAgain": MessageLookupByLibrary.simpleMessage("Error, try again"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "generateCodes": MessageLookupByLibrary.simpleMessage("Generate Codes"),
+    "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Create subscription codes for students",
+    ),
     "grade": MessageLookupByLibrary.simpleMessage("Grade"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "individual": MessageLookupByLibrary.simpleMessage("Individual"),
@@ -64,7 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "later": MessageLookupByLibrary.simpleMessage("Later"),
+    "lecture": MessageLookupByLibrary.simpleMessage("Lecture"),
+    "lectures": MessageLookupByLibrary.simpleMessage("Lectures"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginAs": MessageLookupByLibrary.simpleMessage("Login as"),
     "loginRequired": MessageLookupByLibrary.simpleMessage("Login required"),
     "loginSuccessful": MessageLookupByLibrary.simpleMessage(
       "Login successful!",
@@ -84,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "No internet connection",
     ),
+    "numberOfCodes": MessageLookupByLibrary.simpleMessage("Number of Codes"),
     "otpMustBe4Digits": MessageLookupByLibrary.simpleMessage(
       "OTP must be 4 digits",
     ),
@@ -93,12 +116,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "pageCantBeReached": MessageLookupByLibrary.simpleMessage(
       "Page cannot be reached",
     ),
+    "parent": MessageLookupByLibrary.simpleMessage("Parent"),
     "parentPhoneIsRequired": MessageLookupByLibrary.simpleMessage(
       "Parent phone is required",
     ),
     "parentPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "Parent Phone Number",
     ),
+    "pendingWarnings": MessageLookupByLibrary.simpleMessage("Pending Warnings"),
     "phoneAtLeast11Digits": MessageLookupByLibrary.simpleMessage(
       "Phone number must be at least 11 digits",
     ),
@@ -130,18 +155,39 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerAsStudentSubtitle": MessageLookupByLibrary.simpleMessage(
       "Register as a student to get started",
     ),
+    "registeredCount": MessageLookupByLibrary.simpleMessage(
+      "5 registered students",
+    ),
+    "registeredStudents": MessageLookupByLibrary.simpleMessage(
+      "Registered Students",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "requiresLogin": MessageLookupByLibrary.simpleMessage("requires login"),
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend Code"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "revision": MessageLookupByLibrary.simpleMessage("Revision"),
+    "searchStudent": MessageLookupByLibrary.simpleMessage(
+      "Search for a student...",
+    ),
+    "selectLecture": MessageLookupByLibrary.simpleMessage("Select Lecture"),
+    "selectLectureHint": MessageLookupByLibrary.simpleMessage(
+      "Select a lecture...",
+    ),
     "serverError": MessageLookupByLibrary.simpleMessage("Server error"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "store": MessageLookupByLibrary.simpleMessage("Store"),
     "stores": MessageLookupByLibrary.simpleMessage("Stores"),
+    "student": MessageLookupByLibrary.simpleMessage("Student"),
+    "students": MessageLookupByLibrary.simpleMessage("Students"),
+    "teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
+    "teacherName": MessageLookupByLibrary.simpleMessage("Teacher Mohamed"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("This feature"),
+    "userType": MessageLookupByLibrary.simpleMessage("User Type"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("Verify OTP"),
+    "warning": MessageLookupByLibrary.simpleMessage("Warning"),
+    "warnings": MessageLookupByLibrary.simpleMessage("Warnings"),
     "weSentCodeTo": MessageLookupByLibrary.simpleMessage("We sent a code to"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),

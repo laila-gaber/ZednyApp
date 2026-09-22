@@ -10,42 +10,27 @@ import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_header.dart';
+import '../widgets/auth_navigation_row.dart';
 import '../widgets/auth_page_wrapper.dart';
 import '../widgets/auth_text_field.dart';
+import '../widgets/remember_me_checkbox.dart';
+import '../widgets/user_type_selector.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  late TextEditingController phoneController;
-  bool rememberMe = false;
-
-  @override
-  void initState() {
-    super.initState();
-    phoneController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    phoneController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AuthCubit>();
+    final s = S.of(context);
+
     return AuthPageWrapper(
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            ToastManager.showSuccess(S.of(context).loginSuccessful);
-            Future.delayed(const Duration(seconds: 1), () {
-              // Navigate to home screen
-            });
+            ToastManager.showSuccess(s.loginSuccessful);
+            Navigator.pushReplacementNamed(context, AppRoutes.home);
+
           } else if (state is LoginFailure) {
             ToastManager.showError(state.message);
           }
@@ -58,102 +43,48 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: S.of(context).welcomeBack,
-                  subtitle: S.of(context).loginToContinue,
+                  title: s.welcomeBack,
+                  subtitle: s.loginToContinue,
                   showBackButton: false,
                 ),
-                80.sbh,
+                24.sbh,
+                Text(
+                  s.loginAs,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                8.sbh,
+                const UserTypeSelector(),
+                40.sbh,
                 AuthTextField(
-                  label: S.of(context).phoneNumber,
-                  hint: S.of(context).phoneHint,
-                  controller: phoneController,
+                  label: s.phoneNumber,
+                  hint: s.phoneHint,
+                  controller: cubit.loginPhoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Icon(
                     Icons.phone,
                     color: MyColors.blue,
                   ),
                   validator: (value) {
-                    if (value?.isEmpty ?? true) return S.of(context).phoneIsRequired;
-                    if (value!.length < 11) return S.of(context).invalidPhoneNumber;
+                    if (value?.isEmpty ?? true) return s.phoneIsRequired;
+                    if (value!.length < 11) return s.invalidPhoneNumber;
                     return null;
                   },
                 ),
                 24.sbh,
-                Row(
-                  children: [
-                    SizedBox(
-                      height: 24,
-                      width: 24,
-                      child: Checkbox(
-                        value: rememberMe,
-                        onChanged: (value) {
-                          setState(() {
-                            rememberMe = value ?? false;
-                          });
-                        },
-                        activeColor: MyColors.blue,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                    ),
-                    12.sbw,
-                    Text(
-                      S.of(context).rememberMe,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: MyColors.myBlack,
-                      ),
-                    ),
-                  ],
-                ),
-                80.sbh,
+                const RememberMeCheckbox(),
+                40.sbh,
                 AuthButton(
-                  label: S.of(context).login,
+                  label: s.login,
                   isLoading: isLoading,
-                  onPressed: () {
-                    if (phoneController.text.isEmpty) {
-                      ToastManager.showError(S.of(context).pleaseEnterPhoneNumber);
-                      return;
-                    }
-                    if (phoneController.text.length < 11) {
-                      ToastManager.showError(S.of(context).phoneAtLeast11Digits);
-                      return;
-                    }
-                    context.read<AuthCubit>().login(
-                          phone: phoneController.text,
-                          userType: 'STUDENT',
-                          fcmToken: 'fcm_token_placeholder',
-                          rememberMe: rememberMe,
-                        );
-                  },
+                  onPressed: () => cubit.submitLogin(s),
                 ),
                 20.sbh,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      S.of(context).dontHaveAccount,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: MyColors.myBlack,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, AppRoutes.register);
-                      },
-                      child: Text(
-                        S.of(context).register,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: MyColors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
+                AuthNavigationRow(
+                  text: s.dontHaveAccount,
+                  actionText: s.register,
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.register);
+                  },
                 ),
               ],
             );

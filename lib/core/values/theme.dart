@@ -3,211 +3,201 @@ import 'package:sizer/sizer.dart';
 import 'my_colors.dart';
 
 class MyTheme {
-  // ─── Font Family Helper ────────────────────────────────────────
+  static const String fontFamily = 'schehrazad';
+
   static String getFontFamily(BuildContext context) {
-    return 'Cairo';
+    return fontFamily;
   }
 
   // ─── Shared text styles ────────────────────────────────────────
-  static TextStyle errorField = TextStyle(color: MyColors.red, fontSize: 9.sp);
+  static TextStyle errorField = TextStyle(
+    color: MyColors.red,
+    fontSize: 15.sp,
+    fontFamily: fontFamily,
+  );
 
   static TextStyle subTitle = TextStyle(
     color: MyColors.primary,
-    fontSize: 16.sp,
+    fontSize: 20.sp,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Cairo',
+    fontFamily: fontFamily,
   );
 
   static TextStyle darkSubTitle = TextStyle(
     color: MyColors.darkBlue,
-    fontSize: 16.sp,
+    fontSize: 20.sp,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Cairo',
+    fontFamily: fontFamily,
   );
 
   // ─── Light TextTheme ───────────────────────────────────────────
   static TextTheme textTheme() => TextTheme(
+        // Bold Styles
         headlineLarge: TextStyle(
           color: MyColors.blue,
-          fontSize: 20.sp,
+          fontSize: 24.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.25,
         ),
         headlineMedium: TextStyle(
           color: MyColors.blue,
-          fontSize: 18.sp,
+          fontSize: 22.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.3,
         ),
         headlineSmall: TextStyle(
           color: MyColors.blue,
-          fontSize: 16.sp,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
         ),
         titleLarge: TextStyle(
-          color: MyColors.blue,
-          fontSize: 16.sp,
+          color: MyColors.myBlack,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
         ),
+
+        // Medium Styles
         titleMedium: TextStyle(
-          color: MyColors.blue,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          color: MyColors.myBlack,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         titleSmall: TextStyle(
-          color: MyColors.blue,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          color: MyColors.myBlack,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelLarge: TextStyle(
           color: MyColors.myBlack,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelMedium: TextStyle(
           color: MyColors.myBlack,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelSmall: TextStyle(
-          color: MyColors.myBlack,
-          fontSize: 10.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
-        ),
-        bodyLarge: TextStyle(
           color: MyColors.myGrey,
-          fontSize: 14.sp,
+          fontSize: 15.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
+        ),
+
+        // Regular Styles
+        bodyLarge: TextStyle(
+          color: MyColors.myBlack,
+          fontSize: 18.sp,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.4,
         ),
         bodyMedium: TextStyle(
-          color: MyColors.myGrey,
-          fontSize: 12.sp,
+          color: MyColors.myBlack,
+          fontSize: 16.sp,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.4,
         ),
         bodySmall: TextStyle(
           color: MyColors.myGrey,
-          fontSize: 10.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.normal,
-          height: 1.33,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
         ),
-        displayLarge: TextStyle(
-            color: MyColors.myBlack,
-            fontSize: 12.sp,
-            height: 1.5,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
-        displayMedium: TextStyle(
-            color: MyColors.myBlack,
-            fontSize: 10.sp,
-            height: 1.5,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
-        displaySmall: TextStyle(
-            color: MyColors.myBlack,
-            fontSize: 8.sp,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
       );
 
   // ─── Dark TextTheme ────────────────────────────────────────────
   static TextTheme darkTextTheme() => TextTheme(
+        // Bold Styles
         headlineLarge: TextStyle(
           color: MyColors.darkBlue,
-          fontSize: 20.sp,
+          fontSize: 24.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.25,
         ),
         headlineMedium: TextStyle(
           color: MyColors.darkBlue,
-          fontSize: 18.sp,
+          fontSize: 22.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.3,
         ),
         headlineSmall: TextStyle(
           color: MyColors.darkBlue,
-          fontSize: 16.sp,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
         ),
         titleLarge: TextStyle(
-          color: MyColors.darkBlue,
-          fontSize: 16.sp,
-          fontFamily: 'Cairo',
+          color: MyColors.darkText,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          fontFamily: fontFamily,
         ),
+
+        // Medium Styles
         titleMedium: TextStyle(
-          color: MyColors.darkBlue,
-          fontSize: 14.sp,
-          fontFamily: 'Cairo',
+          color: MyColors.darkText,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         titleSmall: TextStyle(
-          color: MyColors.darkBlue,
-          fontSize: 12.sp,
-          fontFamily: 'Cairo',
+          color: MyColors.darkText,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelLarge: TextStyle(
           color: MyColors.darkText,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelMedium: TextStyle(
           color: MyColors.darkText,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
         labelSmall: TextStyle(
           color: MyColors.darkSubText,
-          fontSize: 10.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          fontFamily: fontFamily,
         ),
+
+        // Regular Styles
         bodyLarge: TextStyle(
-          color: MyColors.darkSubText,
-          fontSize: 14.sp,
+          color: MyColors.darkText,
+          fontSize: 20.sp,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.4,
         ),
         bodyMedium: TextStyle(
           color: MyColors.darkSubText,
-          fontSize: 12.sp,
+          fontSize: 18.sp,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
+          height: 1.4,
         ),
         bodySmall: TextStyle(
-          color: MyColors.darkText,
-          fontSize: 10.sp,
+          color: MyColors.darkSubText,
+          fontSize: 16.sp,
           fontWeight: FontWeight.normal,
-          height: 1.33,
-          fontFamily: 'Cairo',
+          fontFamily: fontFamily,
         ),
-        displayLarge: TextStyle(
-            color: MyColors.darkSubText,
-            fontSize: 12.sp,
-            height: 1.5,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
-        displayMedium: TextStyle(
-            color: MyColors.darkSubText,
-            fontSize: 10.sp,
-            height: 1.5,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
-        displaySmall: TextStyle(
-            color: MyColors.darkSubText,
-            fontSize: 8.sp,
-            fontFamily: 'Cairo',
-            letterSpacing: 0.5),
       );
 
   // ─── Light AppBar ──────────────────────────────────────────────
@@ -219,7 +209,7 @@ class MyTheme {
         iconTheme: const IconThemeData(color: MyColors.secondary),
         titleTextStyle: textTheme()
             .headlineMedium!
-            .copyWith(fontFamily: 'Cairo', color: MyColors.white),
+            .copyWith(fontFamily: MyTheme.fontFamily, color: MyColors.white),
         elevation: 0,
         shadowColor: MyColors.transparent,
         surfaceTintColor: MyColors.transparent,
@@ -241,7 +231,7 @@ class MyTheme {
         iconTheme: const IconThemeData(color: MyColors.darkSecondary),
         titleTextStyle: darkTextTheme()
             .headlineMedium!
-            .copyWith(fontFamily: 'Cairo', color: MyColors.darkText),
+            .copyWith(fontFamily: MyTheme.fontFamily, color: MyColors.darkText),
       );
 
   // ─── Light ElevatedButton ──────────────────────────────────────
@@ -251,7 +241,7 @@ class MyTheme {
           backgroundColor: MyColors.primary,
           textStyle: textTheme().titleLarge!.copyWith(
                 color: MyColors.white,
-                fontFamily: 'Cairo',
+                fontFamily: MyTheme.fontFamily,
               ),
           foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
@@ -267,7 +257,7 @@ class MyTheme {
           backgroundColor: MyColors.darkBlue,
           textStyle: darkTextTheme().titleLarge!.copyWith(
                 color: MyColors.white,
-                fontFamily: 'Cairo',
+                fontFamily: MyTheme.fontFamily,
               ),
           foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
@@ -285,7 +275,7 @@ class MyTheme {
         ),
         trackColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
-              ? MyColors.primary.withOpacity(0.35)
+              ? MyColors.primary.withValues(alpha: 0.35)
               : MyColors.lightGrey,
         ),
         trackOutlineColor: WidgetStateProperty.all(MyColors.transparent),
@@ -300,7 +290,7 @@ class MyTheme {
         ),
         trackColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
-              ? MyColors.darkBlue.withOpacity(0.35)
+              ? MyColors.darkBlue.withValues(alpha: 0.35)
               : MyColors.darkCard,
         ),
         trackOutlineColor: WidgetStateProperty.all(MyColors.transparent),

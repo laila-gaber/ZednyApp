@@ -1,7 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:zedny_app/core/values/my_colors.dart';
 import '../../../../core/extension/extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../gen/assets.gen.dart';
@@ -16,7 +14,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-
     super.initState();
     _navigateToNextScreen();
   }

@@ -33,7 +33,7 @@ class AuthButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          disabledBackgroundColor: backgroundColor?.withOpacity(0.5),
+          disabledBackgroundColor: backgroundColor?.withValues(alpha: 0.5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
@@ -52,11 +52,9 @@ class AuthButton extends StatelessWidget {
               )
             : Text(
                 label,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: textColor,
-                ),
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: textColor,
+                    ),
               ),
       ),
     );

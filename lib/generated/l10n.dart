@@ -608,6 +608,231 @@ class S {
   String get resendCode {
     return Intl.message('Resend Code', name: 'resendCode', desc: '', args: []);
   }
+
+  /// `Student`
+  String get student {
+    return Intl.message('Student', name: 'student', desc: '', args: []);
+  }
+
+  /// `Teacher`
+  String get teacher {
+    return Intl.message('Teacher', name: 'teacher', desc: '', args: []);
+  }
+
+  /// `Parent`
+  String get parent {
+    return Intl.message('Parent', name: 'parent', desc: '', args: []);
+  }
+
+  /// `User Type`
+  String get userType {
+    return Intl.message('User Type', name: 'userType', desc: '', args: []);
+  }
+
+  /// `Login as`
+  String get loginAs {
+    return Intl.message('Login as', name: 'loginAs', desc: '', args: []);
+  }
+
+  /// `Dashboard 👋`
+  String get dashboard {
+    return Intl.message('Dashboard 👋', name: 'dashboard', desc: '', args: []);
+  }
+
+  /// `Content`
+  String get content {
+    return Intl.message('Content', name: 'content', desc: '', args: []);
+  }
+
+  /// `Students`
+  String get students {
+    return Intl.message('Students', name: 'students', desc: '', args: []);
+  }
+
+  /// `Codes`
+  String get codes {
+    return Intl.message('Codes', name: 'codes', desc: '', args: []);
+  }
+
+  /// `Registered Students`
+  String get registeredStudents {
+    return Intl.message(
+      'Registered Students',
+      name: 'registeredStudents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lectures`
+  String get lectures {
+    return Intl.message('Lectures', name: 'lectures', desc: '', args: []);
+  }
+
+  /// `Pending Warnings`
+  String get pendingWarnings {
+    return Intl.message(
+      'Pending Warnings',
+      name: 'pendingWarnings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapters`
+  String get chapters {
+    return Intl.message('Chapters', name: 'chapters', desc: '', args: []);
+  }
+
+  /// `+ Add Chapter`
+  String get addChapter {
+    return Intl.message(
+      '+ Add Chapter',
+      name: 'addChapter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message('Edit', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Generate Codes`
+  String get generateCodes {
+    return Intl.message(
+      'Generate Codes',
+      name: 'generateCodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create subscription codes for students`
+  String get generateCodesSubtitle {
+    return Intl.message(
+      'Create subscription codes for students',
+      name: 'generateCodesSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code Type`
+  String get codeType {
+    return Intl.message('Code Type', name: 'codeType', desc: '', args: []);
+  }
+
+  /// `Lecture`
+  String get lecture {
+    return Intl.message('Lecture', name: 'lecture', desc: '', args: []);
+  }
+
+  /// `Book`
+  String get book {
+    return Intl.message('Book', name: 'book', desc: '', args: []);
+  }
+
+  /// `Revision`
+  String get revision {
+    return Intl.message('Revision', name: 'revision', desc: '', args: []);
+  }
+
+  /// `Select Lecture`
+  String get selectLecture {
+    return Intl.message(
+      'Select Lecture',
+      name: 'selectLecture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a lecture...`
+  String get selectLectureHint {
+    return Intl.message(
+      'Select a lecture...',
+      name: 'selectLectureHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Codes`
+  String get numberOfCodes {
+    return Intl.message(
+      'Number of Codes',
+      name: 'numberOfCodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for a student...`
+  String get searchStudent {
+    return Intl.message(
+      'Search for a student...',
+      name: 'searchStudent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 registered students`
+  String get registeredCount {
+    return Intl.message(
+      '5 registered students',
+      name: 'registeredCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blocked`
+  String get blocked {
+    return Intl.message('Blocked', name: 'blocked', desc: '', args: []);
+  }
+
+  /// `Warnings`
+  String get warnings {
+    return Intl.message('Warnings', name: 'warnings', desc: '', args: []);
+  }
+
+  /// `Warning`
+  String get warning {
+    return Intl.message('Warning', name: 'warning', desc: '', args: []);
+  }
+
+  /// `Teacher Mohamed`
+  String get teacherName {
+    return Intl.message(
+      'Teacher Mohamed',
+      name: 'teacherName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Codes generated successfully!`
+  String get codesGeneratedSuccess {
+    return Intl.message(
+      'Codes generated successfully!',
+      name: 'codesGeneratedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapter added successfully!`
+  String get chapterAddedSuccess {
+    return Intl.message(
+      'Chapter added successfully!',
+      name: 'chapterAddedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

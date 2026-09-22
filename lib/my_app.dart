@@ -19,8 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use Cairo font for all languages
-    const fontFamily = 'Cairo';
+    const fontFamily = MyTheme.fontFamily;
 
     return GlobalLoaderOverlay(
       useDefaultLoading: false,
@@ -44,8 +43,7 @@ class MyApp extends StatelessWidget {
             cardTheme: CardThemeData(
                 color: MyColors.darkCard
             ),
-            // Set the default font family for the entire app
-            fontFamily: 'Cairo',
+            fontFamily: fontFamily,
 
             dialogTheme: const DialogThemeData(
               backgroundColor: MyColors.darkSurface,
@@ -109,7 +107,7 @@ class MyApp extends StatelessWidget {
             cardTheme: CardThemeData(
               color: MyColors.beige
             ),
-            fontFamily: 'Cairo', // Set Cairo as default font
+            fontFamily: fontFamily,
             scaffoldBackgroundColor: MyColors.backGroundColor,
             dialogTheme: DialogThemeData(
               backgroundColor: MyColors.white,

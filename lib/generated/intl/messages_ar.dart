@@ -22,22 +22,37 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addChapter": MessageLookupByLibrary.simpleMessage("+ إضافة فصل"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟ ",
     ),
     "app_name": MessageLookupByLibrary.simpleMessage("زدني"),
     "badResponse": MessageLookupByLibrary.simpleMessage("استجابة خاطئة"),
+    "blocked": MessageLookupByLibrary.simpleMessage("محظور"),
+    "book": MessageLookupByLibrary.simpleMessage("كتاب"),
     "cart": MessageLookupByLibrary.simpleMessage("السلة"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("ميزة السلة"),
+    "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم إضافة الفصل بنجاح!",
+    ),
+    "chapters": MessageLookupByLibrary.simpleMessage("الفصول"),
     "checkInternet": MessageLookupByLibrary.simpleMessage(
       "تحقق من الاتصال بالإنترنت",
     ),
     "chooseYourLanguage": MessageLookupByLibrary.simpleMessage("اختر لغتك"),
     "codeExpiresIn": MessageLookupByLibrary.simpleMessage("ينتهي الرمز خلال"),
+    "codeType": MessageLookupByLibrary.simpleMessage("نوع الكود"),
+    "codes": MessageLookupByLibrary.simpleMessage("الأكواد"),
+    "codesGeneratedSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم توليد الأكواد بنجاح!",
+    ),
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("اتصل بالإدارة"),
+    "content": MessageLookupByLibrary.simpleMessage("المحتوى"),
     "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم 👋"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ "),
+    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "endOfList": MessageLookupByLibrary.simpleMessage("نهاية القائمة"),
     "enterItBelow": MessageLookupByLibrary.simpleMessage("أدخله أدناه."),
     "enterYourFullName": MessageLookupByLibrary.simpleMessage(
@@ -49,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "errorTryAgain": MessageLookupByLibrary.simpleMessage("خطأ، حاول مرة أخرى"),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "generateCodes": MessageLookupByLibrary.simpleMessage("توليد الأكواد"),
+    "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
+      "أنشئ أكواد اشتراك للطلاب",
+    ),
     "grade": MessageLookupByLibrary.simpleMessage("الصف الدراسي"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "individual": MessageLookupByLibrary.simpleMessage("فرد"),
@@ -60,7 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "later": MessageLookupByLibrary.simpleMessage("لاحقاً"),
+    "lecture": MessageLookupByLibrary.simpleMessage("محاضرة"),
+    "lectures": MessageLookupByLibrary.simpleMessage("محاضرة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginAs": MessageLookupByLibrary.simpleMessage("تسجيل الدخول كـ"),
     "loginRequired": MessageLookupByLibrary.simpleMessage("تسجيل الدخول مطلوب"),
     "loginSuccessful": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح!",
@@ -80,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت",
     ),
+    "numberOfCodes": MessageLookupByLibrary.simpleMessage("عدد الأكواد"),
     "otpMustBe4Digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يتكون رمز التحقق من 4 أرقام",
     ),
@@ -89,12 +112,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "pageCantBeReached": MessageLookupByLibrary.simpleMessage(
       "لا يمكن الوصول للصفحة",
     ),
+    "parent": MessageLookupByLibrary.simpleMessage("ولي أمر"),
     "parentPhoneIsRequired": MessageLookupByLibrary.simpleMessage(
       "رقم هاتف ولي الأمر مطلوب",
     ),
     "parentPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "رقم هاتف ولي الأمر",
     ),
+    "pendingWarnings": MessageLookupByLibrary.simpleMessage("إنذار معلق"),
     "phoneAtLeast11Digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يتكون رقم الهاتف من 11 رقمًا على الأقل",
     ),
@@ -122,18 +147,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerAsStudentSubtitle": MessageLookupByLibrary.simpleMessage(
       "سجل كطالب للبدء",
     ),
+    "registeredCount": MessageLookupByLibrary.simpleMessage("5 طالب مسجل"),
+    "registeredStudents": MessageLookupByLibrary.simpleMessage("طالب مسجل"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "requiresLogin": MessageLookupByLibrary.simpleMessage("يتطلب تسجيل الدخول"),
     "resendCode": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
+    "revision": MessageLookupByLibrary.simpleMessage("مراجعة"),
+    "searchStudent": MessageLookupByLibrary.simpleMessage("بحث عن طالب..."),
+    "selectLecture": MessageLookupByLibrary.simpleMessage("اختر المحاضرة"),
+    "selectLectureHint": MessageLookupByLibrary.simpleMessage("اختر محاضرة..."),
     "serverError": MessageLookupByLibrary.simpleMessage("خطأ في السيرفر"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "store": MessageLookupByLibrary.simpleMessage("متجر"),
     "stores": MessageLookupByLibrary.simpleMessage("المتاجر"),
+    "student": MessageLookupByLibrary.simpleMessage("طالب"),
+    "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
+    "teacher": MessageLookupByLibrary.simpleMessage("معلم"),
+    "teacherName": MessageLookupByLibrary.simpleMessage("أستاذ محمد"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("هذه الميزة"),
+    "userType": MessageLookupByLibrary.simpleMessage("نوع المستخدم"),
     "verify": MessageLookupByLibrary.simpleMessage("التحقق"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("التحقق من رمز OTP"),
+    "warning": MessageLookupByLibrary.simpleMessage("إنذار"),
+    "warnings": MessageLookupByLibrary.simpleMessage("إنذار"),
     "weSentCodeTo": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا رمزًا إلى",
     ),

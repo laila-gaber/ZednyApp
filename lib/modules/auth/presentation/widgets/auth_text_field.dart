@@ -52,11 +52,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: MyColors.myBlack,
-          ),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 8),
         TextFormField(
@@ -68,12 +64,10 @@ class _AuthTextFieldState extends State<AuthTextField> {
           validator: widget.validator,
           onChanged: widget.onChanged,
           readOnly: widget.readOnly,
+          style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(
             hintText: widget.hint,
-            hintStyle: const TextStyle(
-              fontSize: 13,
-              color: MyColors.myGrey,
-            ),
+            hintStyle: Theme.of(context).textTheme.bodySmall,
             prefixIcon: widget.prefixIcon,
             suffixIcon: widget.obscureText
                 ? IconButton(
@@ -105,12 +99,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(
-                color: Colors.red,
+                color: MyColors.red,
                 width: 1,
               ),
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: MyColors.white,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           ),
