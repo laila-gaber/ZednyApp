@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1055480015037",
+    "project_id": "zedny-42ff2",
+    "storage_bucket": "zedny-42ff2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055480015037:android:fa298a1f53307925b12fd4",
+        "android_client_info": {
+          "package_name": "com.example.zedny_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBalJiBpbTYqnALAyAMfYX3iNemGUTIt3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

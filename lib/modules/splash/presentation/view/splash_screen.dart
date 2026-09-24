@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/extension/extensions.dart';
 import '../../../../core/routes/app_routes.dart';
-import '../../../../gen/assets.gen.dart';
+import '../../../../core/values/asstes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             ZoomIn(
               duration: const Duration(milliseconds: 1200),
-              child: Assets.images.logo.image(
+              child: Image.asset(Assets.assetsImagesLogo,
                 width: 180,
                 height: 180,
                 errorBuilder: (context, error, stackTrace) {
