@@ -13,5 +13,5 @@ class Endpoints {
   static String verifyOtp = '$apiUrl/Auth/Verification';
   static String loginWithPhone = '$apiUrl/users/login';
   static String registerWithPhone = '$apiUrl/users/login';
-
- }
+  static String getStudents = '$apiUrl/users/students';
+}

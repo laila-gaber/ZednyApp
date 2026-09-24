@@ -15,6 +15,7 @@ import '../widgets/auth_page_wrapper.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/remember_me_checkbox.dart';
 import '../widgets/user_type_selector.dart';
+import 'otp_verification_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -27,17 +28,26 @@ class LoginScreen extends StatelessWidget {
     return AuthPageWrapper(
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
-          if (state is LoginSuccess) {
-            ToastManager.showSuccess(s.loginSuccessful);
-            Navigator.pushReplacementNamed(context, AppRoutes.home);
-
-          } else if (state is LoginFailure) {
+          if (state is SendOtpSuccess) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => BlocProvider.value(
+                  value: cubit,
+                  child: OtpVerificationScreen(
+                    phone: state.phone,
+                    refNo: state.refNo,
+                    authType: 'login',
+                  ),
+                ),
+              ),
+            );
+          } else if (state is SendOtpFailure) {
             ToastManager.showError(state.message);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
-            final isLoading = state is LoginLoading;
+            final isLoading = state is SendOtpLoading;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                 AuthButton(
                   label: s.login,
                   isLoading: isLoading,
-                  onPressed: () => cubit.submitLogin(s),
+                  onPressed: () => cubit.sendLoginOtp(s),
                 ),
                 20.sbh,
                 AuthNavigationRow(

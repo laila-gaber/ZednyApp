@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:zedny_app/core/enums/grade_enum.dart';
 
 part 'send_otp_request.g.dart';
 
@@ -18,10 +19,6 @@ class RegisterRequestDto {
     required this.garde,
   });
 
-  factory RegisterRequestDto.fromJson(Map<String, dynamic> json) {
-    return _$RegisterRequestDtoFromJson(json);
-  }
-
   Map<String, dynamic> toJson() => _$RegisterRequestDtoToJson(this);
 }
 
@@ -30,18 +27,18 @@ class SendOtpRequest {
   final String phone;
   final String authType;
   final String userType;
-  final RegisterRequestDto? registerRequestDto;
+  final String? name;
+  final String? parentPhone;
+  final GradeEnum? grade;
 
   SendOtpRequest({
     required this.phone,
     required this.authType,
     required this.userType,
-    this.registerRequestDto,
+     this.name,
+     this.parentPhone,
+     this.grade,
   });
-
-  factory SendOtpRequest.fromJson(Map<String, dynamic> json) {
-    return _$SendOtpRequestFromJson(json);
-  }
 
   Map<String, dynamic> toJson() => _$SendOtpRequestToJson(this);
 }

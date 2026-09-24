@@ -99,5 +99,15 @@
   "warning": "Warning",
   "teacherName": "Teacher Mohamed",
   "codesGeneratedSuccess": "Codes generated successfully!",
-  "chapterAddedSuccess": "Chapter added successfully!"
+  "chapterAddedSuccess": "Chapter added successfully!",
+  "studentsList": "Students List",
+  "searchStudentHint": "Search by name, phone, or parent phone...",
+  "totalStudents": "Total Students",
+  "studentDetails": "Student Details",
+  "parentPhone": "Parent Phone",
+  "noStudentsFound": "No students found",
+  "failedToFetchStudents": "Failed to fetch students",
+  "call": "Call",
+  "copyPhone": "Copy Phone",
+  "phoneCopied": "Phone number copied!"
 }

@@ -833,6 +833,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Students List`
+  String get studentsList {
+    return Intl.message(
+      'Students List',
+      name: 'studentsList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by name, phone, or parent phone...`
+  String get searchStudentHint {
+    return Intl.message(
+      'Search by name, phone, or parent phone...',
+      name: 'searchStudentHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Students`
+  String get totalStudents {
+    return Intl.message(
+      'Total Students',
+      name: 'totalStudents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student Details`
+  String get studentDetails {
+    return Intl.message(
+      'Student Details',
+      name: 'studentDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parent Phone`
+  String get parentPhone {
+    return Intl.message(
+      'Parent Phone',
+      name: 'parentPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No students found`
+  String get noStudentsFound {
+    return Intl.message(
+      'No students found',
+      name: 'noStudentsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch students`
+  String get failedToFetchStudents {
+    return Intl.message(
+      'Failed to fetch students',
+      name: 'failedToFetchStudents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call`
+  String get call {
+    return Intl.message('Call', name: 'call', desc: '', args: []);
+  }
+
+  /// `Copy Phone`
+  String get copyPhone {
+    return Intl.message('Copy Phone', name: 'copyPhone', desc: '', args: []);
+  }
+
+  /// `Phone number copied!`
+  String get phoneCopied {
+    return Intl.message(
+      'Phone number copied!',
+      name: 'phoneCopied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

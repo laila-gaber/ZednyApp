@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zedny_app/core/enums/grade_enum.dart';
+
 import '../../../../core/components/toast_manager.dart';
 import '../../../../core/utils/device_id.dart';
 import '../../../../generated/l10n.dart';
@@ -27,18 +29,9 @@ class AuthCubit extends Cubit<AuthState> {
   // State Variables
   UserTypeEnum selectedUserType = UserTypeEnum.STUDENT;
   bool rememberMe = false;
-  String selectedGrade = 'FIRST';
+  GradeEnum selectedGrade = GradeEnum.FIRST;
   int remainingSeconds = 120;
   Timer? _timer;
-
-  final List<String> grades = const [
-    'FIRST',
-    'SECOND',
-    'THIRD',
-    'FOURTH',
-    'FIFTH',
-    'SIXTH',
-  ];
 
   void changeUserType(UserTypeEnum type) {
     selectedUserType = type;
@@ -62,7 +55,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  void changeGrade(String grade) {
+  void changeGrade(GradeEnum grade) {
     selectedGrade = grade;
     emit(
       AuthFormUpdated(
@@ -86,6 +79,37 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
+  Future<void> sendLoginOtp(S s) async {
+    final phone = loginPhoneController.text.trim();
+    if (phone.isEmpty) {
+      ToastManager.showError(s.pleaseEnterPhoneNumber);
+      return;
+    }
+    if (phone.length < 11) {
+      ToastManager.showError(s.phoneAtLeast11Digits);
+      return;
+    }
+
+    emit(SendOtpLoading());
+
+    final request = SendOtpRequest(
+      phone: phone,
+      authType: 'login',
+      userType: selectedUserType.name,
+    );
+
+    final result = await _authService.sendOtp(request);
+
+    result.fold(
+      (error) => emit(SendOtpFailure(error.message ?? 'Failed to send OTP')),
+      (data) {
+        emit(
+          SendOtpSuccess(refNo: data.refNo, otp: data.otp, phone: data.phone),
+        );
+      },
+    );
+  }
+
   Future<void> resendOtp({
     required String phone,
     required String authType,
@@ -105,13 +129,9 @@ class AuthCubit extends Cubit<AuthState> {
         phone: phone,
         authType: authType,
         userType: 'STUDENT',
-        registerRequestDto: RegisterRequestDto(
-          fcmToken: fcm,
-          deviceId: device,
-          name: nameController.text.trim(),
-          parentPhone: parentPhoneController.text.trim(),
-          garde: selectedGrade,
-        ),
+        name: nameController.text.trim(),
+        parentPhone: parentPhoneController.text.trim(),
+        grade: selectedGrade,
       );
     } else {
       request = SendOtpRequest(
@@ -147,10 +167,6 @@ class AuthCubit extends Cubit<AuthState> {
     final phone = loginPhoneController.text.trim();
     if (phone.isEmpty) {
       ToastManager.showError(s.pleaseEnterPhoneNumber);
-      return;
-    }
-    if (phone.length < 11) {
-      ToastManager.showError(s.phoneAtLeast11Digits);
       return;
     }
 
@@ -211,13 +227,10 @@ class AuthCubit extends Cubit<AuthState> {
       phone: phone,
       authType: 'register',
       userType: 'STUDENT',
-      registerRequestDto: RegisterRequestDto(
-        fcmToken: fcm,
-        deviceId: device,
-        name: name,
-        parentPhone: parentPhone,
-        garde: selectedGrade,
-      ),
+
+      name: name,
+      parentPhone: parentPhone,
+      grade: selectedGrade,
     );
 
     final result = await _authService.sendOtp(request);

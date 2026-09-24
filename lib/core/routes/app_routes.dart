@@ -5,6 +5,7 @@ class AppRoutes {
   static const login = '/login';
   static const register = '/auth';
   static const productsView = '/productsView';
+  static const students = '/students';
 }
 
 

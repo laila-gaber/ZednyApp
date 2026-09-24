@@ -1,4 +1,6 @@
 
+import 'package:zedny_app/core/enums/grade_enum.dart';
+
 import '../../data/enum/user_type_enum.dart';
 
 abstract class AuthState {}
@@ -8,7 +10,7 @@ class AuthInitial extends AuthState {}
 class AuthFormUpdated extends AuthState {
   final UserTypeEnum selectedUserType;
   final bool rememberMe;
-  final String selectedGrade;
+  final GradeEnum selectedGrade;
 
   AuthFormUpdated({
     required this.selectedUserType,

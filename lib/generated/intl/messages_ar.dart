@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "badResponse": MessageLookupByLibrary.simpleMessage("استجابة خاطئة"),
     "blocked": MessageLookupByLibrary.simpleMessage("محظور"),
     "book": MessageLookupByLibrary.simpleMessage("كتاب"),
+    "call": MessageLookupByLibrary.simpleMessage("اتصال"),
     "cart": MessageLookupByLibrary.simpleMessage("السلة"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("ميزة السلة"),
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("اتصل بالإدارة"),
     "content": MessageLookupByLibrary.simpleMessage("المحتوى"),
     "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "copyPhone": MessageLookupByLibrary.simpleMessage("نسخ الرقم"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم 👋"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ "),
@@ -63,6 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "خطأ في الاتصال بالسيرفر",
     ),
     "errorTryAgain": MessageLookupByLibrary.simpleMessage("خطأ، حاول مرة أخرى"),
+    "failedToFetchStudents": MessageLookupByLibrary.simpleMessage(
+      "فشل في جلب قائمة الطلاب",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "generateCodes": MessageLookupByLibrary.simpleMessage("توليد الأكواد"),
     "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +107,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت",
     ),
+    "noStudentsFound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على طلاب",
+    ),
     "numberOfCodes": MessageLookupByLibrary.simpleMessage("عدد الأكواد"),
     "otpMustBe4Digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يتكون رمز التحقق من 4 أرقام",
@@ -113,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا يمكن الوصول للصفحة",
     ),
     "parent": MessageLookupByLibrary.simpleMessage("ولي أمر"),
+    "parentPhone": MessageLookupByLibrary.simpleMessage("هاتف ولي الأمر"),
     "parentPhoneIsRequired": MessageLookupByLibrary.simpleMessage(
       "رقم هاتف ولي الأمر مطلوب",
     ),
@@ -123,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneAtLeast11Digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يتكون رقم الهاتف من 11 رقمًا على الأقل",
     ),
+    "phoneCopied": MessageLookupByLibrary.simpleMessage("تم نسخ رقم الهاتف!"),
     "phoneHint": MessageLookupByLibrary.simpleMessage("01234567890"),
     "phoneIsRequired": MessageLookupByLibrary.simpleMessage("رقم الهاتف مطلوب"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -155,6 +165,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "revision": MessageLookupByLibrary.simpleMessage("مراجعة"),
     "searchStudent": MessageLookupByLibrary.simpleMessage("بحث عن طالب..."),
+    "searchStudentHint": MessageLookupByLibrary.simpleMessage(
+      "ابحث بالاسم، الهاتف، أو هاتف ولي الأمر...",
+    ),
     "selectLecture": MessageLookupByLibrary.simpleMessage("اختر المحاضرة"),
     "selectLectureHint": MessageLookupByLibrary.simpleMessage("اختر محاضرة..."),
     "serverError": MessageLookupByLibrary.simpleMessage("خطأ في السيرفر"),
@@ -163,10 +176,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "store": MessageLookupByLibrary.simpleMessage("متجر"),
     "stores": MessageLookupByLibrary.simpleMessage("المتاجر"),
     "student": MessageLookupByLibrary.simpleMessage("طالب"),
+    "studentDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطالب"),
     "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
+    "studentsList": MessageLookupByLibrary.simpleMessage("قائمة الطلاب"),
     "teacher": MessageLookupByLibrary.simpleMessage("معلم"),
     "teacherName": MessageLookupByLibrary.simpleMessage("أستاذ محمد"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("هذه الميزة"),
+    "totalStudents": MessageLookupByLibrary.simpleMessage("إجمالي الطلاب"),
     "userType": MessageLookupByLibrary.simpleMessage("نوع المستخدم"),
     "verify": MessageLookupByLibrary.simpleMessage("التحقق"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("التحقق من رمز OTP"),

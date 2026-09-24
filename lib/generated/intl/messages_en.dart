@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "badResponse": MessageLookupByLibrary.simpleMessage("Bad response"),
     "blocked": MessageLookupByLibrary.simpleMessage("Blocked"),
     "book": MessageLookupByLibrary.simpleMessage("Book"),
+    "call": MessageLookupByLibrary.simpleMessage("Call"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("Cart Feature"),
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("Contact admins"),
     "content": MessageLookupByLibrary.simpleMessage("Content"),
     "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
+    "copyPhone": MessageLookupByLibrary.simpleMessage("Copy Phone"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard 👋"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -67,6 +69,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Error connecting to server",
     ),
     "errorTryAgain": MessageLookupByLibrary.simpleMessage("Error, try again"),
+    "failedToFetchStudents": MessageLookupByLibrary.simpleMessage(
+      "Failed to fetch students",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "generateCodes": MessageLookupByLibrary.simpleMessage("Generate Codes"),
     "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -106,6 +111,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "No internet connection",
     ),
+    "noStudentsFound": MessageLookupByLibrary.simpleMessage(
+      "No students found",
+    ),
     "numberOfCodes": MessageLookupByLibrary.simpleMessage("Number of Codes"),
     "otpMustBe4Digits": MessageLookupByLibrary.simpleMessage(
       "OTP must be 4 digits",
@@ -117,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Page cannot be reached",
     ),
     "parent": MessageLookupByLibrary.simpleMessage("Parent"),
+    "parentPhone": MessageLookupByLibrary.simpleMessage("Parent Phone"),
     "parentPhoneIsRequired": MessageLookupByLibrary.simpleMessage(
       "Parent phone is required",
     ),
@@ -127,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneAtLeast11Digits": MessageLookupByLibrary.simpleMessage(
       "Phone number must be at least 11 digits",
     ),
+    "phoneCopied": MessageLookupByLibrary.simpleMessage("Phone number copied!"),
     "phoneHint": MessageLookupByLibrary.simpleMessage("01234567890"),
     "phoneIsRequired": MessageLookupByLibrary.simpleMessage(
       "Phone is required",
@@ -169,6 +179,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchStudent": MessageLookupByLibrary.simpleMessage(
       "Search for a student...",
     ),
+    "searchStudentHint": MessageLookupByLibrary.simpleMessage(
+      "Search by name, phone, or parent phone...",
+    ),
     "selectLecture": MessageLookupByLibrary.simpleMessage("Select Lecture"),
     "selectLectureHint": MessageLookupByLibrary.simpleMessage(
       "Select a lecture...",
@@ -179,10 +192,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "store": MessageLookupByLibrary.simpleMessage("Store"),
     "stores": MessageLookupByLibrary.simpleMessage("Stores"),
     "student": MessageLookupByLibrary.simpleMessage("Student"),
+    "studentDetails": MessageLookupByLibrary.simpleMessage("Student Details"),
     "students": MessageLookupByLibrary.simpleMessage("Students"),
+    "studentsList": MessageLookupByLibrary.simpleMessage("Students List"),
     "teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
     "teacherName": MessageLookupByLibrary.simpleMessage("Teacher Mohamed"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("This feature"),
+    "totalStudents": MessageLookupByLibrary.simpleMessage("Total Students"),
     "userType": MessageLookupByLibrary.simpleMessage("User Type"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("Verify OTP"),

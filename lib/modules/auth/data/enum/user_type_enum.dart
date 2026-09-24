@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 
-enum UserTypeEnum { TEACHER, STUDENT, PARENT }
+enum UserTypeEnum { TEACHER, STUDENT/*, PARENT*/ }
 
 extension UserTypeEnumX on UserTypeEnum {
   String label(BuildContext context) {
@@ -10,8 +10,8 @@ extension UserTypeEnumX on UserTypeEnum {
         return S.of(context).student;
       case UserTypeEnum.TEACHER:
         return S.of(context).teacher;
-      case UserTypeEnum.PARENT:
-        return S.of(context).parent;
+     /* case UserTypeEnum.PARENT:
+        return S.of(context).parent;*/
     }
   }
 
@@ -21,8 +21,8 @@ extension UserTypeEnumX on UserTypeEnum {
         return Icons.school_outlined;
       case UserTypeEnum.TEACHER:
         return Icons.person_outline;
-      case UserTypeEnum.PARENT:
+ /*     case UserTypeEnum.PARENT:
         return Icons.family_restroom_outlined;
-    }
+  */  }
   }
 }

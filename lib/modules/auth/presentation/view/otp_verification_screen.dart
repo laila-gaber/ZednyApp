@@ -13,7 +13,6 @@ import '../widgets/auth_header.dart';
 import '../widgets/auth_page_wrapper.dart';
 import '../widgets/otp_input.dart';
 import '../widgets/otp_timer_display.dart';
-import 'login_screen.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   final String phone;
@@ -42,15 +41,33 @@ class OtpVerificationScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is VerifyOtpSuccess) {
             ToastManager.showSuccess(s.phoneVerifiedSuccessfully);
-            Navigator.pushReplacementNamed(context, AppRoutes.register);
-
+            if (authType == 'login') {
+              cubit.submitLogin(s);
+            } else {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.home,
+                (route) => false,
+              );
+            }
+          } else if (state is LoginSuccess) {
+            ToastManager.showSuccess(s.loginSuccessful);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.home,
+              (route) => false,
+            );
           } else if (state is VerifyOtpFailure) {
+            ToastManager.showError(state.message);
+          } else if (state is LoginFailure) {
             ToastManager.showError(state.message);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
-            final isLoading = state is VerifyOtpLoading || state is SendOtpLoading;
+            final isLoading = state is VerifyOtpLoading ||
+                state is SendOtpLoading ||
+                state is LoginLoading;
             final isExpired = cubit.isOtpExpired;
 
             return Column(

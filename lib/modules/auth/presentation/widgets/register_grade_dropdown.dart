@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/enums/grade_enum.dart';
 import '../../../../core/extension/extensions.dart';
 import '../../../../core/values/my_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -29,17 +30,17 @@ class RegisterGradeDropdown extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: DropdownButton<String>(
+          child: DropdownButton<GradeEnum>(
             value: cubit.selectedGrade,
             isExpanded: true,
             underline: const SizedBox(),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             style: Theme.of(context).textTheme.bodyLarge,
-            items: cubit.grades
+            items: GradeEnum.values
                 .map((grade) => DropdownMenuItem(
                       value: grade,
                       child: Text(
-                        grade,
+                        grade.name,
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ))

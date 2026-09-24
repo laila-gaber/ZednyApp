@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/values/my_colors.dart';
+import '../../../students/data/repo/student_repository.dart';
+import '../../../students/presentation/cubit/student_cubit.dart';
+import '../../../students/presentation/view/student_screen.dart';
+import '../../../students/services/student_service_iml.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
 import '../widgets/codes_tab_view.dart';
 import '../widgets/content_tab_view.dart';
 import '../widgets/home_bottom_nav_bar.dart';
-import '../widgets/students_tab_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,10 +27,15 @@ class HomeScreen extends StatelessWidget {
             top: false,
             child: IndexedStack(
               index: cubit.currentTabIndex,
-              children: const [
-                ContentTabView(),
-                StudentsTabView(),
-                CodesTabView(),
+              children: [
+                const ContentTabView(),
+                BlocProvider(
+                  create: (_) => StudentCubit(
+                    StudentServiceImpl(StudentRepo()),
+                  ),
+                  child: const StudentScreen(),
+                ),
+                const CodesTabView(),
               ],
             ),
           ),
