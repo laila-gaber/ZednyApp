@@ -80,6 +80,8 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> sendLoginOtp(S s) async {
+    if (state is SendOtpLoading) return;
+
     final phone = loginPhoneController.text.trim();
     if (phone.isEmpty) {
       ToastManager.showError(s.pleaseEnterPhoneNumber);
@@ -100,12 +102,18 @@ class AuthCubit extends Cubit<AuthState> {
 
     final result = await _authService.sendOtp(request);
 
+    if (isClosed) return;
+
     result.fold(
-      (error) => emit(SendOtpFailure(error.message ?? 'Failed to send OTP')),
+      (error) {
+        if (!isClosed) emit(SendOtpFailure(error.message ?? 'Failed to send OTP'));
+      },
       (data) {
-        emit(
-          SendOtpSuccess(refNo: data.refNo, otp: data.otp, phone: data.phone),
-        );
+        if (!isClosed) {
+          emit(
+            SendOtpSuccess(refNo: data.refNo, otp: data.otp, phone: data.phone),
+          );
+        }
       },
     );
   }
@@ -115,12 +123,9 @@ class AuthCubit extends Cubit<AuthState> {
     required String authType,
     required S s,
   }) async {
-    emit(SendOtpLoading());
+    if (state is SendOtpLoading) return;
 
-    final fcm = fcmTokenController.text.isNotEmpty
-        ? fcmTokenController.text
-        : 'fcm_token_placeholder';
-    final device = await DeviceId().getDeviceId();
+    emit(SendOtpLoading());
 
     late SendOtpRequest request;
 
@@ -164,6 +169,8 @@ class AuthCubit extends Cubit<AuthState> {
   bool get isOtpExpired => remainingSeconds <= 0;
 
   Future<void> submitLogin(S s) async {
+    if (state is LoginLoading) return;
+
     final phone = loginPhoneController.text.trim();
     if (phone.isEmpty) {
       ToastManager.showError(s.pleaseEnterPhoneNumber);
@@ -186,10 +193,16 @@ class AuthCubit extends Cubit<AuthState> {
 
     final result = await _authService.login(request);
 
+    if (isClosed) return;
+
     result.fold(
-      (error) => emit(LoginFailure(error.message ?? 'Failed to login')),
+      (error) {
+        if (!isClosed) emit(LoginFailure(error.message ?? 'Failed to login'));
+      },
       (data) {
-        emit(LoginSuccess(token: data.token, userType: data.userType));
+        if (!isClosed) {
+          emit(LoginSuccess(token: data.token, userType: data.userType));
+        }
       },
     );
   }
@@ -218,16 +231,10 @@ class AuthCubit extends Cubit<AuthState> {
 
     emit(SendOtpLoading());
 
-    final fcm = fcmTokenController.text.isNotEmpty
-        ? fcmTokenController.text
-        : 'fcm_token_placeholder';
-    final device = await DeviceId().getDeviceId();
-
     final request = SendOtpRequest(
       phone: phone,
       authType: 'register',
       userType: 'STUDENT',
-
       name: name,
       parentPhone: parentPhone,
       grade: selectedGrade,
@@ -249,6 +256,8 @@ class AuthCubit extends Cubit<AuthState> {
     required String otp,
     required S s,
   }) async {
+    if (state is VerifyOtpLoading) return;
+
     if (otp.isEmpty) {
       ToastManager.showError(s.pleaseEnterOtp);
       return;
@@ -264,11 +273,16 @@ class AuthCubit extends Cubit<AuthState> {
 
     final result = await _authService.verifyOtp(request);
 
+    if (isClosed) return;
+
     result.fold(
-      (error) =>
-          emit(VerifyOtpFailure(error.message ?? 'Failed to verify OTP')),
+      (error) {
+        if (!isClosed) emit(VerifyOtpFailure(error.message ?? 'Failed to verify OTP'));
+      },
       (data) {
-        emit(VerifyOtpSuccess(data.token));
+        if (!isClosed) {
+          emit(VerifyOtpSuccess(data.token));
+        }
       },
     );
   }

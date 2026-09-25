@@ -18,12 +18,10 @@ class StudentScreen extends StatelessWidget {
     final cubit = context.read<StudentCubit>();
     final s = S.of(context);
 
-    // Fetch students on initial load
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (cubit.allStudents.isEmpty && cubit.state is! StudentLoading) {
-        cubit.fetchStudents(s: s);
-      }
-    });
+    // Initial fetch when screen opens
+    if (cubit.allStudents.isEmpty && cubit.state is StudentInitial) {
+      cubit.fetchStudents(s: s);
+    }
 
     return Scaffold(
       backgroundColor: MyColors.offWhite,
@@ -126,7 +124,7 @@ class StudentScreen extends StatelessWidget {
                     return ListView.separated(
                       physics: const BouncingScrollPhysics(),
                       itemCount: cubit.filteredStudents.length,
-                      separatorBuilder: (_, __) => 12.sbh,
+                      separatorBuilder: (context, index) => 12.sbh,
                       itemBuilder: (context, index) {
                         final student = cubit.filteredStudents[index];
                         return StudentItemCard(student: student);

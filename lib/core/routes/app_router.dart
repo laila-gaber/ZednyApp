@@ -22,8 +22,15 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppRoutes.home:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => HomeCubit()..initData(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => HomeCubit()..initData()),
+              BlocProvider(
+                create: (_) => StudentCubit(
+                  StudentServiceImpl(StudentRepo()),
+                ),
+              ),
+            ],
             child: const HomeScreen(),
           ),
         );
