@@ -123,5 +123,12 @@
   "save": "حفظ",
   "noChaptersFound": "لا توجد فصول لهذا الصف الدراسي",
   "welcomeTeacher": "مرحباً يا معلم",
-  "welcomeStudent": "مرحباً يا طالب"
+  "welcomeStudent": "مرحباً يا طالب",
+  "lectureDetails": "تفاصيل المحاضرة",
+  "failedToLoadLecture": "فشل في تحميل تفاصيل المحاضرة",
+  "videoNotAvailable": "رابط الفيديو غير متوفر",
+  "selectVideo": "اختر فيديو",
+  "videoSelected": "تم اختيار الفيديو",
+  "selectImage": "اختر صورة غلاف",
+  "imageSelected": "تم اختيار الصورة"
 }

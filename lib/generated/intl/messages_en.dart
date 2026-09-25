@@ -77,6 +77,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "failedToFetchStudents": MessageLookupByLibrary.simpleMessage(
       "Failed to fetch students",
     ),
+    "failedToLoadLecture": MessageLookupByLibrary.simpleMessage(
+      "Failed to load lecture details",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "generateCodes": MessageLookupByLibrary.simpleMessage("Generate Codes"),
     "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "grade": MessageLookupByLibrary.simpleMessage("Grade"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "imageSelected": MessageLookupByLibrary.simpleMessage("Image Selected"),
     "individual": MessageLookupByLibrary.simpleMessage("Individual"),
     "invalidPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "Invalid phone number",
@@ -97,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lectureDescription": MessageLookupByLibrary.simpleMessage(
       "Lecture Description",
     ),
+    "lectureDetails": MessageLookupByLibrary.simpleMessage("Lecture Details"),
     "lectureName": MessageLookupByLibrary.simpleMessage("Lecture Name"),
     "lectureOrder": MessageLookupByLibrary.simpleMessage("Lecture Order"),
     "lectures": MessageLookupByLibrary.simpleMessage("Lectures"),
@@ -196,10 +201,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchStudentHint": MessageLookupByLibrary.simpleMessage(
       "Search by name, phone, or parent phone...",
     ),
+    "selectImage": MessageLookupByLibrary.simpleMessage("Select Cover Image"),
     "selectLecture": MessageLookupByLibrary.simpleMessage("Select Lecture"),
     "selectLectureHint": MessageLookupByLibrary.simpleMessage(
       "Select a lecture...",
     ),
+    "selectVideo": MessageLookupByLibrary.simpleMessage("Select Video"),
     "serverError": MessageLookupByLibrary.simpleMessage("Server error"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
@@ -217,6 +224,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "userType": MessageLookupByLibrary.simpleMessage("User Type"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("Verify OTP"),
+    "videoNotAvailable": MessageLookupByLibrary.simpleMessage(
+      "Video URL not available",
+    ),
+    "videoSelected": MessageLookupByLibrary.simpleMessage("Video Selected"),
     "videoUrl": MessageLookupByLibrary.simpleMessage("Video URL"),
     "warning": MessageLookupByLibrary.simpleMessage("Warning"),
     "warnings": MessageLookupByLibrary.simpleMessage("Warnings"),

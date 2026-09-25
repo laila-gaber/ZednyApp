@@ -34,7 +34,7 @@ class AddLectureSheet extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
                 child: Container(
@@ -65,7 +65,7 @@ class AddLectureSheet extends StatelessWidget {
               8.sbh,
               TextField(
                 controller: cubit.lectureNameController,
-                textAlign: TextAlign.right,
+                textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: MyColors.offWhite,
@@ -99,7 +99,7 @@ class AddLectureSheet extends StatelessWidget {
               TextField(
                 controller: cubit.lectureDescController,
                 maxLines: 2,
-                textAlign: TextAlign.right,
+                textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: MyColors.offWhite,

@@ -45,20 +45,20 @@ class ChapterExpandableCard extends StatelessWidget {
           collapsedIconColor: MyColors.myGrey,
           title: Text(
             chapter.name,
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.start,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: MyColors.myBlack,
                   fontWeight: FontWeight.bold,
                 ),
           ),
           subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (chapter.description.isNotEmpty) ...[
                 4.sbh,
                 Text(
                   chapter.description,
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.start,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -68,7 +68,7 @@ class ChapterExpandableCard extends StatelessWidget {
               ],
               6.sbh,
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     '${chapter.lectures.length} ${s.lectures}',
@@ -84,7 +84,7 @@ class ChapterExpandableCard extends StatelessWidget {
           children: [
             if (isTeacher) ...[
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.centerRight,
                 child: OutlinedButton.icon(
                   onPressed: onAddLecture,
                   style: OutlinedButton.styleFrom(

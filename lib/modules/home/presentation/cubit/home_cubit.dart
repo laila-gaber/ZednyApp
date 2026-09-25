@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/components/toast_manager.dart';
 import '../../../../core/enums/grade_enum.dart';
@@ -7,6 +10,9 @@ import '../../../../core/utils/Utilities.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/chapter_model.dart';
 import '../../data/models/code_type_enum.dart';
+import '../../data/models/save_chapter_req_dto.dart';
+import '../../data/models/save_lecture_req_dto.dart';
+import '../../data/models/upload_lecture_image_req_dto.dart';
 import '../../services/home_service.dart';
 import 'home_state.dart';
 
@@ -14,6 +20,8 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeService _homeService;
 
   HomeCubit(this._homeService) : super(HomeInitial());
+
+  final ImagePicker _picker = ImagePicker();
 
   // Bottom Navigation State
   int currentTabIndex = 0;
@@ -50,7 +58,9 @@ class HomeCubit extends Cubit<HomeState> {
   final TextEditingController videoUrlController = TextEditingController();
   final TextEditingController lectureOrderController =
       TextEditingController(text: '1');
-  String? selectedLectureBase64Image;
+
+  XFile? pickedVideoFile;
+  XFile? pickedImageFile;
 
   void initData(S s) {
     currentUser = Utilities.getCurrentUser();
@@ -118,12 +128,14 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(HomeLoading());
 
-    final result = await _homeService.saveChapter(
+    final request = SaveChapterReqDto(
       name: name,
       description: description,
       grade: selectedGrade.name,
-      order: order,
+      chapterOrder: order,
     );
+
+    final result = await _homeService.saveChapter(request);
 
     if (isClosed) return;
 
@@ -139,10 +151,31 @@ class HomeCubit extends Cubit<HomeState> {
           chapterNameController.clear();
           chapterDescController.clear();
           chapterOrderController.text = '1';
+
+          chapters.add(savedChapter);
+          emit(HomeSuccess(List.from(chapters)));
+
           fetchChaptersByGrade(grade: selectedGrade, s: s);
         }
       },
     );
+  }
+
+  Future<void> pickVideo() async {
+    final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
+    if (video != null) {
+      pickedVideoFile = video;
+      videoUrlController.text = video.path;
+      emit(HomeFormUpdated());
+    }
+  }
+
+  Future<void> pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      pickedImageFile = image;
+      emit(HomeFormUpdated());
+    }
   }
 
   Future<void> submitSaveLecture({
@@ -162,13 +195,21 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(HomeLoading());
 
-    final result = await _homeService.saveLecture(
+    String? base64Image;
+    if (pickedImageFile != null) {
+      final bytes = await pickedImageFile!.readAsBytes();
+      base64Image = base64Encode(bytes);
+    }
+
+    final request = SaveLectureReqDto(
       chapterRefNo: chapterRefNo,
       name: name,
       description: description,
       videoUrl: videoUrl,
       order: order,
     );
+
+    final result = await _homeService.saveLecture(request);
 
     if (isClosed) return;
 
@@ -179,11 +220,12 @@ class HomeCubit extends Cubit<HomeState> {
         }
       },
       (savedLecture) async {
-        if (selectedLectureBase64Image != null &&
-            savedLecture.refNo != null) {
+        if (base64Image != null && savedLecture.refNo != null) {
           await _homeService.uploadLectureImage(
-            refNo: savedLecture.refNo!,
-            base64ImageData: selectedLectureBase64Image!,
+            UploadLectureImageReqDto(
+              refNo: savedLecture.refNo!,
+              imageData: base64Image,
+            ),
           );
         }
 
@@ -193,7 +235,8 @@ class HomeCubit extends Cubit<HomeState> {
           lectureDescController.clear();
           videoUrlController.clear();
           lectureOrderController.text = '1';
-          selectedLectureBase64Image = null;
+          pickedImageFile = null;
+          pickedVideoFile = null;
           fetchChaptersByGrade(grade: selectedGrade, s: s);
         }
       },
@@ -229,6 +272,7 @@ class HomeCubit extends Cubit<HomeState> {
     lectureNameController.dispose();
     lectureDescController.dispose();
     videoUrlController.dispose();
+    lectureOrderController.dispose();
     return super.close();
   }
 }

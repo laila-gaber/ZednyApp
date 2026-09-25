@@ -32,7 +32,7 @@ class StudentSearchBar extends StatelessWidget {
       child: TextField(
         controller: controller,
         onChanged: onChanged,
-        textAlign: TextAlign.right,
+        textAlign: TextAlign.start,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: MyColors.myBlack,
             ),

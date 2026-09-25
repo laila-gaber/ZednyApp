@@ -141,7 +141,9 @@ class MyApp extends StatelessWidget {
               return MediaQuery(
                 data: data.copyWith(textScaler: TextScaler.linear(scaleFactor)),
                 child: ResponsiveBreakpoints.builder(
-                  child: child!,
+                  child: SafeArea(
+                      top: true,
+                      child: child!),
                   breakpoints: [
                     const Breakpoint(start: 0, end: 450, name: MOBILE),
                     const Breakpoint(start: 451, end: 800, name: TABLET),

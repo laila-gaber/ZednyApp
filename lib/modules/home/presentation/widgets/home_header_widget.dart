@@ -30,6 +30,26 @@ class HomeHeaderWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                10.sbh,
+                Text(
+                  '${s.welcome}، $userName 👋',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: MyColors.myBlack,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                2.sbh,
+                Text(
+                  isTeacher ? s.welcomeTeacher : s.welcomeStudent,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: MyColors.myGrey,
+                      ),
+                ),
+              ],
+            ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
@@ -47,25 +67,6 @@ class HomeHeaderWidget extends StatelessWidget {
                     ),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  '${s.welcome}، $userName 👋',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: MyColors.myBlack,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                2.sbh,
-                Text(
-                  isTeacher ? s.welcomeTeacher : s.welcomeStudent,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: MyColors.myGrey,
-                      ),
-                ),
-              ],
-            ),
           ],
         ),
         16.sbh,
@@ -73,10 +74,10 @@ class HomeHeaderWidget extends StatelessWidget {
           height: 38,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            reverse: true,
+            reverse: false,
             physics: const BouncingScrollPhysics(),
             itemCount: GradeEnum.values.length,
-            separatorBuilder: (_, __) => 8.sbw,
+            separatorBuilder: (context, index) => 8.sbw,
             itemBuilder: (context, index) {
               final grade = GradeEnum.values[index];
               final isSelected = grade == selectedGrade;
@@ -106,8 +107,8 @@ class HomeHeaderWidget extends StatelessWidget {
                         : null,
                   ),
                   child: Text(
-                    grade.name,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    grade.getLocalizedName(context),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: isSelected ? MyColors.white : MyColors.myBlack,
                           fontWeight:
                               isSelected ? FontWeight.bold : FontWeight.w500,

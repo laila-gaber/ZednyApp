@@ -6,6 +6,8 @@ class AppRoutes {
   static const register = '/auth';
   static const productsView = '/productsView';
   static const students = '/students';
+  static const lectureDetails = '/lectureDetails';
+  static const addLecture = '/addLecture';
 }
 
 

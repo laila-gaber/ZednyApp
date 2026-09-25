@@ -1053,6 +1053,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Lecture Details`
+  String get lectureDetails {
+    return Intl.message(
+      'Lecture Details',
+      name: 'lectureDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load lecture details`
+  String get failedToLoadLecture {
+    return Intl.message(
+      'Failed to load lecture details',
+      name: 'failedToLoadLecture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video URL not available`
+  String get videoNotAvailable {
+    return Intl.message(
+      'Video URL not available',
+      name: 'videoNotAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Video`
+  String get selectVideo {
+    return Intl.message(
+      'Select Video',
+      name: 'selectVideo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video Selected`
+  String get videoSelected {
+    return Intl.message(
+      'Video Selected',
+      name: 'videoSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Cover Image`
+  String get selectImage {
+    return Intl.message(
+      'Select Cover Image',
+      name: 'selectImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image Selected`
+  String get imageSelected {
+    return Intl.message(
+      'Image Selected',
+      name: 'imageSelected',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

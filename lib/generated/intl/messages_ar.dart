@@ -75,6 +75,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "failedToFetchStudents": MessageLookupByLibrary.simpleMessage(
       "فشل في جلب قائمة الطلاب",
     ),
+    "failedToLoadLecture": MessageLookupByLibrary.simpleMessage(
+      "فشل في تحميل تفاصيل المحاضرة",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "generateCodes": MessageLookupByLibrary.simpleMessage("توليد الأكواد"),
     "generateCodesSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -82,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "grade": MessageLookupByLibrary.simpleMessage("الصف الدراسي"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "imageSelected": MessageLookupByLibrary.simpleMessage("تم اختيار الصورة"),
     "individual": MessageLookupByLibrary.simpleMessage("فرد"),
     "invalidPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "رقم هاتف غير صحيح",
@@ -93,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "later": MessageLookupByLibrary.simpleMessage("لاحقاً"),
     "lecture": MessageLookupByLibrary.simpleMessage("محاضرة"),
     "lectureDescription": MessageLookupByLibrary.simpleMessage("وصف المحاضرة"),
+    "lectureDetails": MessageLookupByLibrary.simpleMessage("تفاصيل المحاضرة"),
     "lectureName": MessageLookupByLibrary.simpleMessage("اسم المحاضرة"),
     "lectureOrder": MessageLookupByLibrary.simpleMessage("ترتيب المحاضرة"),
     "lectures": MessageLookupByLibrary.simpleMessage("محاضرة"),
@@ -182,8 +187,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchStudentHint": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم، الهاتف، أو هاتف ولي الأمر...",
     ),
+    "selectImage": MessageLookupByLibrary.simpleMessage("اختر صورة غلاف"),
     "selectLecture": MessageLookupByLibrary.simpleMessage("اختر المحاضرة"),
     "selectLectureHint": MessageLookupByLibrary.simpleMessage("اختر محاضرة..."),
+    "selectVideo": MessageLookupByLibrary.simpleMessage("اختر فيديو"),
     "serverError": MessageLookupByLibrary.simpleMessage("خطأ في السيرفر"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
@@ -201,6 +208,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "userType": MessageLookupByLibrary.simpleMessage("نوع المستخدم"),
     "verify": MessageLookupByLibrary.simpleMessage("التحقق"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("التحقق من رمز OTP"),
+    "videoNotAvailable": MessageLookupByLibrary.simpleMessage(
+      "رابط الفيديو غير متوفر",
+    ),
+    "videoSelected": MessageLookupByLibrary.simpleMessage("تم اختيار الفيديو"),
     "videoUrl": MessageLookupByLibrary.simpleMessage("رابط الفيديو"),
     "warning": MessageLookupByLibrary.simpleMessage("إنذار"),
     "warnings": MessageLookupByLibrary.simpleMessage("إنذار"),

@@ -1,79 +1,66 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  // ─── Palette Colors ───────────────────────────────────────────
-  static const Color slateBlue = Color(0xFF355872); // #355872
-  static const Color softBlue = Color(0xFF7AAACE);  // #7AAACE
-  static const Color skyBlue = Color(0xFF9CD5FF);   // #9CD5FF
-  static const Color offWhite = Color(0xFFF7F8F0);  // #F7F8F0
+  // ─── Palette Colors (3 blue shades only) ──────────────────────
+  static const Color blueDarkest  = Color(0xFF09315E); // darkest anchor
+  static const Color blueLighter  = Color(0xFFB3D2EC); // mid / lighter
+  static const Color blueLightest = Color(0xFFA5C5DB); // lightest tint
+
+  // Legacy palette names → mapped to the 3 shades
+  static const Color slateBlue = blueDarkest;   // was anchor navy
+  static const Color softBlue  = blueLighter;   // was mid
+  static const Color skyBlue   = blueLightest;  // was light tint
+  static const Color offWhite  = Color(0xFFF4F8FB); // light canvas (neutral)
 
   // ─── Light Theme ───────────────────────────────────────────────
-  static const Color primary = slateBlue;
-  static const Color primaryLight = skyBlue;
-  static const Color primaryDark = Color(0xFF264156);
-  static const Color primaryMoreDark = Color(0xFF1B2F3E);
-  static const Color gold = softBlue;
-  static const Color secondary = softBlue;
-  static const Color grey = Color(0xFFC3CBD2);
-  static const Color myGrey = Color(0xFF6B7F90);
-  static const Color blue = slateBlue;
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF1D2D3A);
-  static const Color myBlack = Color(0xFF253746);
-  static const Color neutralBlack = Color(0xFF0F1A22);
+  static const Color primary         = blueDarkest;   // #09315E
+  static const Color primaryLight    = blueLightest;  // #A5C5DB
+  static const Color primaryDark     = blueDarkest;   // #09315E
+  static const Color primaryMoreDark = blueDarkest;   // #09315E
+  static const Color gold            = blueLighter;   // #3D80BB
+  static const Color secondary       = blueLighter;   // #3D80BB
+  static const Color grey            = Color(0xFFB7CBDE); // neutral blue-grey
+  static const Color myGrey          = Colors.blueGrey;   // #3D80BB
+  static const Color blue            = blueLighter;   // #3D80BB
+  static const Color white           = Color(0xFFFFFFFF);
+  static const Color black           = blueDarkest;   // #09315E
+  static const Color myBlack         = blueDarkest;   // #09315E
+  static const Color neutralBlack    = blueDarkest;   // #09315E
 
   // Additional light theme colors
-  static const Color primaryAccent = softBlue;
-  static const Color backGroundColor = offWhite;
-  static const Color myBrown = Color(0xFF533B2B);
-  static const Color beige = offWhite;
-  static const Color beige2 = skyBlue;
-  static const Color descriptionColor = Color(0xFFE5E8DD);
-  static const Color inputBorder = Color(0xFFC3CBD2);
+  static const Color primaryAccent     = blueLighter;   // #3D80BB
+  static const Color backGroundColor   = offWhite;      // #F4F8FB
+  static const Color myBrown           = blueLighter;   // #3D80BB (repurposed)
+  static const Color beige             = Color(0xFFEAF1F7);
+  static const Color beige2            = Color(0xFFDCE7F1);
+  static const Color descriptionColor  = Color(0xFFD2E0EC);
+  static const Color inputBorder       = blueLightest;  // #A5C5DB
 
   // Utility Colors
   static const Color transparent = Color(0x00000000);
-  static const Color red = Color(0xFFE53935);
-  static const Color green = Color(0xFF4CAF50);
-  static const Color lightGrey = Color(0xFFE0E0E0);
-  static const Color hintColor = Color(0xFFBBBBCC);
+  static const Color red         = Color(0xFFE53935);
+  static const Color green       = Color(0xFF4CAF50);
+  static const Color lightGrey   = Color(0xFFDCE7F1);
+  static const Color hintColor   = blueLightest; // #A5C5DB
 
   // ─── Dark Theme ────────────────────────────────────────────────
-  /// Main canvas — dark blue background derived from #355872
-  static const Color darkBackground = Color(0xFF15222E);
+  /// Main canvas — deepest blue
+  static const Color darkBackground = blueDarkest;   // #09315E
 
-  /// Cards, sheets, dialogs — slightly lighter dark surface
-  static const Color darkSurface = Color(0xFF1E3040);
+  /// Single surface color — also darkest (flat, single tone)
+  static const Color darkSurface = blueDarkest;      // #09315E
 
-  /// Elevated cards / bottom sheets
-  static const Color darkCard = Color(0xFF273E52);
+  static const Color darkCard        = blueDarkest;
+  static const Color darkDivider     = blueLighter;  // #3D80BB
+  static const Color darkInputBorder = blueLighter;  // #3D80BB
 
-  /// Primary — sky blue for high contrast on dark bg
-  static const Color darkPrimary = skyBlue;
-
-  /// Secondary — soft blue
-  static const Color darkSecondary = softBlue;
-
-  /// Accent / Gold equivalent
-  static const Color darkGold = softBlue;
-
-  /// Blue accent
-  static const Color darkBlue = skyBlue;
-
-  /// Body text on dark backgrounds — off-white
-  static const Color darkText = offWhite;
-
-  /// Secondary / muted text
-  static const Color darkSubText = Color(0xFFA0B5C6);
-
-  /// Divider lines
-  static const Color darkDivider = Color(0xFF2C4357);
-
-  /// Input field border
-  static const Color darkInputBorder = Color(0xFF3B566E);
-
-  /// Description / placeholder
-  static const Color darkDescriptionColor = Color(0xFF7A93A8);
+  static const Color darkPrimary           = blueLightest; // #A5C5DB
+  static const Color darkSecondary         = blueLighter;  // #3D80BB
+  static const Color darkGold              = blueLighter;  // #3D80BB
+  static const Color darkBlue              = blueLightest; // #A5C5DB
+  static const Color darkText              = Color(0xFFFFFFFF);
+  static const Color darkSubText           = blueLightest; // #A5C5DB
+  static const Color darkDescriptionColor  = blueLightest; // #A5C5DB
 
   // ─── Adaptive helpers ──────────────────────────────────────────
   static Color adaptivePrimary(BuildContext context) =>

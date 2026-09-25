@@ -124,28 +124,28 @@ class StudentDetailsSheet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            value,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: MyColors.myBlack,
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
           Row(
             children: [
+              Icon(
+                icon,
+                size: 20,
+                color: MyColors.primary,
+              ),
+              8.sbw,
               Text(
                 label,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: MyColors.myGrey,
                     ),
               ),
-              8.sbw,
-              Icon(
-                icon,
-                size: 20,
-                color: MyColors.primary,
-              ),
             ],
+          ),
+          Text(
+            value,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: MyColors.myBlack,
+                  fontWeight: FontWeight.w600,
+                ),
           ),
         ],
       ),

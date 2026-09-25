@@ -5,7 +5,10 @@ import '../../../../core/extension/extensions.dart';
 import '../../../../core/network/error_handling.dart';
 import '../../../../core/utils/Utilities.dart';
 import '../data/models/chapter_model.dart';
-import '../data/models/lecture_model.dart';
+import '../data/models/lecture_resp_dto.dart';
+import '../data/models/save_chapter_req_dto.dart';
+import '../data/models/save_lecture_req_dto.dart';
+import '../data/models/upload_lecture_image_req_dto.dart';
 import '../data/repo/home_repository.dart';
 import 'home_service.dart';
 
@@ -43,77 +46,52 @@ class HomeServiceImpl implements HomeService {
   }
 
   @override
-  Future<Either<MyError, LectureModel>> getLectureByRefNo(
+  Future<Either<MyError, LectureRespDto>> getLectureByRefNo(
       String refNo) async {
     final result = await _repo.getLectureByRefNo(refNo);
     return result.map((response) {
       if (response.data is Map<String, dynamic>) {
-        return LectureModel.fromJson(response.data as Map<String, dynamic>);
+        return LectureRespDto.fromJson(response.data as Map<String, dynamic>);
       }
-      return const LectureModel(name: '', description: '');
+      return const LectureRespDto(name: '', description: '');
     });
   }
 
   @override
-  Future<Either<MyError, ChapterModel>> saveChapter({
-    required String name,
-    required String description,
-    required String grade,
-    required int order,
-  }) async {
-    final body = {
-      'name': name,
-      'description': description,
-      'grade': grade,
-      'chapterOrder': order,
-    };
-    final result = await _repo.saveChapter(body);
+  Future<Either<MyError, ChapterModel>> saveChapter(
+      SaveChapterReqDto request) async {
+    final result = await _repo.saveChapter(request.toJson());
     return result.map((response) {
       if (response.data is Map<String, dynamic>) {
         return ChapterModel.fromJson(response.data as Map<String, dynamic>);
       }
-      return ChapterModel(name: name, description: description, grade: grade);
+      return ChapterModel(
+        name: request.name,
+        description: request.description,
+        grade: request.grade,
+      );
     });
   }
 
   @override
-  Future<Either<MyError, LectureModel>> saveLecture({
-    required String chapterRefNo,
-    required String name,
-    required String description,
-    required String videoUrl,
-    required int order,
-  }) async {
-    final body = {
-      'chapterRefNo': chapterRefNo,
-      'name': name,
-      'description': description,
-      'videoUrl': videoUrl,
-      'imageUrl': '',
-      'order': order,
-      'price': 0,
-      'free': true,
-    };
-    final result = await _repo.saveLecture(body);
+  Future<Either<MyError, LectureRespDto>> saveLecture(
+      SaveLectureReqDto request) async {
+    final result = await _repo.saveLecture(request.toJson());
     return result.map((response) {
       if (response.data is Map<String, dynamic>) {
-        return LectureModel.fromJson(response.data as Map<String, dynamic>);
+        return LectureRespDto.fromJson(response.data as Map<String, dynamic>);
       }
-      return LectureModel(name: name, description: description);
+      return LectureRespDto(
+        name: request.name,
+        description: request.description,
+      );
     });
   }
 
   @override
-  Future<Either<MyError, bool>> uploadLectureImage({
-    required String refNo,
-    required String base64ImageData,
-  }) async {
-    final body = {
-      'refNo': refNo,
-      'imageData': base64ImageData,
-      'count': 0,
-    };
-    final result = await _repo.uploadLectureImage(body);
+  Future<Either<MyError, bool>> uploadLectureImage(
+      UploadLectureImageReqDto request) async {
+    final result = await _repo.uploadLectureImage(request.toJson());
     return result.map((response) => response.status);
   }
 }

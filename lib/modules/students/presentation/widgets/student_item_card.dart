@@ -52,86 +52,6 @@ class StudentItemCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            InkWell(
-              onTap: () {
-                if (phone.isNotEmpty && phone != '-') {
-                  Clipboard.setData(ClipboardData(text: phone));
-                  ToastManager.showSuccess(s.phoneCopied);
-                }
-              },
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: MyColors.skyBlue.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Icon(
-                  Icons.copy_rounded,
-                  size: 20,
-                  color: MyColors.primary,
-                ),
-              ),
-            ),
-            12.sbw,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    name,
-                    textAlign: TextAlign.end,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: MyColors.myBlack,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  6.sbh,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        phone,
-                        style:
-                            Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: MyColors.myGrey,
-                                ),
-                      ),
-                      4.sbw,
-                      const Icon(
-                        Icons.phone_android,
-                        size: 14,
-                        color: MyColors.myGrey,
-                      ),
-                    ],
-                  ),
-                  if (parentPhone.isNotEmpty && parentPhone != '-') ...[
-                    4.sbh,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          '${s.parentPhone}: $parentPhone',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                                color: MyColors.myGrey,
-                              ),
-                        ),
-                        4.sbw,
-                        const Icon(
-                          Icons.family_restroom,
-                          size: 14,
-                          color: MyColors.myGrey,
-                        ),
-                      ],
-                    ),
-                  ],
-                ],
-              ),
-            ),
-            14.sbw,
             Container(
               width: 48,
               height: 48,
@@ -157,6 +77,86 @@ class StudentItemCard extends StatelessWidget {
                       color: MyColors.white,
                       fontWeight: FontWeight.bold,
                     ),
+              ),
+            ),
+            14.sbw,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: MyColors.myBlack,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  6.sbh,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.phone_android,
+                        size: 14,
+                        color: MyColors.myGrey,
+                      ),
+                      4.sbw,
+                      Text(
+                        phone,
+                        style:
+                            Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  color: MyColors.myGrey,
+                                ),
+                      ),
+                    ],
+                  ),
+                  if (parentPhone.isNotEmpty && parentPhone != '-') ...[
+                    4.sbh,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.family_restroom,
+                          size: 14,
+                          color: MyColors.myGrey,
+                        ),
+                        4.sbw,
+                        Text(
+                          '${s.parentPhone}: $parentPhone',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                color: MyColors.myGrey,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            12.sbw,
+            InkWell(
+              onTap: () {
+                if (phone.isNotEmpty && phone != '-') {
+                  Clipboard.setData(ClipboardData(text: phone));
+                  ToastManager.showSuccess(s.phoneCopied);
+                }
+              },
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: MyColors.skyBlue.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.copy_rounded,
+                  size: 20,
+                  color: MyColors.primary,
+                ),
               ),
             ),
           ],

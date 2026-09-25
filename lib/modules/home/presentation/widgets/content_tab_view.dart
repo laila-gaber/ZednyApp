@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extension/extensions.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/values/my_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
 import 'add_chapter_sheet.dart';
-import 'add_lecture_sheet.dart';
 import 'chapter_expandable_card.dart';
 import 'home_header_widget.dart';
 
@@ -36,6 +36,7 @@ class ContentTabView extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
+          spacing: 5,
           children: [
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
@@ -46,7 +47,7 @@ class ContentTabView extends StatelessWidget {
                 );
               },
             ),
-            20.sbh,
+            25.sbh,
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
                 final isTeacher = cubit.currentUser?.isTeacher ?? false;
@@ -54,9 +55,16 @@ class ContentTabView extends StatelessWidget {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Text(
+                      s.chapters,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: MyColors.myBlack,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
                     if (isTeacher)
-                      ElevatedButton.icon(
-                        onPressed: () {
+                      GestureDetector(
+                        onTap: () {
                           showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,
@@ -64,48 +72,43 @@ class ContentTabView extends StatelessWidget {
                             builder: (_) => AddChapterSheet(cubit: cubit),
                           );
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: MyColors.softBlue,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: MyColors.softBlue,
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 14,
-                            vertical: 10,
-                          ),
-                        ),
-                        icon: const Icon(
-                          Icons.add,
-                          color: MyColors.primaryDark,
-                          size: 18,
-                        ),
-                        label: Text(
-                          s.addChapterTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.add,
                                 color: MyColors.primaryDark,
-                                fontWeight: FontWeight.bold,
+                                size: 18,
                               ),
+                              const SizedBox(width: 8),
+                              Text(
+                                s.addChapterTitle,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall
+                                    ?.copyWith(
+                                      color: MyColors.primaryDark,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     else
                       const SizedBox.shrink(),
-                    Text(
-                      s.chapters,
-                      style:
-                          Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: MyColors.myBlack,
-                                fontWeight: FontWeight.bold,
-                              ),
-                    ),
                   ],
                 );
               },
             ),
-            16.sbh,
+            25.sbh,
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
                 if (state is HomeLoading) {
@@ -158,14 +161,13 @@ class ContentTabView extends StatelessWidget {
                       isTeacher: isTeacher,
                       onAddLecture: () {
                         if (chapter.refNo != null) {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            backgroundColor: MyColors.transparent,
-                            builder: (_) => AddLectureSheet(
-                              cubit: cubit,
-                              chapterRefNo: chapter.refNo!,
-                            ),
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.addLecture,
+                            arguments: {
+                              'cubit': cubit,
+                              'chapterRefNo': chapter.refNo,
+                            },
                           );
                         }
                       },

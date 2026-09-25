@@ -19,6 +19,25 @@ class StudentHeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              s.studentsList,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: MyColors.myBlack,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            2.sbh,
+            Text(
+              '${s.totalStudents}: $totalCount',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: MyColors.myGrey,
+                  ),
+            ),
+          ],
+        ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
@@ -46,25 +65,6 @@ class StudentHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              s.studentsList,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: MyColors.myBlack,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            2.sbh,
-            Text(
-              '${s.totalStudents}: $totalCount',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: MyColors.myGrey,
-                  ),
-            ),
-          ],
         ),
       ],
     );

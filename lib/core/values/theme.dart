@@ -3,7 +3,7 @@ import 'package:sizer/sizer.dart';
 import 'my_colors.dart';
 
 class MyTheme {
-  static const String fontFamily = 'schehrazad';
+  static const String fontFamily = '';//'schehrazad';
 
   static String getFontFamily(BuildContext context) {
     return fontFamily;
@@ -12,7 +12,7 @@ class MyTheme {
   // ─── Shared text styles ────────────────────────────────────────
   static TextStyle errorField = TextStyle(
     color: MyColors.red,
-    fontSize: 15.sp,
+    fontSize: 16.5.sp,
     fontFamily: fontFamily,
   );
 
@@ -69,7 +69,7 @@ class MyTheme {
         ),
         titleSmall: TextStyle(
           color: MyColors.myBlack,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w500,
           fontFamily: fontFamily,
         ),
@@ -81,13 +81,13 @@ class MyTheme {
         ),
         labelMedium: TextStyle(
           color: MyColors.myBlack,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w500,
           fontFamily: fontFamily,
         ),
         labelSmall: TextStyle(
           color: MyColors.myGrey,
-          fontSize: 15.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w500,
           fontFamily: fontFamily,
         ),
@@ -102,14 +102,14 @@ class MyTheme {
         ),
         bodyMedium: TextStyle(
           color: MyColors.myBlack,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.normal,
           fontFamily: fontFamily,
           height: 1.4,
         ),
         bodySmall: TextStyle(
           color: MyColors.myGrey,
-          fontSize: 15.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.normal,
           fontFamily: fontFamily,
         ),
@@ -154,7 +154,7 @@ class MyTheme {
         ),
         titleSmall: TextStyle(
           color: MyColors.darkText,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w500,
           fontFamily: fontFamily,
         ),
@@ -172,7 +172,7 @@ class MyTheme {
         ),
         labelSmall: TextStyle(
           color: MyColors.darkSubText,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w500,
           fontFamily: fontFamily,
         ),
@@ -194,7 +194,7 @@ class MyTheme {
         ),
         bodySmall: TextStyle(
           color: MyColors.darkSubText,
-          fontSize: 16.sp,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.normal,
           fontFamily: fontFamily,
         ),

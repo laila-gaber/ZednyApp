@@ -123,5 +123,12 @@
   "save": "Save",
   "noChaptersFound": "No chapters found for this grade",
   "welcomeTeacher": "Welcome Teacher",
-  "welcomeStudent": "Welcome Student"
+  "welcomeStudent": "Welcome Student",
+  "lectureDetails": "Lecture Details",
+  "failedToLoadLecture": "Failed to load lecture details",
+  "videoNotAvailable": "Video URL not available",
+  "selectVideo": "Select Video",
+  "videoSelected": "Video Selected",
+  "selectImage": "Select Cover Image",
+  "imageSelected": "Image Selected"
 }

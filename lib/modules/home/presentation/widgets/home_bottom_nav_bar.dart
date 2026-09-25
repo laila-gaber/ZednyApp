@@ -52,11 +52,11 @@ class HomeBottomNavBar extends StatelessWidget {
             activeIcon: const Icon(Icons.people),
             label: s.students,
           ),
-          BottomNavigationBarItem(
+   /*       BottomNavigationBarItem(
             icon: const Icon(Icons.code_outlined),
             activeIcon: const Icon(Icons.code),
             label: s.codes,
-          ),
+          ),*/
         ],
       ),
     );

@@ -31,7 +31,7 @@ class AddChapterSheet extends StatelessWidget {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Container(
@@ -62,7 +62,7 @@ class AddChapterSheet extends StatelessWidget {
             8.sbh,
             TextField(
               controller: cubit.chapterNameController,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.start,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: MyColors.offWhite,
@@ -96,7 +96,7 @@ class AddChapterSheet extends StatelessWidget {
             TextField(
               controller: cubit.chapterDescController,
               maxLines: 3,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.start,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: MyColors.offWhite,

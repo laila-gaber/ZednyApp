@@ -8,7 +8,7 @@ part of 'verification_response.dart';
 
 VerificationResponseData _$VerificationResponseDataFromJson(
   Map<String, dynamic> json,
-) => VerificationResponseData(token: json['verificationToken'] as String);
+) => VerificationResponseData(token: json['token'] as String);
 
 Map<String, dynamic> _$VerificationResponseDataToJson(
   VerificationResponseData instance,
