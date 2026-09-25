@@ -109,5 +109,19 @@
   "failedToFetchStudents": "فشل في جلب قائمة الطلاب",
   "call": "اتصال",
   "copyPhone": "نسخ الرقم",
-  "phoneCopied": "تم نسخ رقم الهاتف!"
+  "phoneCopied": "تم نسخ رقم الهاتف!",
+  "addChapterTitle": "إضافة فصل جديد",
+  "chapterName": "اسم الفصل",
+  "chapterDescription": "الوصف",
+  "chapterOrder": "ترتيب الفصل",
+  "addLectureTitle": "إضافة محاضرة جديدة",
+  "lectureName": "اسم المحاضرة",
+  "lectureDescription": "وصف المحاضرة",
+  "videoUrl": "رابط الفيديو",
+  "lectureOrder": "ترتيب المحاضرة",
+  "uploadThumbnail": "تحميل صورة غلاف",
+  "save": "حفظ",
+  "noChaptersFound": "لا توجد فصول لهذا الصف الدراسي",
+  "welcomeTeacher": "مرحباً يا معلم",
+  "welcomeStudent": "مرحباً يا طالب"
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zedny_app/modules/home/data/repo/home_repository.dart';
+import 'package:zedny_app/modules/home/services/home_service.dart';
+import 'package:zedny_app/modules/home/services/home_service_iml.dart';
 
 import '../../modules/auth/data/repo/repository.dart';
 import '../../modules/auth/presentation/cubit/auth_cubit.dart';
@@ -24,11 +27,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (_) => HomeCubit()..initData()),
               BlocProvider(
-                create: (_) => StudentCubit(
-                  StudentServiceImpl(StudentRepo()),
-                ),
+                create: (_) =>
+                    HomeCubit(HomeServiceImpl(HomeRepo()))/*..initData()*/,
+              ),
+              BlocProvider(
+                create: (_) => StudentCubit(StudentServiceImpl(StudentRepo())),
               ),
             ],
             child: const HomeScreen(),
@@ -37,9 +41,8 @@ class AppRouter {
       case AppRoutes.students:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => StudentCubit(
-              StudentServiceImpl(StudentRepo()),
-            ),
+            create: (context) =>
+                StudentCubit(StudentServiceImpl(StudentRepo())),
             child: const StudentScreen(),
           ),
         );
@@ -59,12 +62,12 @@ class AppRouter {
         );
       case AppRoutes.productsView:
         return MaterialPageRoute(
-            builder: (_) => const Center(child: Text('Products View')));
+          builder: (_) => const Center(child: Text('Products View')),
+        );
       default:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Unknown Route')),
-          ),
+          builder: (_) =>
+              const Scaffold(body: Center(child: Text('Unknown Route'))),
         );
     }
   }

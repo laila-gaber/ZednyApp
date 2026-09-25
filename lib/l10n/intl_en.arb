@@ -109,5 +109,19 @@
   "failedToFetchStudents": "Failed to fetch students",
   "call": "Call",
   "copyPhone": "Copy Phone",
-  "phoneCopied": "Phone number copied!"
+  "phoneCopied": "Phone number copied!",
+  "addChapterTitle": "Add New Chapter",
+  "chapterName": "Chapter Name",
+  "chapterDescription": "Description",
+  "chapterOrder": "Chapter Order",
+  "addLectureTitle": "Add New Lecture",
+  "lectureName": "Lecture Name",
+  "lectureDescription": "Lecture Description",
+  "videoUrl": "Video URL",
+  "lectureOrder": "Lecture Order",
+  "uploadThumbnail": "Upload Thumbnail",
+  "save": "Save",
+  "noChaptersFound": "No chapters found for this grade",
+  "welcomeTeacher": "Welcome Teacher",
+  "welcomeStudent": "Welcome Student"
 }

@@ -17,6 +17,7 @@
 ## 📖 Table of Contents
 
 - [About](#-about)
+- [Documentation](#-documentation)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Data Models](#-data-models)
@@ -33,6 +34,15 @@
 **Zedny (زدني)** is a mobile learning app that gives a teacher a simple way to organize their course content into chapters and lectures, and gives students an easy way to browse that content and stay up to date through notifications.
 
 The app is built with a **Flutter** mobile client and a **Spring Boot** REST API backend, backed by **MySQL**.
+
+---
+
+## 📑 Documentation
+
+| Document | Link |
+|----------|------|
+| Business Requirements Document (BRD) | [Open in Google Docs](https://docs.google.com/document/d/1C-42eFQp7yAwUJKRRjOH2l--jvOluNNd/edit?usp=sharing&ouid=116229143266236096054&rtpof=true&sd=true) |
+| Product Requirements Document (PRD) | [Open in Google Docs](https://docs.google.com/document/d/1uT25OHnkz8bwV_z6vsMOzr2Im8R5vnVU/edit?usp=sharing&ouid=116229143266236096054&rtpof=true&sd=true) |
 
 ---
 
@@ -195,5 +205,5 @@ lib/
 ## 🖼 Screenshots
 
 | Login | Student Home | Chapter View | Notifications |
-|:---:|:---:|:---:|:---:|
-| _add screenshot_ | _add screenshot_ | _add screenshot_ | _add screenshot_ |
+|:-----:|:------------:|:------------:|:-------------:|
+|  _ _  |     _ _      |     _ _      |      _ _      |

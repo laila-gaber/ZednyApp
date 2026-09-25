@@ -23,6 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addChapter": MessageLookupByLibrary.simpleMessage("+ إضافة فصل"),
+    "addChapterTitle": MessageLookupByLibrary.simpleMessage("إضافة فصل جديد"),
+    "addLectureTitle": MessageLookupByLibrary.simpleMessage(
+      "إضافة محاضرة جديدة",
+    ),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟ ",
     ),
@@ -36,6 +40,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
       "تم إضافة الفصل بنجاح!",
     ),
+    "chapterDescription": MessageLookupByLibrary.simpleMessage("الوصف"),
+    "chapterName": MessageLookupByLibrary.simpleMessage("اسم الفصل"),
+    "chapterOrder": MessageLookupByLibrary.simpleMessage("ترتيب الفصل"),
     "chapters": MessageLookupByLibrary.simpleMessage("الفصول"),
     "checkInternet": MessageLookupByLibrary.simpleMessage(
       "تحقق من الاتصال بالإنترنت",
@@ -85,6 +92,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "later": MessageLookupByLibrary.simpleMessage("لاحقاً"),
     "lecture": MessageLookupByLibrary.simpleMessage("محاضرة"),
+    "lectureDescription": MessageLookupByLibrary.simpleMessage("وصف المحاضرة"),
+    "lectureName": MessageLookupByLibrary.simpleMessage("اسم المحاضرة"),
+    "lectureOrder": MessageLookupByLibrary.simpleMessage("ترتيب المحاضرة"),
     "lectures": MessageLookupByLibrary.simpleMessage("محاضرة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginAs": MessageLookupByLibrary.simpleMessage("تسجيل الدخول كـ"),
@@ -102,6 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nameIsRequired": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
     "networkRequestError": MessageLookupByLibrary.simpleMessage(
       "خطأ في طلب الشبكة",
+    ),
+    "noChaptersFound": MessageLookupByLibrary.simpleMessage(
+      "لا توجد فصول لهذا الصف الدراسي",
     ),
     "noDataYet": MessageLookupByLibrary.simpleMessage("لا توجد بيانات بعد"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
@@ -164,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendCode": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "revision": MessageLookupByLibrary.simpleMessage("مراجعة"),
+    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "searchStudent": MessageLookupByLibrary.simpleMessage("بحث عن طالب..."),
     "searchStudentHint": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم، الهاتف، أو هاتف ولي الأمر...",
@@ -183,9 +197,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "teacherName": MessageLookupByLibrary.simpleMessage("أستاذ محمد"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("هذه الميزة"),
     "totalStudents": MessageLookupByLibrary.simpleMessage("إجمالي الطلاب"),
+    "uploadThumbnail": MessageLookupByLibrary.simpleMessage("تحميل صورة غلاف"),
     "userType": MessageLookupByLibrary.simpleMessage("نوع المستخدم"),
     "verify": MessageLookupByLibrary.simpleMessage("التحقق"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("التحقق من رمز OTP"),
+    "videoUrl": MessageLookupByLibrary.simpleMessage("رابط الفيديو"),
     "warning": MessageLookupByLibrary.simpleMessage("إنذار"),
     "warnings": MessageLookupByLibrary.simpleMessage("إنذار"),
     "weSentCodeTo": MessageLookupByLibrary.simpleMessage(
@@ -193,5 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+    "welcomeStudent": MessageLookupByLibrary.simpleMessage("مرحباً يا طالب"),
+    "welcomeTeacher": MessageLookupByLibrary.simpleMessage("مرحباً يا معلم"),
   };
 }

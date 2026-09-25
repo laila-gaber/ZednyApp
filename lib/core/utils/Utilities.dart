@@ -1,51 +1,90 @@
 import 'dart:convert';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:animate_do/animate_do.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../generated/l10n.dart';
 import '../api/api_endpoints.dart';
+import '../extension/extensions.dart';
 import '../routes/app_routes.dart';
 import '../values/my_colors.dart';
-import '../extension/extensions.dart';
 
 class Profile {
+  String? refNo;
+  String? name;
+  String? phone;
+  String? parentPhone;
   String? imgUrl;
-  Profile({this.imgUrl});
+  String? profileType;
+  String? grade;
+
+  Profile({
+    this.refNo,
+    this.name,
+    this.phone,
+    this.parentPhone,
+    this.imgUrl,
+    this.profileType,
+    this.grade,
+  });
+
   factory Profile.fromJson(Map<String, dynamic> json) {
-    return Profile(imgUrl: json['imgUrl']);
+    return Profile(
+      refNo: json['refNo'] as String?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      parentPhone: json['parentPhone'] as String?,
+      imgUrl: json['image'] as String? ?? json['imgUrl'] as String?,
+      profileType: json['profileType'] as String?,
+      grade: json['grade'] as String?,
+    );
   }
+
+  Map<String, dynamic> toJson() => {
+        'refNo': refNo,
+        'name': name,
+        'phone': phone,
+        'parentPhone': parentPhone,
+        'image': imgUrl,
+        'profileType': profileType,
+        'grade': grade,
+      };
+
+  bool get isTeacher => profileType?.toUpperCase() == 'TEACHER';
+  bool get isStudent => profileType?.toUpperCase() == 'STUDENT';
 }
 
 class Utilities {
- static Future<String> convertImageToBase64(url)async{
-    var byteData=(await NetworkAssetBundle(Uri.parse(url))
-        .load(url))
+  static Future<String> convertImageToBase64(url) async {
+    var byteData = (await NetworkAssetBundle(Uri.parse(url)).load(url))
         .buffer
-    .asUint8List();
-     return   base64.encode(byteData);
+        .asUint8List();
+    return base64.encode(byteData);
   }
 
- static Profile? getCurrentUser() {
-   try {
-     final prof = sharedPrefs.getString("profile");
-     if (prof == null) return null;
-     var profile = Profile.fromJson(json.decode(prof));
-       profile.imgUrl="${Endpoints.baseImageUrl}/${profile.imgUrl??""}";
-
-     return profile;
-   } on Exception {
-     return null;
-   }
- }
+  static Profile? getCurrentUser() {
+    try {
+      final prof = sharedPrefs.getString("profile");
+      if (prof == null) return null;
+      var profile = Profile.fromJson(json.decode(prof));
+      if (profile.imgUrl != null && profile.imgUrl!.isNotEmpty) {
+        profile.imgUrl = "${Endpoints.baseImageUrl}/${profile.imgUrl}";
+      }
+      return profile;
+    } on Exception {
+      return null;
+    }
+  }
 
   static T enumFromString<T>(
       {required Iterable<T> values, required String? enumName}) {
     return values.firstWhere((element) =>
-    element.toString().split('.').last.toLowerCase() ==
+        element.toString().split('.').last.toLowerCase() ==
         (enumName ?? 'na').toLowerCase());
   }
+
   static String convertToEnNumbers(String? arNum) {
     if (arNum != null) {
       final araNums = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
@@ -67,6 +106,7 @@ class Utilities {
     String newPhone = code + oldPhone;
     return newPhone;
   }
+
   static Map<String, String> encodeModel(Map<String, dynamic> modelJson) {
     final sanitizedJson = modelJson.map((key, value) {
       return MapEntry(key, value?.toString() ?? '');
@@ -89,6 +129,7 @@ class Utilities {
       throw 'Could not launch url';
     }
   }
+
   static Future<void> makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
     if (await canLaunchUrl(launchUri)) {
@@ -97,6 +138,7 @@ class Utilities {
       throw 'Could not launch $phoneNumber';
     }
   }
+
   static Future<void> sendEmail(String email) async {
     final Uri launchUri = Uri(
       scheme: 'mailto',
@@ -137,8 +179,8 @@ class Utilities {
     }
   }
 }
-void showLoginRequiredPopup(BuildContext context,
-    {String? featureName}) {
+
+void showLoginRequiredPopup(BuildContext context, {String? featureName}) {
   featureName ??= S.of(context).thisFeature;
   showDialog(
     context: context,

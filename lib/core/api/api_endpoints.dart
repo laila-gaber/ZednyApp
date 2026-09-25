@@ -14,4 +14,10 @@ class Endpoints {
   static String loginWithPhone = '$apiUrl/users/login';
   static String registerWithPhone = '$apiUrl/users/login';
   static String getStudents = '$apiUrl/users/students';
+  static String getProfile = '$apiUrl/users/profile';
+  static String getChaptersByGrade = '$apiUrl/chapters/chaptersByGrade';
+  static String getLectureByRefNo = '$apiUrl/lectures/byRefNo';
+  static String saveChapter = '$apiUrl/chapters/saveChapter';
+  static String saveLecture = '$apiUrl/lectures/save';
+  static String uploadLectureImage = '$apiUrl/lectures/uploadImage';
 }

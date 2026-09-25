@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addChapter": MessageLookupByLibrary.simpleMessage("+ Add Chapter"),
+    "addChapterTitle": MessageLookupByLibrary.simpleMessage("Add New Chapter"),
+    "addLectureTitle": MessageLookupByLibrary.simpleMessage("Add New Lecture"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
@@ -36,6 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
       "Chapter added successfully!",
     ),
+    "chapterDescription": MessageLookupByLibrary.simpleMessage("Description"),
+    "chapterName": MessageLookupByLibrary.simpleMessage("Chapter Name"),
+    "chapterOrder": MessageLookupByLibrary.simpleMessage("Chapter Order"),
     "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
     "checkInternet": MessageLookupByLibrary.simpleMessage(
       "Check internet connection",
@@ -89,6 +94,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "later": MessageLookupByLibrary.simpleMessage("Later"),
     "lecture": MessageLookupByLibrary.simpleMessage("Lecture"),
+    "lectureDescription": MessageLookupByLibrary.simpleMessage(
+      "Lecture Description",
+    ),
+    "lectureName": MessageLookupByLibrary.simpleMessage("Lecture Name"),
+    "lectureOrder": MessageLookupByLibrary.simpleMessage("Lecture Order"),
     "lectures": MessageLookupByLibrary.simpleMessage("Lectures"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginAs": MessageLookupByLibrary.simpleMessage("Login as"),
@@ -106,6 +116,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nameIsRequired": MessageLookupByLibrary.simpleMessage("Name is required"),
     "networkRequestError": MessageLookupByLibrary.simpleMessage(
       "Network request error",
+    ),
+    "noChaptersFound": MessageLookupByLibrary.simpleMessage(
+      "No chapters found for this grade",
     ),
     "noDataYet": MessageLookupByLibrary.simpleMessage("No data yet"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend Code"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "revision": MessageLookupByLibrary.simpleMessage("Revision"),
+    "save": MessageLookupByLibrary.simpleMessage("Save"),
     "searchStudent": MessageLookupByLibrary.simpleMessage(
       "Search for a student...",
     ),
@@ -199,13 +213,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "teacherName": MessageLookupByLibrary.simpleMessage("Teacher Mohamed"),
     "thisFeature": MessageLookupByLibrary.simpleMessage("This feature"),
     "totalStudents": MessageLookupByLibrary.simpleMessage("Total Students"),
+    "uploadThumbnail": MessageLookupByLibrary.simpleMessage("Upload Thumbnail"),
     "userType": MessageLookupByLibrary.simpleMessage("User Type"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "verifyOtp": MessageLookupByLibrary.simpleMessage("Verify OTP"),
+    "videoUrl": MessageLookupByLibrary.simpleMessage("Video URL"),
     "warning": MessageLookupByLibrary.simpleMessage("Warning"),
     "warnings": MessageLookupByLibrary.simpleMessage("Warnings"),
     "weSentCodeTo": MessageLookupByLibrary.simpleMessage("We sent a code to"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+    "welcomeStudent": MessageLookupByLibrary.simpleMessage("Welcome Student"),
+    "welcomeTeacher": MessageLookupByLibrary.simpleMessage("Welcome Teacher"),
   };
 }

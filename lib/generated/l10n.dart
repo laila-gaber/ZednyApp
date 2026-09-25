@@ -923,6 +923,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Add New Chapter`
+  String get addChapterTitle {
+    return Intl.message(
+      'Add New Chapter',
+      name: 'addChapterTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapter Name`
+  String get chapterName {
+    return Intl.message(
+      'Chapter Name',
+      name: 'chapterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get chapterDescription {
+    return Intl.message(
+      'Description',
+      name: 'chapterDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapter Order`
+  String get chapterOrder {
+    return Intl.message(
+      'Chapter Order',
+      name: 'chapterOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Lecture`
+  String get addLectureTitle {
+    return Intl.message(
+      'Add New Lecture',
+      name: 'addLectureTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lecture Name`
+  String get lectureName {
+    return Intl.message(
+      'Lecture Name',
+      name: 'lectureName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lecture Description`
+  String get lectureDescription {
+    return Intl.message(
+      'Lecture Description',
+      name: 'lectureDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video URL`
+  String get videoUrl {
+    return Intl.message('Video URL', name: 'videoUrl', desc: '', args: []);
+  }
+
+  /// `Lecture Order`
+  String get lectureOrder {
+    return Intl.message(
+      'Lecture Order',
+      name: 'lectureOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Thumbnail`
+  String get uploadThumbnail {
+    return Intl.message(
+      'Upload Thumbnail',
+      name: 'uploadThumbnail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `No chapters found for this grade`
+  String get noChaptersFound {
+    return Intl.message(
+      'No chapters found for this grade',
+      name: 'noChaptersFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Teacher`
+  String get welcomeTeacher {
+    return Intl.message(
+      'Welcome Teacher',
+      name: 'welcomeTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Student`
+  String get welcomeStudent {
+    return Intl.message(
+      'Welcome Student',
+      name: 'welcomeStudent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

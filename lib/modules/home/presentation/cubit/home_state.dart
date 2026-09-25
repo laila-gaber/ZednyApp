@@ -1,4 +1,4 @@
-import '../../data/models/code_type_enum.dart';
+import '../../data/models/chapter_model.dart';
 
 abstract class HomeState {
   const HomeState();
@@ -6,19 +6,26 @@ abstract class HomeState {
 
 class HomeInitial extends HomeState {}
 
+class HomeLoading extends HomeState {}
+
+class HomeSuccess extends HomeState {
+  final List<ChapterModel> chapters;
+  const HomeSuccess(this.chapters);
+}
+
+class HomeFailure extends HomeState {
+  final String message;
+  const HomeFailure(this.message);
+}
+
 class HomeTabChanged extends HomeState {
   final int tabIndex;
   const HomeTabChanged(this.tabIndex);
 }
 
-class HomeDataUpdated extends HomeState {}
+class HomeFormUpdated extends HomeState {}
 
-class HomeCodeGeneratedSuccess extends HomeState {
+class HomeActionSuccess extends HomeState {
   final String message;
-  const HomeCodeGeneratedSuccess(this.message);
-}
-
-class HomeChapterAddedSuccess extends HomeState {
-  final String message;
-  const HomeChapterAddedSuccess(this.message);
+  const HomeActionSuccess(this.message);
 }

@@ -22,6 +22,7 @@ class StudentsTabView extends StatelessWidget {
       child: Column(
         children: [
           const StudentsHeader(),
+/*
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: BlocBuilder<HomeCubit, HomeState>(
@@ -88,6 +89,7 @@ class StudentsTabView extends StatelessWidget {
               },
             ),
           ),
+*/
         ],
       ),
     );

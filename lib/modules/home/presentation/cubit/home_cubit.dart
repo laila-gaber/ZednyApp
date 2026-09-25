@@ -1,119 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/components/toast_manager.dart';
-import '../../../../core/values/my_colors.dart';
+import '../../../../core/enums/grade_enum.dart';
+import '../../../../core/utils/Utilities.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/chapter_model.dart';
 import '../../data/models/code_type_enum.dart';
-import '../../data/models/student_model.dart';
+import '../../services/home_service.dart';
 import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  final HomeService _homeService;
 
-  // Navigation State
+  HomeCubit(this._homeService) : super(HomeInitial());
+
+  // Bottom Navigation State
   int currentTabIndex = 0;
 
-  // Codes Form State
+  // Profile & Permissions State
+  Profile? currentUser;
+
+  // Grade Filter State
+  GradeEnum selectedGrade = GradeEnum.FIRST;
+
+  // Content List State
+  List<ChapterModel> chapters = [];
+
+  // Codes Tab State
   CodeTypeEnum selectedCodeType = CodeTypeEnum.lecture;
   String? selectedLecture;
   final TextEditingController codeCountController =
       TextEditingController(text: '5');
-
-  // Students Search State
-  final TextEditingController searchStudentController =
-      TextEditingController();
-
-  // Mock Data Collections
-  List<ChapterModel> chapters = const [
-    ChapterModel(
-      id: '1',
-      title: 'الفصل الأول: المقدمات',
-      lecturesCount: 4,
-      grade: 'الأول الثانوي',
-      accentColor: MyColors.primary,
-    ),
-    ChapterModel(
-      id: '2',
-      title: 'الفصل الثاني: المفاهيم',
-      lecturesCount: 6,
-      grade: 'الأول الثانوي',
-      accentColor: MyColors.green,
-    ),
-    ChapterModel(
-      id: '3',
-      title: 'الفصل الثالث: التطبيقات',
-      lecturesCount: 5,
-      grade: 'الثاني الثانوي',
-      accentColor: MyColors.myBrown,
-    ),
-    ChapterModel(
-      id: '4',
-      title: 'الفصل الرابع: المسائل المتقدمة',
-      lecturesCount: 3,
-      grade: 'الثالث الثانوي',
-      accentColor: MyColors.softBlue,
-    ),
-  ];
-
-  final List<StudentModel> _allStudents = const [
-    StudentModel(
-      id: '1',
-      name: 'أحمد محمد علي',
-      avatarInitial: 'أ',
-      grade: 'الثالث الثانوي',
-      completedLectures: 8,
-      totalLectures: 12,
-    ),
-    StudentModel(
-      id: '2',
-      name: 'فاطمة إبراهيم حسن',
-      avatarInitial: 'ف',
-      grade: 'الثاني الثانوي',
-      completedLectures: 10,
-      totalLectures: 10,
-    ),
-    StudentModel(
-      id: '3',
-      name: 'محمود سامي الدين',
-      avatarInitial: 'م',
-      grade: 'الأول الثانوي',
-      completedLectures: 3,
-      totalLectures: 10,
-      isBlocked: true,
-      warningsCount: 3,
-    ),
-    StudentModel(
-      id: '4',
-      name: 'نور عبدالله محمد',
-      avatarInitial: 'ن',
-      grade: 'الثالث الثانوي',
-      completedLectures: 11,
-      totalLectures: 12,
-      warningsCount: 1,
-    ),
-    StudentModel(
-      id: '5',
-      name: 'يوسف أحمد طارق',
-      avatarInitial: 'ي',
-      grade: 'الثاني الثانوي',
-      completedLectures: 7,
-      totalLectures: 10,
-    ),
-  ];
-
-  List<StudentModel> filteredStudents = [];
-
   final List<String> lectureList = const [
     'المحاضرة الأولى - المقدمات',
     'المحاضرة الثانية - المفاهيم',
     'المحاضرة الثالثة - التطبيقات',
-    'المحاضرة الرابعة - المسائل المتقدمة',
   ];
 
-  void initData() {
-    filteredStudents = List.from(_allStudents);
-    emit(HomeDataUpdated());
+  // Chapter Form Controllers
+  final TextEditingController chapterNameController = TextEditingController();
+  final TextEditingController chapterDescController = TextEditingController();
+  final TextEditingController chapterOrderController =
+      TextEditingController(text: '1');
+
+  // Lecture Form Controllers
+  final TextEditingController lectureNameController = TextEditingController();
+  final TextEditingController lectureDescController = TextEditingController();
+  final TextEditingController videoUrlController = TextEditingController();
+  final TextEditingController lectureOrderController =
+      TextEditingController(text: '1');
+  String? selectedLectureBase64Image;
+
+  void initData(S s) {
+    currentUser = Utilities.getCurrentUser();
+    fetchProfile(s);
+    fetchChaptersByGrade(grade: selectedGrade, s: s);
   }
 
   void changeTab(int index) {
@@ -121,26 +63,151 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeTabChanged(currentTabIndex));
   }
 
+  Future<void> fetchProfile(S s) async {
+    final result = await _homeService.getProfile();
+    if (isClosed) return;
+
+    result.fold(
+      (error) {},
+      (profile) {
+        if (!isClosed) {
+          currentUser = profile;
+          emit(HomeFormUpdated());
+        }
+      },
+    );
+  }
+
+  void changeGrade(GradeEnum grade, S s) {
+    selectedGrade = grade;
+    fetchChaptersByGrade(grade: grade, s: s);
+  }
+
+  Future<void> fetchChaptersByGrade({GradeEnum? grade, S? s}) async {
+    final targetGrade = grade ?? selectedGrade;
+    emit(HomeLoading());
+
+    final result = await _homeService.getChaptersByGrade(targetGrade.name);
+    if (isClosed) return;
+
+    result.fold(
+      (error) {
+        if (!isClosed) {
+          emit(HomeFailure(error.message ?? s?.errorTryAgain ?? 'Error'));
+        }
+      },
+      (data) {
+        if (!isClosed) {
+          chapters = data;
+          emit(HomeSuccess(chapters));
+        }
+      },
+    );
+  }
+
+  Future<void> submitSaveChapter(S s) async {
+    final name = chapterNameController.text.trim();
+    final description = chapterDescController.text.trim();
+    final orderText = chapterOrderController.text.trim();
+    final order = int.tryParse(orderText) ?? 1;
+
+    if (name.isEmpty) {
+      ToastManager.showError(s.errorTryAgain);
+      return;
+    }
+
+    emit(HomeLoading());
+
+    final result = await _homeService.saveChapter(
+      name: name,
+      description: description,
+      grade: selectedGrade.name,
+      order: order,
+    );
+
+    if (isClosed) return;
+
+    result.fold(
+      (error) {
+        if (!isClosed) {
+          emit(HomeFailure(error.message ?? s.errorTryAgain));
+        }
+      },
+      (savedChapter) {
+        if (!isClosed) {
+          ToastManager.showSuccess(s.chapterAddedSuccess);
+          chapterNameController.clear();
+          chapterDescController.clear();
+          chapterOrderController.text = '1';
+          fetchChaptersByGrade(grade: selectedGrade, s: s);
+        }
+      },
+    );
+  }
+
+  Future<void> submitSaveLecture({
+    required String chapterRefNo,
+    required S s,
+  }) async {
+    final name = lectureNameController.text.trim();
+    final description = lectureDescController.text.trim();
+    final videoUrl = videoUrlController.text.trim();
+    final orderText = lectureOrderController.text.trim();
+    final order = int.tryParse(orderText) ?? 1;
+
+    if (name.isEmpty) {
+      ToastManager.showError(s.errorTryAgain);
+      return;
+    }
+
+    emit(HomeLoading());
+
+    final result = await _homeService.saveLecture(
+      chapterRefNo: chapterRefNo,
+      name: name,
+      description: description,
+      videoUrl: videoUrl,
+      order: order,
+    );
+
+    if (isClosed) return;
+
+    await result.fold(
+      (error) async {
+        if (!isClosed) {
+          emit(HomeFailure(error.message ?? s.errorTryAgain));
+        }
+      },
+      (savedLecture) async {
+        if (selectedLectureBase64Image != null &&
+            savedLecture.refNo != null) {
+          await _homeService.uploadLectureImage(
+            refNo: savedLecture.refNo!,
+            base64ImageData: selectedLectureBase64Image!,
+          );
+        }
+
+        if (!isClosed) {
+          ToastManager.showSuccess(s.codesGeneratedSuccess);
+          lectureNameController.clear();
+          lectureDescController.clear();
+          videoUrlController.clear();
+          lectureOrderController.text = '1';
+          selectedLectureBase64Image = null;
+          fetchChaptersByGrade(grade: selectedGrade, s: s);
+        }
+      },
+    );
+  }
+
   void changeCodeType(CodeTypeEnum type) {
     selectedCodeType = type;
-    emit(HomeDataUpdated());
+    emit(HomeFormUpdated());
   }
 
   void selectLecture(String? lecture) {
     selectedLecture = lecture;
-    emit(HomeDataUpdated());
-  }
-
-  void searchStudents(String query) {
-    if (query.trim().isEmpty) {
-      filteredStudents = List.from(_allStudents);
-    } else {
-      filteredStudents = _allStudents
-          .where((student) =>
-              student.name.toLowerCase().contains(query.trim().toLowerCase()))
-          .toList();
-    }
-    emit(HomeDataUpdated());
+    emit(HomeFormUpdated());
   }
 
   void generateCodes(S s) {
@@ -150,18 +217,18 @@ class HomeCubit extends Cubit<HomeState> {
       return;
     }
     ToastManager.showSuccess(s.codesGeneratedSuccess);
-    emit(HomeCodeGeneratedSuccess(s.codesGeneratedSuccess));
-  }
-
-  void addChapter(S s) {
-    ToastManager.showSuccess(s.chapterAddedSuccess);
-    emit(HomeChapterAddedSuccess(s.chapterAddedSuccess));
+    emit(const HomeActionSuccess('Codes generated'));
   }
 
   @override
   Future<void> close() {
     codeCountController.dispose();
-    searchStudentController.dispose();
+    chapterNameController.dispose();
+    chapterDescController.dispose();
+    chapterOrderController.dispose();
+    lectureNameController.dispose();
+    lectureDescController.dispose();
+    videoUrlController.dispose();
     return super.close();
   }
 }
