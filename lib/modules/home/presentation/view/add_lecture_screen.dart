@@ -42,9 +42,17 @@ class AddLectureScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           physics: const BouncingScrollPhysics(),
-          child: BlocBuilder<HomeCubit, HomeState>(
+          child: BlocConsumer<HomeCubit, HomeState>(
+            listener: (context, state) {
+              if (state is HomeActionSuccess) {
+                Navigator.pop(context);
+              }
+            },
             builder: (context, state) {
               final isLoading = state is HomeLoading;
+              final isUploadingVideo = state is HomeVideoUploadProgress;
+              final uploadFailureState =
+                  state is HomeVideoUploadFailure ? state : null;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +67,7 @@ class AddLectureScreen extends StatelessWidget {
                   8.sbh,
                   TextField(
                     controller: cubit.lectureNameController,
+                    enabled: !isLoading && !isUploadingVideo,
                     textAlign: TextAlign.start,
                     decoration: InputDecoration(
                       filled: true,
@@ -94,6 +103,7 @@ class AddLectureScreen extends StatelessWidget {
                   8.sbh,
                   TextField(
                     controller: cubit.lectureDescController,
+                    enabled: !isLoading && !isUploadingVideo,
                     maxLines: 3,
                     textAlign: TextAlign.start,
                     decoration: InputDecoration(
@@ -129,7 +139,9 @@ class AddLectureScreen extends StatelessWidget {
                   ),
                   8.sbh,
                   InkWell(
-                    onTap: () => cubit.pickVideo(),
+                    onTap: (isLoading || isUploadingVideo)
+                        ? null
+                        : () => cubit.pickVideo(),
                     borderRadius: BorderRadius.circular(14),
                     child: Container(
                       padding: const EdgeInsets.all(16),
@@ -189,7 +201,9 @@ class AddLectureScreen extends StatelessWidget {
                   ),
                   8.sbh,
                   InkWell(
-                    onTap: () => cubit.pickImage(),
+                    onTap: (isLoading || isUploadingVideo)
+                        ? null
+                        : () => cubit.pickImage(),
                     borderRadius: BorderRadius.circular(14),
                     child: Container(
                       padding: const EdgeInsets.all(16),
@@ -239,21 +253,137 @@ class AddLectureScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  // Upload Progress Bar Display
+                  if (isUploadingVideo) ...[
+                    20.sbh,
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: MyColors.white,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: MyColors.primary.withValues(alpha: 0.3),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Uploading video...',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: MyColors.primary,
+                                    ),
+                              ),
+                              Text(
+                                '${(state.progress * 100).toStringAsFixed(0)}%',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: MyColors.primary,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          12.sbh,
+                          LinearProgressIndicator(
+                            value: state.progress,
+                            backgroundColor: MyColors.inputBorder,
+                            color: MyColors.primary,
+                            minHeight: 8,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+
+                  // Video Upload Failure & Retry Section
+                  if (uploadFailureState != null) ...[
+                    20.sbh,
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: MyColors.red.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: MyColors.red),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Lecture saved, but video upload failed.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: MyColors.red,
+                                ),
+                          ),
+                          4.sbh,
+                          Text(
+                            uploadFailureState.message,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                  color: MyColors.red,
+                                ),
+                          ),
+                          12.sbh,
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                cubit.retryVideoUpload(
+                                  chapterRefNo: uploadFailureState.chapterRefNo,
+                                  lectureRefNo: uploadFailureState.lectureRefNo,
+                                  videoFilePath:
+                                      uploadFailureState.videoFilePath,
+                                  s: s,
+                                );
+                              },
+                              icon: const Icon(Icons.refresh,
+                                  color: MyColors.white),
+                              label: const Text(
+                                'Retry Video Upload',
+                                style: TextStyle(color: MyColors.white),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: MyColors.red,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+
                   32.sbh,
                   SizedBox(
                     width: double.infinity,
                     height: 52,
                     child: ElevatedButton(
-                      onPressed: isLoading
+                      onPressed: (isLoading || isUploadingVideo)
                           ? null
                           : () async {
                               await cubit.submitSaveLecture(
                                 chapterRefNo: chapterRefNo,
                                 s: s,
                               );
-                              if (context.mounted) {
-                                Navigator.pop(context);
-                              }
                             },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: MyColors.primary,

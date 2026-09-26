@@ -7,6 +7,7 @@ import '../data/models/lecture_resp_dto.dart';
 import '../data/models/save_chapter_req_dto.dart';
 import '../data/models/save_lecture_req_dto.dart';
 import '../data/models/upload_lecture_image_req_dto.dart';
+import '../data/models/upload_video_req_dto.dart';
 
 abstract class HomeService {
   Future<Either<MyError, Profile>> getProfile();
@@ -21,4 +22,9 @@ abstract class HomeService {
 
   Future<Either<MyError, bool>> uploadLectureImage(
       UploadLectureImageReqDto request);
+
+  Future<Either<MyError, LectureRespDto>> uploadLectureVideo({
+    required UploadVideoReqDto request,
+    void Function(int count, int total)? onSendProgress,
+  });
 }

@@ -141,6 +141,33 @@ class NetworkHandler {
         .mapRight(ResponseDto.fromJson);
   }
 
+  Future<Either<MyError, ResponseDto>> uploadVideoMultipart({
+    required String url,
+    required String filePath,
+    required String chapterRefNo,
+    required String refNo,
+    bool? withToken,
+    void Function(int count, int total)? onSendProgress,
+  }) async {
+    final http = networkConfig.httpClient(withToken ?? true);
+
+    final fileName = filePath.split('/').last.split('\\').last;
+    FormData formData = FormData.fromMap({
+      'file': await MultipartFile.fromFile(filePath, filename: fileName),
+      'chapterRefNo': chapterRefNo,
+      'refNo': refNo,
+    });
+
+    return safe(http.post(
+      url,
+      data: formData,
+      onSendProgress: onSendProgress,
+    ))
+        .thenRight(checkHttpStatus)
+        .thenRight(parseJson)
+        .mapRight(ResponseDto.fromJson);
+  }
+
   Future<Either<MyError, ResponseDto>> uploadMultiFiles(
       {required String url,
         bool? withToken,

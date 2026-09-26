@@ -9,6 +9,7 @@ import '../data/models/lecture_resp_dto.dart';
 import '../data/models/save_chapter_req_dto.dart';
 import '../data/models/save_lecture_req_dto.dart';
 import '../data/models/upload_lecture_image_req_dto.dart';
+import '../data/models/upload_video_req_dto.dart';
 import '../data/repo/home_repository.dart';
 import 'home_service.dart';
 
@@ -93,5 +94,24 @@ class HomeServiceImpl implements HomeService {
       UploadLectureImageReqDto request) async {
     final result = await _repo.uploadLectureImage(request.toJson());
     return result.map((response) => response.status);
+  }
+
+  @override
+  Future<Either<MyError, LectureRespDto>> uploadLectureVideo({
+    required UploadVideoReqDto request,
+    void Function(int count, int total)? onSendProgress,
+  }) async {
+    final result = await _repo.uploadLectureVideo(
+      filePath: request.videoFilePath,
+      chapterRefNo: request.chapterRefNo,
+      refNo: request.refNo,
+      onSendProgress: onSendProgress,
+    );
+    return result.map((response) {
+      if (response.data is Map<String, dynamic>) {
+        return LectureRespDto.fromJson(response.data as Map<String, dynamic>);
+      }
+      return const LectureRespDto(name: '', description: '');
+    });
   }
 }

@@ -56,4 +56,20 @@ class HomeRepo {
       withToken: true,
     );
   }
+
+  Future<Either<MyError, ResponseDto>> uploadLectureVideo({
+    required String filePath,
+    required String chapterRefNo,
+    required String refNo,
+    void Function(int count, int total)? onSendProgress,
+  }) {
+    return api.uploadVideoMultipart(
+      url: Endpoints.uploadLectureVideo,
+      filePath: filePath,
+      chapterRefNo: chapterRefNo,
+      refNo: refNo,
+      withToken: true,
+      onSendProgress: onSendProgress,
+    );
+  }
 }

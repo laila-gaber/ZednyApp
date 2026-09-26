@@ -13,6 +13,7 @@ import '../../data/models/code_type_enum.dart';
 import '../../data/models/save_chapter_req_dto.dart';
 import '../../data/models/save_lecture_req_dto.dart';
 import '../../data/models/upload_lecture_image_req_dto.dart';
+import '../../data/models/upload_video_req_dto.dart';
 import '../../services/home_service.dart';
 import 'home_state.dart';
 
@@ -184,7 +185,6 @@ class HomeCubit extends Cubit<HomeState> {
   }) async {
     final name = lectureNameController.text.trim();
     final description = lectureDescController.text.trim();
-    final videoUrl = videoUrlController.text.trim();
     final orderText = lectureOrderController.text.trim();
     final order = int.tryParse(orderText) ?? 1;
 
@@ -201,11 +201,12 @@ class HomeCubit extends Cubit<HomeState> {
       base64Image = base64Encode(bytes);
     }
 
+    // Step 1: Save lecture (JSON payload) - video is NOT included here per contract
     final request = SaveLectureReqDto(
       chapterRefNo: chapterRefNo,
       name: name,
       description: description,
-      videoUrl: videoUrl,
+      videoUrl: '',
       order: order,
     );
 
@@ -220,6 +221,7 @@ class HomeCubit extends Cubit<HomeState> {
         }
       },
       (savedLecture) async {
+        // Upload image if present
         if (base64Image != null && savedLecture.refNo != null) {
           await _homeService.uploadLectureImage(
             UploadLectureImageReqDto(
@@ -229,18 +231,112 @@ class HomeCubit extends Cubit<HomeState> {
           );
         }
 
-        if (!isClosed) {
-          ToastManager.showSuccess(s.codesGeneratedSuccess);
-          lectureNameController.clear();
-          lectureDescController.clear();
-          videoUrlController.clear();
-          lectureOrderController.text = '1';
-          pickedImageFile = null;
-          pickedVideoFile = null;
-          fetchChaptersByGrade(grade: selectedGrade, s: s);
+        // Step 2: Upload video if picked (requires saved lecture refNo from Step 1)
+        final videoFilePath =
+            pickedVideoFile?.path ?? videoUrlController.text.trim();
+        final hasVideoToUpload = pickedVideoFile != null ||
+            (videoFilePath.isNotEmpty &&
+                !videoFilePath.startsWith('http://') &&
+                !videoFilePath.startsWith('https://'));
+
+        if (hasVideoToUpload) {
+          final lectureRefNo = savedLecture.refNo;
+          if (lectureRefNo != null && lectureRefNo.isNotEmpty) {
+            await _performVideoUpload(
+              chapterRefNo: chapterRefNo,
+              lectureRefNo: lectureRefNo,
+              videoFilePath: videoFilePath,
+              s: s,
+            );
+          } else {
+            if (!isClosed) {
+              emit(HomeFailure(s.errorTryAgain));
+            }
+          }
+        } else {
+          _onSaveLectureSuccess(s);
         }
       },
     );
+  }
+
+  Future<void> retryVideoUpload({
+    required String chapterRefNo,
+    required String lectureRefNo,
+    required String videoFilePath,
+    required S s,
+  }) async {
+    await _performVideoUpload(
+      chapterRefNo: chapterRefNo,
+      lectureRefNo: lectureRefNo,
+      videoFilePath: videoFilePath,
+      s: s,
+    );
+  }
+
+  Future<void> _performVideoUpload({
+    required String chapterRefNo,
+    required String lectureRefNo,
+    required String videoFilePath,
+    required S s,
+  }) async {
+    emit(const HomeVideoUploadProgress(
+      progress: 0.0,
+      count: 0,
+      total: 0,
+    ));
+
+    final uploadRequest = UploadVideoReqDto(
+      chapterRefNo: chapterRefNo,
+      refNo: lectureRefNo,
+      videoFilePath: videoFilePath,
+    );
+
+    final uploadResult = await _homeService.uploadLectureVideo(
+      request: uploadRequest,
+      onSendProgress: (count, total) {
+        if (!isClosed && total > 0) {
+          final progress = count / total;
+          emit(HomeVideoUploadProgress(
+            progress: progress,
+            count: count,
+            total: total,
+          ));
+        }
+      },
+    );
+
+    if (isClosed) return;
+
+    uploadResult.fold(
+      (error) {
+        if (!isClosed) {
+          emit(HomeVideoUploadFailure(
+            message: error.message ?? s.errorTryAgain,
+            chapterRefNo: chapterRefNo,
+            lectureRefNo: lectureRefNo,
+            videoFilePath: videoFilePath,
+          ));
+        }
+      },
+      (updatedLecture) {
+        _onSaveLectureSuccess(s);
+      },
+    );
+  }
+
+  void _onSaveLectureSuccess(S s) {
+    if (!isClosed) {
+      ToastManager.showSuccess(s.codesGeneratedSuccess);
+      lectureNameController.clear();
+      lectureDescController.clear();
+      videoUrlController.clear();
+      lectureOrderController.text = '1';
+      pickedImageFile = null;
+      pickedVideoFile = null;
+      emit(const HomeActionSuccess('Lecture saved successfully'));
+      fetchChaptersByGrade(grade: selectedGrade, s: s);
+    }
   }
 
   void changeCodeType(CodeTypeEnum type) {

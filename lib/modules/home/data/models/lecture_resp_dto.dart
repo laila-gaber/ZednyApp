@@ -7,6 +7,7 @@ part 'lecture_resp_dto.g.dart';
 @JsonSerializable()
 class LectureRespDto {
   final String? refNo;
+  final String? chapterRefNo;
   @JsonKey(defaultValue: '')
   final String name;
   @JsonKey(defaultValue: '')
@@ -18,6 +19,7 @@ class LectureRespDto {
 
   const LectureRespDto({
     this.refNo,
+    this.chapterRefNo,
     this.name = '',
     this.description = '',
     this.videoUrl,

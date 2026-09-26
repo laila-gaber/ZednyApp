@@ -1,7 +1,7 @@
 class Endpoints {
- static const serverIP = 'http://192.168.1.9:8085';
+  static const serverIP = 'http://192.168.1.9:8085';
 
-   static const testServerBaseUrl = '$serverIP/zedny_api/api/v1';
+  static const testServerBaseUrl = '$serverIP/zedny_api/api/v1';
 
   static const testAdminApiUrl = '$testServerBaseUrl/api/v1/admin';
   static const baseImageUrl = '$serverIP/zedny_api/uploads';
@@ -20,4 +20,5 @@ class Endpoints {
   static String saveChapter = '$apiUrl/chapters/saveChapter';
   static String saveLecture = '$apiUrl/lectures/save';
   static String uploadLectureImage = '$apiUrl/lectures/uploadImage';
+  static String uploadLectureVideo = '$apiUrl/lectures/upload-video';
 }

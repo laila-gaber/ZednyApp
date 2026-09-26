@@ -29,3 +29,29 @@ class HomeActionSuccess extends HomeState {
   final String message;
   const HomeActionSuccess(this.message);
 }
+
+class HomeVideoUploadProgress extends HomeState {
+  final double progress;
+  final int count;
+  final int total;
+
+  const HomeVideoUploadProgress({
+    required this.progress,
+    required this.count,
+    required this.total,
+  });
+}
+
+class HomeVideoUploadFailure extends HomeState {
+  final String message;
+  final String chapterRefNo;
+  final String lectureRefNo;
+  final String videoFilePath;
+
+  const HomeVideoUploadFailure({
+    required this.message,
+    required this.chapterRefNo,
+    required this.lectureRefNo,
+    required this.videoFilePath,
+  });
+}

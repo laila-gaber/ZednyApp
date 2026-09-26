@@ -9,10 +9,7 @@ import '../../data/models/lecture_model.dart';
 class LectureInfoSection extends StatelessWidget {
   final LectureModel lecture;
 
-  const LectureInfoSection({
-    super.key,
-    required this.lecture,
-  });
+  const LectureInfoSection({super.key, required this.lecture});
 
   @override
   Widget build(BuildContext context) {
@@ -32,55 +29,33 @@ class LectureInfoSection extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: MyColors.skyBlue.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  '${s.lectureOrder}: ${lecture.lectureOrder}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: MyColors.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  lecture.name,
-                  textAlign: TextAlign.end,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: MyColors.myBlack,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              ),
-            ],
+          Text(
+            lecture.name,
+            textAlign: TextAlign.end,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              color: MyColors.myBlack,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+
           if (lecture.description.isNotEmpty) ...[
-            12.sbh,
-            Text(
+            5.sbh,
+            /*    Text(
               s.lectureDescription,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: MyColors.myBlack,
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            6.sbh,
+            6.sbh,*/
             Text(
               lecture.description,
-              textAlign: TextAlign.end,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: MyColors.myGrey,
-                    height: 1.5,
-                  ),
+                color: MyColors.myGrey,
+                height: 1.5,
+              ),
             ),
           ],
           if (lecture.fullImageUrl != null) ...[
@@ -88,7 +63,7 @@ class LectureInfoSection extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(14),
               child: CachedNetworkImage(
-                imageUrl: lecture.fullImageUrl!,
+                imageUrl: lecture.fullImageUrl!.replaceAll("thumb-", ""),
                 width: double.infinity,
                 height: 160,
                 fit: BoxFit.cover,

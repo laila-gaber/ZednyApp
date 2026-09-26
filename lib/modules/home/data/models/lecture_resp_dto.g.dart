@@ -9,8 +9,9 @@ part of 'lecture_resp_dto.dart';
 LectureRespDto _$LectureRespDtoFromJson(Map<String, dynamic> json) =>
     LectureRespDto(
       refNo: json['refNo'] as String?,
-      name: json['name'] as String,
-      description: json['description'] as String,
+      chapterRefNo: json['chapterRefNo'] as String?,
+      name: json['name'] as String? ?? '',
+      description: json['description'] as String? ?? '',
       videoUrl: json['videoUrl'] as String?,
       imageUrl: json['imageUrl'] as String?,
       lectureOrder: (json['lectureOrder'] as num?)?.toInt() ?? 1,
@@ -19,6 +20,7 @@ LectureRespDto _$LectureRespDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LectureRespDtoToJson(LectureRespDto instance) =>
     <String, dynamic>{
       'refNo': instance.refNo,
+      'chapterRefNo': instance.chapterRefNo,
       'name': instance.name,
       'description': instance.description,
       'videoUrl': instance.videoUrl,
