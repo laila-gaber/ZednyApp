@@ -44,10 +44,10 @@ class OtpVerificationScreen extends StatelessWidget {
             if (authType == 'login') {
               cubit.submitLogin(s);
             } else {
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                AppRoutes.home,
-                (route) => false,
+              cubit.submitLogin(
+                s,
+                phoneOverride: phone,
+                userTypeOverride: 'STUDENT',
               );
             }
           } else if (state is LoginSuccess) {

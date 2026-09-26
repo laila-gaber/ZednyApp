@@ -168,10 +168,14 @@ class AuthCubit extends Cubit<AuthState> {
 
   bool get isOtpExpired => remainingSeconds <= 0;
 
-  Future<void> submitLogin(S s) async {
+  Future<void> submitLogin(
+    S s, {
+    String? phoneOverride,
+    String? userTypeOverride,
+  }) async {
     if (state is LoginLoading) return;
 
-    final phone = loginPhoneController.text.trim();
+    final phone = phoneOverride ?? loginPhoneController.text.trim();
     if (phone.isEmpty) {
       ToastManager.showError(s.pleaseEnterPhoneNumber);
       return;
@@ -188,7 +192,7 @@ class AuthCubit extends Cubit<AuthState> {
       phone: phone,
       fcmToken: fcm,
       deviceId: device,
-      userType: selectedUserType.name,
+      userType: userTypeOverride ?? selectedUserType.name,
     );
 
     final result = await _authService.login(request);

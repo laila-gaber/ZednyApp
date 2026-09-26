@@ -17,24 +17,28 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         final cubit = context.read<HomeCubit>();
+        final isTeacher = cubit.currentUser?.isTeacher ?? false;
 
         return Scaffold(
           backgroundColor: MyColors.offWhite,
           body: SafeArea(
             top: false,
-            child: IndexedStack(
-              index: cubit.currentTabIndex,
-              children: const [
-                ContentTabView(),
-                StudentScreen(),
-              //  CodesTabView(),
-              ],
-            ),
+            child: isTeacher
+                ? IndexedStack(
+                    index: cubit.currentTabIndex,
+                    children: const [
+                      ContentTabView(),
+                      StudentScreen(),
+                    ],
+                  )
+                : const ContentTabView(),
           ),
-          bottomNavigationBar: HomeBottomNavBar(
-            currentIndex: cubit.currentTabIndex,
-            onTap: (index) => cubit.changeTab(index),
-          ),
+          bottomNavigationBar: isTeacher
+              ? HomeBottomNavBar(
+                  currentIndex: cubit.currentTabIndex,
+                  onTap: (index) => cubit.changeTab(index),
+                )
+              : null,
         );
       },
     );
