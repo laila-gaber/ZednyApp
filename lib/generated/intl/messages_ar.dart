@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "blocked": MessageLookupByLibrary.simpleMessage("محظور"),
     "book": MessageLookupByLibrary.simpleMessage("كتاب"),
     "call": MessageLookupByLibrary.simpleMessage("اتصال"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cart": MessageLookupByLibrary.simpleMessage("السلة"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("ميزة السلة"),
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -52,9 +53,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "codeType": MessageLookupByLibrary.simpleMessage("نوع الكود"),
     "codes": MessageLookupByLibrary.simpleMessage("الأكواد"),
     "codesGeneratedSuccess": MessageLookupByLibrary.simpleMessage(
-      "تم توليد الأكواد بنجاح!",
+      "تم إضافة المحاضرة بنجاح!",
     ),
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("اتصل بالإدارة"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متاكد من تسجيل الخروج؟",
+    ),
     "content": MessageLookupByLibrary.simpleMessage("المحتوى"),
     "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
     "copyPhone": MessageLookupByLibrary.simpleMessage("نسخ الرقم"),
@@ -113,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginToContinueFeature": MessageLookupByLibrary.simpleMessage(
       "سجل الدخول للمتابعة",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
     "nameIsRequired": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
     "networkRequestError": MessageLookupByLibrary.simpleMessage(
@@ -170,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseLoginToAccessCart": MessageLookupByLibrary.simpleMessage(
       "يرجى تسجيل الدخول للوصول إلى السلة",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerAs": MessageLookupByLibrary.simpleMessage("التسجيل كـ"),
     "registerAsStudentSubtitle": MessageLookupByLibrary.simpleMessage(

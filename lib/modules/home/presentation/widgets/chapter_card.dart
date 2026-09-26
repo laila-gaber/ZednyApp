@@ -74,11 +74,11 @@ class ChapterCard extends StatelessWidget {
               ),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       chapter.name,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             color: MyColors.myBlack,
                             fontWeight: FontWeight.bold,
@@ -87,7 +87,6 @@ class ChapterCard extends StatelessWidget {
                     4.sbh,
                     Text(
                       '${chapter.lectures.length} ${s.lectures} · ${chapter.grade}',
-                      textAlign: TextAlign.end,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: MyColors.myGrey,
                           ),

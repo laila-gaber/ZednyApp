@@ -35,6 +35,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   // Content List State
   List<ChapterModel> chapters = [];
+  bool isChaptersLoading = false;
 
   // Codes Tab State
   CodeTypeEnum selectedCodeType = CodeTypeEnum.lecture;
@@ -96,11 +97,13 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> fetchChaptersByGrade({GradeEnum? grade, S? s}) async {
     final targetGrade = grade ?? selectedGrade;
+    isChaptersLoading = true;
     emit(HomeLoading());
 
     final result = await _homeService.getChaptersByGrade(targetGrade.name);
     if (isClosed) return;
 
+    isChaptersLoading = false;
     result.fold(
       (error) {
         if (!isClosed) {

@@ -58,9 +58,9 @@ class ContentTabView extends StatelessWidget {
                     Text(
                       s.chapters,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: MyColors.myBlack,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        color: MyColors.myBlack,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     if (isTeacher)
                       GestureDetector(
@@ -74,7 +74,9 @@ class ContentTabView extends StatelessWidget {
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 14, vertical: 10),
+                            horizontal: 14,
+                            vertical: 10,
+                          ),
                           decoration: BoxDecoration(
                             color: MyColors.softBlue,
                             borderRadius: BorderRadius.circular(12),
@@ -82,21 +84,20 @@ class ContentTabView extends StatelessWidget {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(
-                                Icons.add,
-                                color: MyColors.primaryDark,
-                                size: 18,
-                              ),
-                              const SizedBox(width: 8),
                               Text(
                                 s.addChapterTitle,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall
+                                style: Theme.of(context).textTheme.titleSmall
                                     ?.copyWith(
                                       color: MyColors.primaryDark,
                                       fontWeight: FontWeight.bold,
                                     ),
+                              ),
+                              const SizedBox(width: 8),
+
+                              const Icon(
+                                Icons.add,
+                                color: MyColors.primaryDark,
+                                size: 18,
                               ),
                             ],
                           ),
@@ -111,13 +112,50 @@ class ContentTabView extends StatelessWidget {
             25.sbh,
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
-                if (state is HomeLoading) {
+                if (cubit.isChaptersLoading || state is HomeLoading) {
                   return const Padding(
                     padding: EdgeInsets.symmetric(vertical: 40),
                     child: Center(
-                      child: CircularProgressIndicator(
-                        color: MyColors.primary,
-                      ),
+                      child: CircularProgressIndicator(color: MyColors.primary),
+                    ),
+                  );
+                }
+
+                if (state is HomeFailure && cubit.chapters.isEmpty) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.error_outline,
+                          size: 48,
+                          color: MyColors.red,
+                        ),
+                        12.sbh,
+                        Text(
+                          state.message,
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                color: MyColors.myBlack,
+                              ),
+                        ),
+                        16.sbh,
+                        ElevatedButton(
+                          onPressed: () => cubit.fetchChaptersByGrade(s: s),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: MyColors.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Text(
+                            s.retry,
+                            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                  color: MyColors.white,
+                                ),
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 }
@@ -135,12 +173,8 @@ class ContentTabView extends StatelessWidget {
                         12.sbh,
                         Text(
                           s.noChaptersFound,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                color: MyColors.myGrey,
-                              ),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(color: MyColors.myGrey),
                         ),
                       ],
                     ),

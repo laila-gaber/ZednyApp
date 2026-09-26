@@ -13,11 +13,13 @@ import '../../modules/home/presentation/view/add_lecture_screen.dart';
 import '../../modules/home/presentation/view/home_screen.dart';
 import '../../modules/home/presentation/view/lecture_details_screen.dart';
 import '../../modules/home/services/home_service_iml.dart';
+import '../../modules/profile/presentation/view/profile_screen.dart';
 import '../../modules/splash/presentation/view/splash_screen.dart';
 import '../../modules/students/data/repo/student_repository.dart';
 import '../../modules/students/presentation/cubit/student_cubit.dart';
 import '../../modules/students/presentation/view/student_screen.dart';
 import '../../modules/students/services/student_service_iml.dart';
+import '../utils/Utilities.dart';
 import 'app_routes.dart';
 
 class AppRouter {
@@ -38,6 +40,11 @@ class AppRouter {
             ],
             child: const HomeScreen(),
           ),
+        );
+      case AppRoutes.profile:
+        final user = settings.arguments as Profile?;
+        return MaterialPageRoute(
+          builder: (_) => ProfileScreen(user: user),
         );
       case AppRoutes.lectureDetails:
         final refNo = settings.arguments as String? ?? '';

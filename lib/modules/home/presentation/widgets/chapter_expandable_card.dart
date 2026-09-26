@@ -59,7 +59,7 @@ class ChapterExpandableCard extends StatelessWidget {
                 Text(
                   chapter.description,
                   textAlign: TextAlign.start,
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: MyColors.myGrey,

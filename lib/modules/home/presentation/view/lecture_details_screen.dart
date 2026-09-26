@@ -103,20 +103,21 @@ class LectureDetailsScreen extends StatelessWidget {
 
               final lecture = cubit.lecture!;
 
-              return SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    VideoPlayerWidget(
+              return Column(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    child: VideoPlayerWidget(
                       controller: cubit.videoController,
                       isInitialized: cubit.isVideoInitialized,
                       isPlaying: cubit.isPlaying,
                       onPlayPauseTap: () => cubit.togglePlayPause(),
+                      imageUrl: lecture.fullImageUrl,
                     ),
-                    20.sbh,
-                    LectureInfoSection(lecture: lecture),
-                  ],
-                ),
+                  ),
+                  20.sbh,
+                  Expanded(child: LectureInfoSection(lecture: lecture)),
+                ],
               );
             },
           ),

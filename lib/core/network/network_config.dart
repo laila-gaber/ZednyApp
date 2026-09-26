@@ -19,8 +19,6 @@ class NetworkConfig {
           if (withToken && token != null) 'Authorization': 'Bearer $token',
           if (verification != null) 'Verification': verification,
           'Accept-Language': languageCode ?? 'ar',
-          'lat': (sharedPrefs.getString("lat")??"").isEmpty?"0.0":sharedPrefs.getString("lat"),
-          "lng":  (sharedPrefs.getString("long")??"").isEmpty?"0.0":sharedPrefs.getString("long"),
           'notifId': '${sharedPrefs.getString("notifId")}',
           'X-API-Key': '9776f587-d9e3-40af-a6c2-8ffa3873e01c',
           'lang': languageCode ?? 'ar'

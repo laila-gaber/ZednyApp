@@ -814,10 +814,10 @@ class S {
     );
   }
 
-  /// `Codes generated successfully!`
+  /// `lecture added successfully!`
   String get codesGeneratedSuccess {
     return Intl.message(
-      'Codes generated successfully!',
+      'lecture added successfully!',
       name: 'codesGeneratedSuccess',
       desc: '',
       args: [],
@@ -1122,6 +1122,31 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to log out?`
+  String get confirmLogout {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'confirmLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 }
 

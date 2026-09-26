@@ -43,9 +43,7 @@ Future<void> main() async {
   String lang = /*sharedPrefs.getString('lang') ??*/ 'ar';
   Locale locale = Locale(lang);
   log("token:\n ${sharedPrefs.getString("token")}");
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor:  Color(0xFFF4F8FB),
-  ));
+
   runApp(MyApp(locale: locale));
 }
 

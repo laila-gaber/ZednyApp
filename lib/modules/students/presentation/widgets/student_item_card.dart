@@ -116,12 +116,6 @@ class StudentItemCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Icon(
-                          Icons.family_restroom,
-                          size: 14,
-                          color: MyColors.myGrey,
-                        ),
-                        4.sbw,
                         Text(
                           '${s.parentPhone}: $parentPhone',
                           style: Theme.of(context)

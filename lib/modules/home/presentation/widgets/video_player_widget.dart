@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -9,6 +10,7 @@ class VideoPlayerWidget extends StatelessWidget {
   final bool isInitialized;
   final bool isPlaying;
   final VoidCallback onPlayPauseTap;
+  final String? imageUrl;
 
   const VideoPlayerWidget({
     super.key,
@@ -16,6 +18,7 @@ class VideoPlayerWidget extends StatelessWidget {
     required this.isInitialized,
     required this.isPlaying,
     required this.onPlayPauseTap,
+    this.imageUrl,
   });
 
   @override
@@ -80,25 +83,79 @@ class VideoPlayerWidget extends StatelessWidget {
                   ),
                 ],
               )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.ondemand_video_outlined,
-                      size: 48,
-                      color: MyColors.softBlue,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      s.videoNotAvailable,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: MyColors.descriptionColor,
-                          ),
-                    ),
-                  ],
+            : _buildFallback(context, s),
+      ),
+    );
+  }
+
+  Widget _buildFallback(BuildContext context, S s) {
+    final hasImage = imageUrl != null && imageUrl!.trim().isNotEmpty;
+
+    if (hasImage) {
+      final sanitizedUrl = imageUrl!.replaceAll("thumb-", "");
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          CachedNetworkImage(
+            imageUrl: sanitizedUrl,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => Container(
+              color: MyColors.primaryDark,
+              child: const Center(
+                child: CircularProgressIndicator(
+                  color: MyColors.primary,
                 ),
               ),
+            ),
+            errorWidget: (context, url, error) => _buildPlaceholder(context, s),
+          ),
+          GestureDetector(
+            onTap: onPlayPauseTap,
+            child: Container(
+              color: Colors.black54,
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: MyColors.primaryDark.withValues(alpha: 0.6),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.play_arrow_rounded,
+                    color: MyColors.white,
+                    size: 36,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    return _buildPlaceholder(context, s);
+  }
+
+  Widget _buildPlaceholder(BuildContext context, S s) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.ondemand_video_outlined,
+            size: 48,
+            color: MyColors.softBlue,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            s.videoNotAvailable,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: MyColors.descriptionColor,
+                ),
+          ),
+        ],
       ),
     );
   }

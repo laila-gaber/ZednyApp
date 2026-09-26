@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "blocked": MessageLookupByLibrary.simpleMessage("Blocked"),
     "book": MessageLookupByLibrary.simpleMessage("Book"),
     "call": MessageLookupByLibrary.simpleMessage("Call"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "cartFeature": MessageLookupByLibrary.simpleMessage("Cart Feature"),
     "chapterAddedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -52,9 +53,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "codeType": MessageLookupByLibrary.simpleMessage("Code Type"),
     "codes": MessageLookupByLibrary.simpleMessage("Codes"),
     "codesGeneratedSuccess": MessageLookupByLibrary.simpleMessage(
-      "Codes generated successfully!",
+      "lecture added successfully!",
     ),
     "conatctAdmins": MessageLookupByLibrary.simpleMessage("Contact admins"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
+    ),
     "content": MessageLookupByLibrary.simpleMessage("Content"),
     "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
     "copyPhone": MessageLookupByLibrary.simpleMessage("Copy Phone"),
@@ -117,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginToContinueFeature": MessageLookupByLibrary.simpleMessage(
       "Login to continue feature",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
     "nameIsRequired": MessageLookupByLibrary.simpleMessage("Name is required"),
     "networkRequestError": MessageLookupByLibrary.simpleMessage(
@@ -178,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseLoginToAccessCart": MessageLookupByLibrary.simpleMessage(
       "Please login to access cart",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerAs": MessageLookupByLibrary.simpleMessage("Register as"),
     "registerAsStudentSubtitle": MessageLookupByLibrary.simpleMessage(

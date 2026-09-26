@@ -98,7 +98,7 @@
   "warnings": "Warnings",
   "warning": "Warning",
   "teacherName": "Teacher Mohamed",
-  "codesGeneratedSuccess": "Codes generated successfully!",
+  "codesGeneratedSuccess": "lecture added successfully!",
   "chapterAddedSuccess": "Chapter added successfully!",
   "studentsList": "Students List",
   "searchStudentHint": "Search by name, phone, or parent phone...",
@@ -130,5 +130,9 @@
   "selectVideo": "Select Video",
   "videoSelected": "Video Selected",
   "selectImage": "Select Cover Image",
-  "imageSelected": "Image Selected"
+  "imageSelected": "Image Selected",
+  "logout": "Logout",
+  "confirmLogout": "Are you sure you want to log out?",
+  "cancel": "Cancel",
+  "profile": "Profile"
 }

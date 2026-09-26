@@ -16,6 +16,7 @@ class LectureInfoSection extends StatelessWidget {
     final s = S.of(context);
 
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: MyColors.white,
@@ -41,7 +42,7 @@ class LectureInfoSection extends StatelessWidget {
           ),
 
           if (lecture.description.isNotEmpty) ...[
-            5.sbh,
+            10.sbh,
             /*    Text(
               s.lectureDescription,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -50,24 +51,20 @@ class LectureInfoSection extends StatelessWidget {
                   ),
             ),
             6.sbh,*/
-            Text(
-              lecture.description,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: MyColors.myGrey,
-                height: 1.5,
-              ),
-            ),
-          ],
-          if (lecture.fullImageUrl != null) ...[
-            20.sbh,
-            ClipRRect(
-              borderRadius: BorderRadius.circular(14),
-              child: CachedNetworkImage(
-                imageUrl: lecture.fullImageUrl!.replaceAll("thumb-", ""),
-                width: double.infinity,
-                height: 160,
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) => const SizedBox.shrink(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      lecture.description,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: MyColors.myGrey,
+                        height: 1.5,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

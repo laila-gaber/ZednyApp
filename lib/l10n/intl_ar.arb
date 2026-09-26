@@ -98,7 +98,7 @@
   "warnings": "إنذار",
   "warning": "إنذار",
   "teacherName": "أستاذ محمد",
-  "codesGeneratedSuccess": "تم توليد الأكواد بنجاح!",
+  "codesGeneratedSuccess": "تم إضافة المحاضرة بنجاح!",
   "chapterAddedSuccess": "تم إضافة الفصل بنجاح!",
   "studentsList": "قائمة الطلاب",
   "searchStudentHint": "ابحث بالاسم، الهاتف، أو هاتف ولي الأمر...",
@@ -130,5 +130,9 @@
   "selectVideo": "اختر فيديو",
   "videoSelected": "تم اختيار الفيديو",
   "selectImage": "اختر صورة غلاف",
-  "imageSelected": "تم اختيار الصورة"
+  "imageSelected": "تم اختيار الصورة",
+  "logout": "تسجيل الخروج",
+  "confirmLogout": "هل أنت متاكد من تسجيل الخروج؟",
+  "cancel": "إلغاء",
+  "profile": "الملف الشخصي"
 }

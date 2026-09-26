@@ -78,6 +78,26 @@ class Utilities {
     }
   }
 
+  static Future<void> logout(BuildContext context) async {
+    final lang = sharedPrefs.getString('lang');
+    final language = sharedPrefs.getString('language');
+    final locale = sharedPrefs.getString('locale');
+
+    await sharedPrefs.clear();
+
+    if (lang != null) await sharedPrefs.setString('lang', lang);
+    if (language != null) await sharedPrefs.setString('language', language);
+    if (locale != null) await sharedPrefs.setString('locale', locale);
+
+    if (context.mounted) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.login,
+        (route) => false,
+      );
+    }
+  }
+
   static T enumFromString<T>(
       {required Iterable<T> values, required String? enumName}) {
     return values.firstWhere((element) =>
