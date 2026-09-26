@@ -21,14 +21,17 @@ class AuthNavigationRow extends StatelessWidget {
       children: [
         Text(
           text,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: MyColors.myGrey,
+              ),
         ),
         GestureDetector(
           onTap: onTap,
           child: Text(
             actionText,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: MyColors.blue,
+                  color: MyColors.primary,
+              fontWeight: FontWeight.bold
                 ),
           ),
         ),

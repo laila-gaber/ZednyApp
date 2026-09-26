@@ -25,7 +25,7 @@ class OtpTimerDisplay extends StatelessWidget {
           Text(
             cubit.formattedTimer,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: isExpired ? MyColors.red : MyColors.blue,
+                  color: isExpired ? MyColors.red : MyColors.primary,
                 ),
           ),
         ],

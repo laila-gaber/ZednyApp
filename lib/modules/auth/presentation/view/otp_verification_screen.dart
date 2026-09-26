@@ -93,7 +93,7 @@ class OtpVerificationScreen extends StatelessWidget {
                 AuthButton(
                   label: s.verify,
                   isLoading: isLoading,
-                  backgroundColor: isExpired ? MyColors.myGrey : MyColors.blue,
+                  backgroundColor: isExpired ? MyColors.myGrey : MyColors.primary,
                   onPressed: isExpired
                       ? null
                       : () {
@@ -118,7 +118,7 @@ class OtpVerificationScreen extends StatelessWidget {
                     child: Text(
                       s.resendCode,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: MyColors.blue,
+                            color: MyColors.primary,
                           ),
                     ),
                   ),

@@ -28,12 +28,12 @@ class AuthHeader extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                color: MyColors.blue.withValues(alpha: 0.1),
+                color: MyColors.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Icon(
                 Icons.arrow_back_ios_new,
-                color: MyColors.blue,
+                color: MyColors.primary,
                 size: 20,
               ),
             ),
@@ -41,14 +41,14 @@ class AuthHeader extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           title,
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(color: MyColors.primary),
         ),
         if (subtitle != null) ...[
           const SizedBox(height: 12),
           Text(
             subtitle!,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                 // color: MyColors.myGrey,
+                  color: MyColors.myGrey,
                 ),
           ),
         ],

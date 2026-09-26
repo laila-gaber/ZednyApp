@@ -19,7 +19,7 @@ class AuthButton extends StatelessWidget {
     this.isLoading = false,
     this.width,
     this.height = 56,
-    this.backgroundColor = MyColors.blue,
+    this.backgroundColor = MyColors.primary,
     this.textColor = MyColors.white,
     this.borderRadius = 12,
   });

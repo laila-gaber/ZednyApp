@@ -40,7 +40,7 @@ class RegisterGradeDropdown extends StatelessWidget {
                 .map((grade) => DropdownMenuItem(
                       value: grade,
                       child: Text(
-                        grade.name,
+                        grade.getLocalizedName(context),
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ))

@@ -21,7 +21,7 @@ class RememberMeCheckbox extends StatelessWidget {
           child: Checkbox(
             value: cubit.rememberMe,
             onChanged: (value) => cubit.toggleRememberMe(value),
-            activeColor: MyColors.blue,
+            activeColor: MyColors.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),

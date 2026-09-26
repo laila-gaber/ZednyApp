@@ -29,12 +29,12 @@ class UserTypeSelector extends StatelessWidget {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: isSelected ? MyColors.blue : MyColors.transparent,
+                  color: isSelected ? MyColors.primary : MyColors.transparent,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: MyColors.blue.withValues(alpha: 0.2),
+                            color: MyColors.primary.withValues(alpha: 0.2),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),

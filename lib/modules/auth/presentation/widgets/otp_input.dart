@@ -32,13 +32,13 @@ class OtpInput extends StatelessWidget {
 
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        border: Border.all(color: MyColors.blue, width: 2.5),
+        border: Border.all(color: MyColors.primary, width: 2.5),
       ),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        border: Border.all(color: MyColors.blue, width: 1.5),
+        border: Border.all(color: MyColors.primary, width: 1.5),
       ),
     );
 
